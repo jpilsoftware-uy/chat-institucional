@@ -1,0 +1,28 @@
+---
+- name: Instalar docker
+  hosts: all
+  tasks:
+    - name: Repositorio de docker
+      shell: yum-config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+      args:
+        creates: /etc/yum.repos.d/docker-ce.repo
+
+    - name: Instalar docker
+      yum:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: latest
+
+    - name: Apagar Firewall
+      systemd:
+        name: firewalld
+        state: stopped
+        enabled: no
+
+    - name: Habilitacion de Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
