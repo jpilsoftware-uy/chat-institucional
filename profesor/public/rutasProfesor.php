@@ -9,7 +9,7 @@
             break;
             
         case '/insertarProfesor':
-            if($_SERVER['REQUEST_METHOD'] === 'POST') ProfesorController::preAltaDeProfesor($_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'], $_POST['ci']);
+            if($_SERVER['REQUEST_METHOD'] === 'POST') usuarioController::preAltaDeUsuario($_POST['cedula'],$_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'],$_POST['tipoDeUsuario']);
             if($_SERVER['REQUEST_METHOD'] === 'GET') cargarVista('registroProfesor');
             break;    
             
@@ -20,13 +20,13 @@
 
 
         case '/inicioProfesor':
-            if($_SERVER['REQUEST_METHOD'] === 'GET') profesorController::MostrarLoginProfesor();  
-            if($_SERVER['REQUEST_METHOD'] === 'POST') profesorController::iniciarSesion($_POST['usuario'],$_POST['contrasenia']);
+            if($_SERVER['REQUEST_METHOD'] === 'GET') usuarioController::MostrarLogin();  
+            if($_SERVER['REQUEST_METHOD'] === 'POST') usuarioController::iniciarSesion($_POST['usuario'],$_POST['contrasenia']);
             break;
 
         
         case '/principalProfesor':
-            ProfesorController::MostrarMenuPrincipalProfesor();
+            usuarioController::MostrarMenuPrincipalProfesor();
             break;
 
 

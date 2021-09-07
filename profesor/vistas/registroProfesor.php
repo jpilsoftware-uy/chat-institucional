@@ -23,14 +23,14 @@
         Nombre: <input type="text" name="nombre" id="nombre"> <br>
         Primer Apellido: <input type="text" name="primerApellido" id="primerApellido"> <br>
         Segundo Apellido: <input type="text" name="segundoApellido" id="segundoApellido"> <br>
-        Cedula de Identidad: <input type="text" name="ci" id="ci" placeholder="sin puntos ni guiones"> <br>
+        Cedula de Identidad: <input type="text" name="cedula" id="cedula" placeholder="sin puntos ni guiones"> <br>
         Usuario: <input type="text" name="usuario" id="usuario"> <br>
         Contrasenia: <input type="password" name="contrasenia" id="contrasenia"> <br>
         
 
         
 
-        <button action="submit">Registrar Usuario</button> 
+        <button action="submit" name="tipoDeUsuario" id="tipoDeUsuario" value="Profesor">Registrar Usuario</button>
         <button formaction="/">Volver al inicio</button>
     </form>
 
