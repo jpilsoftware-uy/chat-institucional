@@ -19,7 +19,7 @@
     <form action="/inicioProfesor" method="post">
         Usuario : <input type ="text" name ="usuario"> <br>
         Contrasenia : <input type ="password" name ="contrasenia"> <br>
-        <input type="submit" value ="Iniciar Sesion">
+        <button action="submit" name="tipoDeUsuario" id="tipoDeUsuario" value="Profesor">Iniciar Sesion</button>
         <button formaction="/registro-profesor">Registrarse</button>
 
     

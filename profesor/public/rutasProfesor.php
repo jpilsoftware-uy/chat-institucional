@@ -21,12 +21,12 @@
 
         case '/inicioProfesor':
             if($_SERVER['REQUEST_METHOD'] === 'GET') usuarioController::MostrarLogin();  
-            if($_SERVER['REQUEST_METHOD'] === 'POST') usuarioController::iniciarSesion($_POST['usuario'],$_POST['contrasenia']);
+            if($_SERVER['REQUEST_METHOD'] === 'POST') usuarioController::iniciarSesion($_POST['usuario'],$_POST['contrasenia'],$_POST['tipoDeUsuario']);
             break;
 
         
         case '/principalProfesor':
-            usuarioController::MostrarMenuPrincipalProfesor();
+            usuarioController::MostrarMenuPrincipal();
             break;
 
 

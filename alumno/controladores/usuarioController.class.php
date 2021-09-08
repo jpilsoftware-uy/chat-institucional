@@ -61,10 +61,10 @@ class usuarioController extends UsuarioModelo{
         
         }
     
-        public static function MostrarMenuPrincipal($tipoDeUsuario){
+        public static function MostrarMenuPrincipal(){
              session_start();
-            if(!isset($_SESSION['autenticado'])) header("Location : /inicio" .$tipoDeUsuario);
-            else return cargarVista("menuPrincipal" .$tipoDeUsuario);
+            if(!isset($_SESSION['autenticado'])) header("Location : /inicio");
+            else return cargarVista("menuPrincipal");
         }
         private static function crearSesion($usuario){
             session_start();
