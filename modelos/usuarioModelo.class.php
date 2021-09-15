@@ -90,6 +90,7 @@ class UsuarioModelo extends Modelo{
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("s", $this -> usuario);
     }
+
     private function asignarDatosDeUsuario($resultado){
         $this -> cedula = $resultado ['cedula'];
         $this -> nombre = $resultado['nombre'];
@@ -101,16 +102,6 @@ class UsuarioModelo extends Modelo{
         $this -> estado = $resultado['estado'];
     }
     //iniciar sesion
-   
-
-
-
-
-
-
-
-
-
 
 
    //funciones de administrador
@@ -151,12 +142,12 @@ class UsuarioModelo extends Modelo{
         $this -> sentencia -> bind_param("i", $cedula);
     }
     
-    
   
     private function prepararListadoDeUsuariosAprobados(){
         $sql = "SELECT idDocente, nombreDocente, primerApellidoDocente, segundoApellidoDocente, cedulaDocente, grupoDocente, usuarioDocente FROM Docente WHERE estadoDocente='aprobado'";
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
+
     public function listarUsuariosAprobados(){
         $this -> prepararListadoDeUsuariosAprobados();
         $this -> sentencia -> execute();
@@ -165,13 +156,30 @@ class UsuarioModelo extends Modelo{
         return $resultado;
 
     }
- 
-    
     //funciones de administrador
 
+    
+    //modificar datos
 
-    //
-    //
+    public function actualizarUsuario(){
+        $this -> prepararActualizacionDeUsuario();
+        $this -> sentencia -> execute();
+    }
+
+    private function prepararActualizacionDeUsuario(){
+        $this -> contrasenia = $this -> hashearContrasenia($this -> contrasenia);
+        $sql = "UPDATE usuario SET nombre = ?, primerApellido = ?, segundoApellido = ?, usuario = ?, contrasenia = ?, grupo = ? WHERE cedula = ?";
+        $this -> sentencia = $this-> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("ssssssi",
+            $this -> nombre,
+            $this -> primerApellido,
+            $this -> segundoApellido,
+            $this -> usuario,
+            $this -> contrasenia,
+            $this -> grupo
+        );
+    }
+    //modificar datos
 
 
 

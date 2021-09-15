@@ -6,7 +6,7 @@ class usuarioController extends UsuarioModelo{
         
         public static function preAltaDeUsuario($cedula,$nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $tipoDeUsuario, $estado="pendiente" ){
            
-            if($nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== "" && $cedula !== ""&& $tipoDeUsuario !== "" && $estado !== "" ){  
+            if($nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== "" && $cedula !== "" && $tipoDeUsuario !== "" && $estado !== "" ){  
                 try{
                     $u = new UsuarioModelo();
                     $u -> cedula = $cedula;
@@ -62,7 +62,7 @@ class usuarioController extends UsuarioModelo{
         }
     
         public static function MostrarMenuPrincipal($tipoDeUsuario){
-             session_start();
+            session_start();
             if(!isset($_SESSION['autenticado'])) header("Location : /inicio" .$tipoDeUsuario);
             else return cargarVista("menuPrincipal" .$tipoDeUsuario);
         }
@@ -103,5 +103,34 @@ class usuarioController extends UsuarioModelo{
         }
         //admin
         
+        public static function modificarDatosDeUsuario($nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $grupo){
+            if($nombre != "" && $primerApellido != "" && $segundoApellido != && $usuario != "" && $contrasenia != "" && $grupo != ""){
+                try{
+                    $u = new UsuarioModelo();
+                    $u -> cedula = $_SESSION['cedula'];
+                    $u -> nombre = $nombre;
+                    $u -> primerApellido = $primerApellido;
+                    $u -> segundoApellido = $segundoApellido;
+                    $u -> usuario = $usuario;
+                    $u -> contrasenia = $contrasenia;
+                    $u -> grupo = $grupo;
+                    $u -> actualizarUsuario();
+                    return generarHtml('modificar-datos', ['exito' => true]);
+                }
+                catch(Exception $e){
+                    error_log();
+                    header("Location: /modificar-datos");
+                }
+            } else {
+                return generarHtml('/modificar-datos', ['exito' => false]);
+            }
+        }
+
+        public static function listarAlumno(){
+            $u = new UsuarioModelo();
+            $u -> cedula = $_SESSION['cedula'];
+            $alumno = $a -> listarAlumnos();
+            return $alumno;
+        }
 
 }
