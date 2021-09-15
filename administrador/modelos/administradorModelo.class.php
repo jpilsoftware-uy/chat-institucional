@@ -4,13 +4,12 @@ require '../utils/autoloader.php';
  
 
 class administradorModelo extends Modelo{
-    public $id;
+    public $cedula
     public $usuario;
     public $contrasenia;
     public $nombre;
     public $primerApellido;
     public $segundoApellido;
-    public $ci;
 
 
     public function autenticarAdministrador(){
@@ -28,7 +27,7 @@ class administradorModelo extends Modelo{
 
         if($resultado){
            
-            $comparacion = $this -> compararPasswordsAdministrador($resultado['contraseniaAdministrador']);
+            $comparacion = $this -> compararPasswordsAdministrador($resultado['contrasenia']);
             if($comparacion){
                 $this -> asignarDatosDeUsuarioAdministrador($resultado);
             }
@@ -45,20 +44,19 @@ class administradorModelo extends Modelo{
     }
 
     private function prepararAutenticacionAdministrador(){
-        $sql= "SELECT idAdministrador,nombreAdministrador, primerApellidoAdministrador, segundoApellidoAdministrador, usuarioAdministrador, contraseniaAdministrador, cedulaAdministrador FROM administrador WHERE usuarioAdministrador= ? ";
+        $sql= "SELECT cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, cedula FROM usuario WHERE usuario= ? ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("s", $this -> usuario);
     }
   
     
     private function asignarDatosDeUsuarioAdministrador($resultado){
-        $this -> id = $resultado['idAdministrador'];
-        $this -> nombre = $resultado['nombreAdministrador'];
-        $this -> primerApellido = $resultado['primerApellidoAdministrador'];
-        $this -> segundoApellido = $resultado['segundoApellidoAdministrador'];
-        $this -> usuario = $resultado['usuarioAdministrador'];
-        $this -> contrasenia  = $resultado['contraseniaAdministrador'];
-        $this -> ci = $resultado ['cedulaAdministrador'];
+        $this -> cedula = $resultado['cedula'];
+        $this -> nombre = $resultado['nombre'];
+        $this -> primerApellido = $resultado['primerApellido'];
+        $this -> segundoApellido = $resultado['segundoApellido'];
+        $this -> usuario = $resultado['usuario'];
+        $this -> contrasenia  = $resultado['contrasenia'];
     }
 
 
