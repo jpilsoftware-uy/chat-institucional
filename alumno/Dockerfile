@@ -11,16 +11,6 @@ COPY phpalumno/. /var/www/html
 RUN git clone https://github.com/IvanBraida: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@github.com/backEnd-chatInstitucional.git \
     /var/www/html/backEnd-chatInstitucional 
 
-COPY phpprofesor/. /var/www/html
-RUN git clone https://github.com/IvanBraida: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@github.com/backEnd-chatInstitucional.git \
-    /var/www/html/backEnd-chatInstitucional 
-
-COPY phpadministrador/. /var/www/html
-RUN git clone https://github.com/IvanBraida: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@github.com/backEnd-chatInstitucional.git \
-    /var/www/html/backEnd-chatInstitucional         
-
-
-
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf

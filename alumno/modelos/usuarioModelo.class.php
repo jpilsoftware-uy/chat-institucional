@@ -170,11 +170,6 @@ class UsuarioModelo extends Modelo{
     //funciones de administrador
 
 
-    //
-    //
-
-
-
 
 
     

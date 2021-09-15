@@ -7,7 +7,8 @@ ARG usuario
 RUN apt-get update && \
     apt-get install git -y
 
-COPY phpadministrador/. /var/www/html
+
+COPY phpprofesor/. /var/www/html
 RUN git clone https://github.com/IvanBraida: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@github.com/backEnd-chatInstitucional.git \
     /var/www/html/backEnd-chatInstitucional         
 
