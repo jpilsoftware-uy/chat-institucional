@@ -21,6 +21,7 @@
         <button action="submit" formaction="hacer-consulta">Hacer Consulta</button>
         <button action="submit" formaction="ver-respuesta">Ver respuesta</button>
         <button action="submit" formaction="Chat">Chat</button>
+        <button action="submit" formaction="modificar-datos">Modificar tus datos</button>
         <button formaction="/">Volver al inicio</button>
 
 

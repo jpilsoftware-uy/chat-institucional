@@ -160,12 +160,21 @@ class UsuarioModelo extends Modelo{
 
     
     //modificar datos
+<<<<<<< HEAD
 
     public function actualizarUsuario(){
         $this -> prepararActualizacionDeUsuario();
         $this -> sentencia -> execute();
     }
 
+=======
+
+    public function actualizarUsuario(){
+        $this -> prepararActualizacionDeUsuario();
+        $this -> sentencia -> execute();
+    }
+
+>>>>>>> modificacionDeDatos
     private function prepararActualizacionDeUsuario(){
         $this -> contrasenia = $this -> hashearContrasenia($this -> contrasenia);
         $sql = "UPDATE usuario SET nombre = ?, primerApellido = ?, segundoApellido = ?, usuario = ?, contrasenia = ?, grupo = ? WHERE cedula = ?";
@@ -179,8 +188,11 @@ class UsuarioModelo extends Modelo{
             $this -> grupo
         );
     }
+<<<<<<< HEAD
 
     
+=======
+>>>>>>> modificacionDeDatos
     //modificar datos
 
 
