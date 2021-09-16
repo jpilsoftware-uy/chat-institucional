@@ -7,9 +7,9 @@ ARG usuario
 RUN apt-get update && \
     apt-get install git -y
 
-COPY phpalumno/. /var/www/html
-RUN git clone https://github.com/IvanBraida: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@github.com/backEnd-chatInstitucional.git \
-    /var/www/html/backEnd-chatInstitucional 
+COPY alumno/. /var/www/html
+RUN git clone https://IvanBraida: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@github.com/IvanBraida/backEnd-chatInstitucional.git
+
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
