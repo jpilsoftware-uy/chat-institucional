@@ -13,17 +13,9 @@ class UsuarioModelo extends Modelo{
     public $tipoDeUsuario;
     
 
-    public function guardarUsuario(){
-        if($this -> checkearUsuario($this -> usuario) == true){
-            return false;
-        } else if($this -> checkearUsuario($this -> usuario) == false ){
-            $this -> prepararInsercion();
-            $this -> sentencia -> execute();
-            return true;
-        }
-
-        /*$this -> checkearUsuario($this -> usuario) ? generarHtml("registro" .$this-> tipoDeUsuario, ['exito' => false]) : $this -> prepararInsercion();
-        $this -> sentencia -> execute();*/
+    public function guardarUsuario(){ 
+        $this -> checkearUsuario($this -> usuario) ? generarHtml("registro" .$this->tipoDeUsuario , ['exito' => false]) : $this -> prepararInsercion();
+        $this -> sentencia -> execute();
 
         if($this -> sentencia -> error){
             throw new Exception("Lo sentimos hubo un problema al registrar al usuario" . $this -> sentencia -> error);
@@ -98,7 +90,6 @@ class UsuarioModelo extends Modelo{
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("s", $this -> usuario);
     }
-
     private function asignarDatosDeUsuario($resultado){
         $this -> cedula = $resultado ['cedula'];
         $this -> nombre = $resultado['nombre'];
@@ -110,27 +101,78 @@ class UsuarioModelo extends Modelo{
         $this -> estado = $resultado['estado'];
     }
     //iniciar sesion
-    
-    //modificar datos
+   
 
-    public function actualizarUsuario(){
-        $this -> prepararActualizacionDeUsuario();
+
+
+
+
+
+
+
+
+
+
+   //funciones de administrador
+    public function listarUsuariosPendientes(){
+        $this -> prepararListadoDeUsuariosPendientes();
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        
+        return $resultado;
+    }
+
+    public function guardarEstadoUsuarios(){
+        $this -> prepararActualizacionDeEstadoUsuarios($this -> cedula );
         $this -> sentencia -> execute();
     }
 
-    private function prepararActualizacionDeUsuario(){
-        $this -> contrasenia = $this -> hashearContrasenia($this -> contrasenia);
-        $sql = "UPDATE usuario SET nombre = ?, primerApellido = ?, segundoApellido = ?, usuario = ?, contrasenia = ? WHERE cedula = ?";
-        $this -> sentencia = $this-> conexion -> prepare($sql);
-        $this -> sentencia -> bind_param("sssssi",
-            $this -> nombre,
-            $this -> primerApellido,
-            $this -> segundoApellido,
-            $this -> usuario,
-            $this -> contrasenia,
-            $this -> cedula
-        );
+    public function eliminarUsuarios(){
+        $this -> prepararEliminacionDeUsuarios($this -> cedula);
+        $this-> sentencia -> execute();
     }
     
-    //modificar datos
+    private function prepararListadoDeUsuariosPendientes(){
+        $sql = "SELECT  cedula,nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado FROM usuario WHERE usuario= ? ";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+    }
+
+
+    private function prepararActualizacionDeEstadoUsuarios($cedula){
+        $sql = "UPDATE Alumno SET estado='aprobado' WHERE cedula= ? ";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $cedula);
+    }
+
+
+    private function prepararEliminacionDeUsuarios($cedula){
+        $sql = "DELETE FROM Alumno WHERE cedula= ?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $cedula);
+    }
+    
+    
+  
+    private function prepararListadoDeUsuariosAprobados(){
+        $sql = "SELECT idDocente, nombreDocente, primerApellidoDocente, segundoApellidoDocente, cedulaDocente, grupoDocente, usuarioDocente FROM Docente WHERE estadoDocente='aprobado'";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+    }
+    public function listarUsuariosAprobados(){
+        $this -> prepararListadoDeUsuariosAprobados();
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        
+        return $resultado;
+
+    }
+ 
+    
+    //funciones de administrador
+
+
+
+
+    
+
+
 }
