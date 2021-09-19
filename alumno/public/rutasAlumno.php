@@ -53,8 +53,12 @@
         case '/Chat':
              cargarVista('preChat');
             break;    
-
+        
         case '/modificar-datos':
+            cargarVista('modificarDatos');
+            break;
+
+        case '/insertar-modificacion':
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::modificarDatosDeUsuario($_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'], $_POST['grupo']);
             if($_SERVER['REQUEST_METHOD'] === "GET") cargarVista('modificarDatos');
             break;

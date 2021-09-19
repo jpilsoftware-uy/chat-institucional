@@ -9,37 +9,20 @@
             break;
         
 
-        case '/alumnos-pendientes':
+        case '/usuarios-pendientes':
             cargarVista('habilitarAlumno');
             break;
 
 
-        case '/aprobar-alumno':
-            if($_SERVER['REQUEST_METHOD'] === "POST") AlumnoController::actualizarEstadoAlumno($_POST['id']);
-            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /alumnos-pendientes');
+        case '/aprobar-usuarios':
+            if($_SERVER['REQUEST_METHOD'] === "POST") administradorController::actualizarEstadoUsuarios($_POST['cedula']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /usuarios-pendientes');
             break;
 
 
-        case '/eliminar-alumno':
-            if($_SERVER['REQUEST_METHOD'] === "POST") AlumnoController::eliminarAlumnos($_POST['id']);
-            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /alumnos-pendientes');
-            break;
-
-
-        case '/profesores-pendientes':
-            cargarVista('habilitarProfesor');
-            break;
-
-        
-        case '/aprobar-profesor':
-            if($_SERVER['REQUEST_METHOD'] === "POST") ProfesorController::actualizarEstadoProfesor($_POST['id']);
-            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /profesores-pendientes');
-            break;
-
-
-        case '/eliminar-profesor':
-            if($_SERVER['REQUEST_METHOD'] === "POST") ProfesorController::eliminarProfesores($_POST['id']);
-            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /Profesores-pendientes');
+        case '/eliminar-usuarios':
+            if($_SERVER['REQUEST_METHOD'] === "POST") administradorController::eliminarUsuarios($_POST['cedula']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /usuarios-pendientes');
             break;
         
 

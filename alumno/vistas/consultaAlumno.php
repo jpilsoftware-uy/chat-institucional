@@ -5,9 +5,6 @@
         header('Location: /');
         die();
     } 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +37,7 @@
         <form action="/insertarConsulta"  method="POST">
         <tbody>
             <?php
-                $profesor = new ProfesorController();
+                $profesor = new usuarioController();
                 $profesores = $profesor -> mostrarProfesoresAprobados();
 
                 foreach($profesores as $profesor){
