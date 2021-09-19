@@ -1,14 +1,2 @@
 [auto]
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-server-uuid=710c621d-167c-11ec-ac34-0242ac120005
-=======
-server-uuid=8c8952e6-1009-11ec-b6c7-0242ac120002
->>>>>>> modificacionDeDatos
-=======
-server-uuid=27916b8d-170b-11ec-83c7-0242ac120002
->>>>>>> e1c3adc37ea8285ce2c300fa41bfa5fc8dc44549
-=======
-server-uuid=7a51d9ac-167f-11ec-86f5-0242ac120002
->>>>>>> modificar-datos
+server-uuid=11faa476-1990-11ec-86bf-0242ac120005

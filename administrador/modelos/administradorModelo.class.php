@@ -80,7 +80,7 @@ class administradorModelo extends Modelo{
     }
     
     private function prepararListadoDeUsuariosPendientes(){
-        $sql = "SELECT cedula,nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado FROM usuario WHERE estado='pendiente' ";
+        $sql = "SELECT cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado FROM usuario WHERE estado='pendiente' ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
 
