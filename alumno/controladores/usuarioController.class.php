@@ -1,7 +1,7 @@
 <?php
 
     require '../utils/autoloader.php';
-class usuarioController extends UsuarioModelo{
+    class usuarioController extends UsuarioModelo{
         
         
         public static function preAltaDeUsuario($cedula,$nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $tipoDeUsuario, $estado="pendiente" ){
@@ -17,20 +17,21 @@ class usuarioController extends UsuarioModelo{
                     $u -> contrasenia = $contrasenia;
                     $u -> tipoDeUsuario =  $tipoDeUsuario;
                     $u -> estado = $estado;
-                    $u -> guardarUsuario();
-                    
-                    return generarHtml('registro'. $tipoDeUsuario, ['exito' => true]);
-    
+                    $generarFormulario = $u -> guardarUsuario();
+                    if ($generarFormulario == true){
+                        return generarHtml('registro'. $tipoDeUsuario, ['exito' => true]);
+                    } else if ($generarFormulario == false){
+                        return generarHtml('registro' . $tipoDeUsuario, ['exito' => false]);
+                    }
                 }
                 catch(Exception $e){
+
                     return generarHtml('registro' . $tipoDeUsuario , ['exito' => false]);
                     error_log($e -> getMessage());
                     return "No se pudo guardar ";
                }
             }else{
-                
                 return generarHtml('registro' .$tipoDeUsuario , ['exito' => false]);
-
             }
         }
     
@@ -61,17 +62,10 @@ class usuarioController extends UsuarioModelo{
         
         }
     
-<<<<<<< HEAD
         public static function MostrarMenuPrincipal(){
-             session_start();
+            session_start();
             if(!isset($_SESSION['autenticado'])) header("Location : /inicio");
             else return cargarVista("menuPrincipal");
-=======
-        public static function MostrarMenuPrincipal($tipoDeUsuario){
-            session_start();
-            if(!isset($_SESSION['autenticado'])) header("Location : /inicio" .$tipoDeUsuario);
-            else return cargarVista("menuPrincipal" .$tipoDeUsuario);
->>>>>>> modificacionDeDatos
         }
         private static function crearSesion($usuario){
             session_start();
@@ -88,30 +82,12 @@ class usuarioController extends UsuarioModelo{
         }
         //iniciar sesion
 
-        //admin
-        public static function mostrarUsuariosPendientes(){
-            $a = new ProfesorModelo();
-            $profesoresPendientes = $a -> listarUsuariosPendientes();
-            return $profesoresPendientes;
-        }
-        public static function actualizarEstadoUsuarios($cedula){
-            $a = new ProfesorModelo();
-            $a -> cedula = $cedula;
-            $a -> guardarEstadoUsuarios();
+        
+        
+        //modificar datos de usuario
+        public static function modificarDatosDeUsuario($nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia){
             
-            return header('Location: /profesores-pendientes');
-        }
-        
-        
-        public static function mostrarUsuariosAprobados(){
-            $a = new usuarioModelo();
-            $profesoresAprobados = $a -> listarUsuariosAprobados();
-            return $profesoresAprobados;
-        }
-        //admin
-        
-        public static function modificarDatosDeUsuario($nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $grupo){
-            if($nombre != "" && $primerApellido != "" && $segundoApellido != && $usuario != "" && $contrasenia != "" && $grupo != ""){
+            if($nombre != "" && $primerApellido != "" && $segundoApellido != "" && $usuario != "" && $contrasenia != ""){
                 try{
                     $u = new UsuarioModelo();
                     $u -> cedula = $_SESSION['cedula'];
@@ -120,24 +96,19 @@ class usuarioController extends UsuarioModelo{
                     $u -> segundoApellido = $segundoApellido;
                     $u -> usuario = $usuario;
                     $u -> contrasenia = $contrasenia;
-                    $u -> grupo = $grupo;
                     $u -> actualizarUsuario();
-                    return generarHtml('modificar-datos', ['exito' => true]);
+                    session_destroy();
+                    return header('Location: /');
                 }
                 catch(Exception $e){
                     error_log();
                     header("Location: /modificar-datos");
                 }
             } else {
-                return generarHtml('/modificar-datos', ['exito' => false]);
+                return generarHtml('/modificarDatos', ['exito' => false]);
             }
         }
 
-        public static function listarAlumno(){
-            $u = new UsuarioModelo();
-            $u -> cedula = $_SESSION['cedula'];
-            $alumno = $a -> listarAlumnos();
-            return $alumno;
-        }
+        
 
 }

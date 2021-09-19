@@ -14,7 +14,8 @@
     <title>Modificar Datos</title>
 </head>
 <body>
-<?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
+
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
         <div class="alert alert-success">
             Su usuario esta a la espera de ser aprobado por un administrador!
         </div>
@@ -25,19 +26,13 @@
             Su usuario no pudo ser cargado!
         </div>
     <?php endif; ?>
-    <?php
-    if(!isset($_SESSION['autenticado'])){
-        header('Location: /');
-        die();
-    }
-    ?>
-    
-    <h1 class="text-center mt-3">Modificar tus Datos</h1>
+
+    <h1 class="text-center mt-3">Registre sus datos!</h1>
     <hr>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form id="formulario" action="/modificar-datos" method="POST">
+                <form id="formulario" action="/insertar-modificacion" method="POST">
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -72,16 +67,6 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
                         </div>
                         <input type="password" id="contrasenia" class="form-control" placeholder="Ingrese su contraseña" name="contrasenia" maxlength="32">
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label for="inputGroupSelect01" class="input-group-text">Grupo</label>
-                        </div>
-                        <select name="grupo" id="grupo inputGroupSelect01" class="custom-select form-control">
-                            <option selected>Elija un grupo...</option>    
-                            <option value="3BF">3ºBF</option>
-                        </select>
                     </div>
 
                     <button class="btn btn-success" id="registro" action="submit">Modificar Datos</button>

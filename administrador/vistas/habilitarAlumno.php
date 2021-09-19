@@ -36,20 +36,20 @@
         <form action="submit" method="POST">
         <tbody>
             <?php
-                $alumno = new AlumnoController();
-                $alumnos = $alumno -> mostrarAlumnosPendientes();
+                $usuario = new administradorController();
+                $usuarios = $usuario -> mostrarUsuariosPendientes();
 
-                foreach($alumnos as $alumno){
+                foreach($usuarios as $usuario){
                     echo "<tr>";
-                    echo "<td> " . $alumno['nombreAlumno'] . "</td>";
-                    echo "<td> " . $alumno['primerApellidoAlumno'] . "</td>";
-                    echo "<td> " . $alumno['segundoApellidoAlumno'] . "</td>";
-                    echo "<td> " . $alumno['cedulaAlumno'] . "</td>";
-                    echo "<td> " . $alumno['grupoAlumno'] . "</td>";
-                    echo "<td> " . $alumno['usuarioAlumno'] . "</td>";
+                    echo "<td> " . $usuario['nombre'] . "</td>";
+                    echo "<td> " . $usuario['primerApellido'] . "</td>";
+                    echo "<td> " . $usuario['segundoApellido'] . "</td>";
+                    echo "<td> " . $usuario['cedula'] . "</td>";
+                    echo "<td> " . $usuario['usuario'] . "</td>";
+                    echo "<td> " . $usuario['tipoDeUsuario'] . "</td>";
                     echo "<td> 
-                            <button name='id' formaction='/aprobar-alumno' value='".$alumno['idAlumno']."'>  Aceptar Alumno  </button> <br>
-                            <button name='id' formaction='/eliminar-alumno' value='".$alumno['idAlumno']."'>  Eliminar Alumno  </button> </td>";
+                            <button name='cedula' formaction='/aprobar-usuarios' value='".$usuario['cedula']."'>  Aceptar Alumno  </button> <br>
+                            <button name='cedula' formaction='/eliminar-usuarios' value='".$usuario['cedula']."'>  Eliminar Alumno  </button> </td>";
                     echo "</tr>";
                 }
             ?>
