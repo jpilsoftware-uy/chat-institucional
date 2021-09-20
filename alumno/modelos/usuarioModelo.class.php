@@ -133,4 +133,19 @@ class UsuarioModelo extends Modelo{
     }
     
     //modificar datos
+
+    //listar profesores
+
+    public function listarProfesoresAprobados(){
+        $this -> prepararListadoDeProfesoresAprobados();
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+    }
+    
+    
+    private function prepararListadoDeProfesoresAprobados(){
+        $sql = "SELECT cedula, nombre, primerApellido, segundoApellido, usuario FROM usuario WHERE estado = 'aprobado' AND tipoDeUsuario = 'Profesor' ";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+    }
 }

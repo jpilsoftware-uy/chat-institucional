@@ -109,6 +109,14 @@
             }
         }
 
+
+        //listar profesores
+
+        public static function mostrarProfesoresAprobados(){
+            $p = new UsuarioModelo();
+            $profesoresAprobados = $p -> listarProfesoresAprobados();
+            return $profesoresAprobados;
+        }
         
 
 }

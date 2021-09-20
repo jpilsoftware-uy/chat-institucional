@@ -39,25 +39,15 @@
             <?php
                 $profesor = new usuarioController();
                 $profesores = $profesor -> mostrarProfesoresAprobados();
-
                 foreach($profesores as $profesor){
                     echo "<tr>";
-                    echo "<td> " . $profesor['nombreDocente'] . "</td>";
-                    echo "<td> " . $profesor['primerApellidoDocente'] . "</td>";
-                    echo "<td> " . $profesor['usuarioDocente'] . "</td>";
-                    echo "<td> " . $profesor['idDocente'] . "</td>";
-     
-                    
-                    echo "<td>  <input type='radio' name='idDocente' value= '$profesor[idDocente]'    >  </td>";
-
-
-                    
+                    echo "<td> " . $profesor['nombre'] . "</td>";
+                    echo "<td> " . $profesor['primerApellido'] . "</td>";
+                    echo "<td> " . $profesor['usuario'] . "</td>";
+                    echo "<td> " . $profesor['cedula'] . "</td>";
+                    echo "<td>  <input type='radio' name='cedulaProfesor' value= '$profesor[cedula]'    >  </td>";
                     echo "</tr>";
                 }
-               
-                
-
-
             ?>
             
            

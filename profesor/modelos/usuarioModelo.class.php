@@ -133,4 +133,5 @@ class UsuarioModelo extends Modelo{
     }
 
     //modificar datos
+    
 }
