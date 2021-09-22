@@ -13,7 +13,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Profesor</title>
+    <link rel="icon" href="https://i.ibb.co/qMgNQf5/Logo-Dibujo.png">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+
+    <title>Enviar una consulta | Alumno</title>
 </head>
 <body>
   
@@ -26,14 +34,13 @@
     <?php endif; ?>
 
 <table>
-        <thead>
-            <th>Nombre </th>
-            <th>Primer Apellido </th>
-            <th>Usuario del Docente </th>
-            <th>Id del docente </th>
-            <th>Seleccione un profesor</th>
-            
-        </thead>
+    <thead>
+        <th>Nombre </th>
+        <th>Primer Apellido </th>
+        <th>Usuario del Docente </th>
+        <th>Id del docente </th>
+        <th>Seleccione un profesor</th>        
+    </thead>
         <form action="/insertarConsulta"  method="POST">
         <tbody>
             <?php
@@ -49,19 +56,12 @@
                     echo "</tr>";
                 }
             ?>
-            
-           
-   
         </tbody>
-        
-    </table>
+</table>
         
          <textarea name="mensajeConsulta" > </textarea>
-         <button action="submit" formaction="/insertarConsulta" >Enviar </button>
-
-                 
-    
-         </form>
+         <button action="submit" formaction="/insertarConsulta" >Enviar </button>    
+        </form>
 
  
 

@@ -5,23 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Alumno</title>
+    <link rel="icon" href="https://i.ibb.co/qMgNQf5/Logo-Dibujo.png">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <title>Iniciar Sesion | Alumno</title>
 
 </head>
 <body>
-<h1>Login Alumno</h1>
     <?php if(isset($parametros['falla']) && $parametros['falla'] == true): ?>
-        <div style="color: #FF0000"> Login Incorrecto</div>
+        <div class="alert alert-danger" style="color: #FF0000"> Login Incorrecto</div>
     <?php endif; ?>
     
-    <form action="/inicioAlumno" method="post">
-        Usuario : <input type ="text" name ="usuario"> <br>
-        Contrasenia : <input type ="password" name ="contrasenia"> <br>
-        <button action="submit" name="tipoDeUsuario" id="tipoDeUsuario" value="Alumno">Iniciar Sesion</button>
-        <button formaction="/registro-alumno">Registrarse</button>
+    <h1 class="text-center mt-3">Ingrese sus datos para Iniciar Sesion</h1>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="/inicioAlumno" method="POST">
 
-    
-    </form>
-   
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Usuario</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Ingrese su usuario" name="usuario" maxlength="20">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña" name="contrasenia" maxlenght="32">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success" name="tipoDeUsuario" id="tipoDeUsuario" value="Alumno">Iniciar Sesion</button>
+                    <button type="submit" formaction="/registro-alumno" class="btn btn-primary">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

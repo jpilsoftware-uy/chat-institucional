@@ -39,8 +39,8 @@
              cargarVista('consultaAlumno');
             break;
 
-        case '/Chat':
-             cargarVista('preChat');
+        case '/chat':
+             cargarVista('chat');
             break;    
         
         case '/modificar-datos':

@@ -13,23 +13,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Alumno</title>
+    <link rel="icon" href="https://i.ibb.co/qMgNQf5/Logo-Dibujo.png">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <title>Menu Principal | Alumno</title>
 </head>
 <body>
-    <h1>Bienvenido, Alumno!</h1>
-    <form action="" method="post">
-        <button action="submit" formaction="hacer-consulta">Hacer Consulta</button>
-        <button action="submit" formaction="ver-respuesta">Ver respuesta</button>
-        <button action="submit" formaction="Chat">Chat</button>
-        <button action="submit" formaction="modificar-datos">Modificar tus datos</button>
-        <button formaction="/">Volver al inicio</button>
+    <?php 
+    $nombre = $_SESSION['nombre'];
+    $h1 = '
+    <h1 class="text-center mt-3">Bienvenido ' . $nombre . '!</h1>
+    ';
+    echo $h1;
+    ?>
+    <hr>
 
-
-        
-    </form>
-
-
- 
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <form method="POST">
+                    <button action="submit" formaction="hacer-consulta" class="btn btn-success mb-3">Hacer una Consulta a un Profesor</button> <br>
+                    <button action="submit" formaction="ver-respuesta" class="btn btn-success mb-3">Ver Respuestas del Profesor</button> <br>
+                    <button action="submit" formaction="chat" class="btn btn-success mb-3">Chat</button> <br>
+                    <button action="submit" formaction="modificar-datos" class="btn btn-success mb-3">Modificar mis datos</button> <br>
+                    <button action="submit" formaction="/" class="btn btn-danger">Cerrar Sesion</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
