@@ -1,3 +1,9 @@
+<?php     
+
+    require '../utils/autoloader.php';
+
+?>    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,15 +23,16 @@
     <div id="container">
         <div id="chat-box">
             <div id="chat">
+        
                 <div id="chat-data">
-                    <span>Pedro: </span>
-                    <span>Este es mi chat</span>
-                    <span>10:04pm</span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </div>
-        <form action="" method="POST">
-            <input type="text" name="nombre" placeholder="Ingresa tu nombre">
+        <form action="/enviarMensaje" method="POST">
+            
             <textarea name="mensaje"placeholder="Ingresa tu mensaje..."></textarea>
             <input type="submit" value="Enviar Mensaje" name="enviar">
         </form>
