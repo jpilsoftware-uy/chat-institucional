@@ -38,9 +38,13 @@
         case '/hacer-consulta':
              cargarVista('consultaAlumno');
             break;
+        
+        case '/pre-chat':
+            cargarVista('preChat');
+            break;
 
         case '/chat':
-             cargarVista('chat');
+            cargarVista('chat');
             break;    
         
         case '/modificar-datos':
@@ -52,10 +56,27 @@
             if($_SERVER['REQUEST_METHOD'] === "GET") cargarVista('modificarDatos');
             break;
 
+        case '/enviarMensaje':
+            if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearMensaje($_POST['mensajeEnviado']);
+            break;             
         
+        case '/crearChat':
+            if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearChat($_POST['']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /pre-chat');
+            break;
 
+        case '/unirse-chat':
+            cargarVista('unirseChat');
+            break;
 
-
+        case '/iniciar-chat':
+            if($_SERVER['REQUEST_METHOD'] === "POST") chatController::asignarIdDeChat($_POST['id']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /pre-chat');
+            break;
+        
+        case '/traermensajes':
+            chatController::listarMensajesChat();
+            break;
 
 
 

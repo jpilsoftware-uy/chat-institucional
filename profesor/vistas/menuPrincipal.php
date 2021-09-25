@@ -21,6 +21,7 @@
     <h1>Bienvenido, Profesor!</h1>
     <form action="/responderConsultas" method ="POST">
     <button type="submit">Responder Consultas </button>
+    <button action="submit" formaction="pre-chat" class="btn btn-success mb-3">Modulo de Chat</button> <br>
     <button formaction="/">Volver al inicio</button>
     
 

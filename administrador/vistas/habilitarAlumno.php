@@ -29,8 +29,8 @@
             <th>Primer Apellido</th>
             <th>Segundo Apellido</th>
             <th>Cedula</th>
-            <th>Grupo</th>
             <th>Usuario</th>
+            <th>Tipo de usuario</th>
             <th>Acciones</th>
         </thead>
         <form action="submit" method="POST">

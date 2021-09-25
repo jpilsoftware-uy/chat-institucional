@@ -38,7 +38,7 @@
                 <form method="POST">
                     <button action="submit" formaction="hacer-consulta" class="btn btn-success mb-3">Hacer una Consulta a un Profesor</button> <br>
                     <button action="submit" formaction="ver-respuesta" class="btn btn-success mb-3">Ver Respuestas del Profesor</button> <br>
-                    <button action="submit" formaction="chat" class="btn btn-success mb-3">Chat</button> <br>
+                    <button action="submit" formaction="pre-chat" class="btn btn-success mb-3">Modulo de Chat</button> <br>
                     <button action="submit" formaction="modificar-datos" class="btn btn-success mb-3">Modificar mis datos</button> <br>
                     <button action="submit" formaction="/" class="btn btn-danger">Cerrar Sesion</button>
                 </form>
