@@ -27,6 +27,7 @@
 
         public static function mostrarConsultas(){
             $a = new ConsultaModelo();
+            $a -> cedulaProfesor = $_SESSION['cedula'];
             $consultasEnviadas = $a -> listarConsultas();
             return $consultasEnviadas;
 

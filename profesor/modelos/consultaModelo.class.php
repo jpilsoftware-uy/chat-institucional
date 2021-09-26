@@ -31,7 +31,7 @@ class consultaModelo extends Modelo{
     private function prepararListadoDeConsultas(){
         $sql = "SELECT idConsulta, mensajeConsulta, mensajeRespuesta, cedulaAlumno, cedulaProfesor, estadoConsulta, usuarioAlumno, usuarioProfesor FROM consulta WHERE cedulaProfesor= ? && estadoConsulta='enviado'" ;
         $this -> sentencia = $this -> conexion -> prepare($sql);
-        $this -> sentencia -> bind_param("i", $_SESSION['cedula']);
+        $this -> sentencia -> bind_param("i", $this -> cedulaProfesor);
         $this -> sentencia -> execute();
     }
 
