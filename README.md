@@ -36,3 +36,14 @@ usuarioCreadorMensaje varchar(20),
 fecha timestamp,
 FOREIGN KEY (idChatMensaje) REFERENCES chat (idChat)
 );
+
+# Crear Usuarios
+
+INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado) VALUES (11111111, 'admin', 'admin', 'admin', 'admin', '$2y$10$3jAdYrk4ZMDlRRU1XUa8nucyWfMGBbdM64QhGqvu6khubKUgdu2Pq',
+'Administrador', 'aprobado');
+
+INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado) VALUES (52399205, 'Pedro', 'Oyarzun', 'Fagundez', 'pedrooyarzun', '$2y$10$h2ZWXH.Av9OtEVO7FNpVVepR2hk2eOshFGDgJVnPvSLxvo6p1OpSC',
+'Profesor', 'aprobado');
+
+INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado) VALUES (36792178, 'Ivan', 'Braida', 'Sanchez', 'ivanbraida', '$2y$10$w7z0eMrQuG3ryAHe349ZAeox314orLDfEesL8yz790VdzSJFDgDPe',
+'Alumno', 'aprobado');
