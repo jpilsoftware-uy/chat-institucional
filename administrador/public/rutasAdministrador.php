@@ -10,7 +10,7 @@
         
 
         case '/usuarios-pendientes':
-            cargarVista('habilitarAlumno');
+            cargarVista('habilitarUsuarios');
             break;
 
 
@@ -27,13 +27,13 @@
         
 
         case '/inicioAdministrador':
-            if($_SERVER['REQUEST_METHOD'] === 'GET') adminsitradorController::MostrarLoginAdministrador();  
-            if($_SERVER['REQUEST_METHOD'] === 'POST') administradorController::iniciarSesion($_POST['usuario'],$_POST['contrasenia']);
+            if($_SERVER['REQUEST_METHOD'] === 'GET') usuarioController::MostrarLogin();  
+            if($_SERVER['REQUEST_METHOD'] === 'POST') usuarioController::iniciarSesion($_POST['usuario'],$_POST['contrasenia'],$_POST['tipoDeUsuario']);
             break;
 
             
         case '/principalAdministrador':
-           AdministradorController::MostrarMenuPrincipalAdministrador();
+           usuarioController::MostrarMenuPrincipal();
             break; 
         
         

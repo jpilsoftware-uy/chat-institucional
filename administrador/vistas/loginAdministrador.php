@@ -14,13 +14,18 @@
         <div style="color: #FF0000"> Login Incorrecto</div>
     <?php endif; ?>
     
-    <form action="/inicioAdministrador" method="post">
+    <form action="" method="post">
         Usuario : <input type ="text" name ="usuario"> <br>
         Contrasenia : <input type ="password" name ="contrasenia"> <br>
-        <input type="submit" value ="Iniciar Sesion">
-        <button formaction="/pre-login">Volver</button>
+        
+        <button formaction="/inicioAdministrador" name="tipoDeUsuario" value="Administrador">Iniciar Sesion</button>
+
 
     
     </form>
+    
+
+
+
 </body>
 </html>

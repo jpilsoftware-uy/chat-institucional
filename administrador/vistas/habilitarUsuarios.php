@@ -18,10 +18,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habilitar Alumno</title>
+    <title>Habilitar Usuarios</title>
 </head>
 <body>
-    <h1>Alumnos Pendientes Para Aprobar</h1>
+    <h1>Usuarios Pendientes Para Aprobar</h1>
 
     <table>
         <thead>
@@ -54,7 +54,12 @@
                 }
             ?>
         </tbody>
+        <button formaction="/principalAdministrador">Volver al inicio</button>
         </form>
     </table>
+    
+
+
 </body>
+
 </html>
