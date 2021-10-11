@@ -39,7 +39,18 @@
         
         case'/login-administrador':
             cargarVista('loginAdministrador');
-            break;    
+            break;  
+            
+        case '/crearGrupos' :
+            cargarVista('crearGrupo');
+            break; 
+        
+        case '/insertarGrupo':
+            if($_SERVER['REQUEST_METHOD']== 'POST') grupoController::preAltaDeGrupo($_POST['idGrupo'],$_POST['tipoDeOrienacion']);
+            if($_SERVER['REQUEST_METHOD']== 'GET') cargarVista('crearGrupos');
+            break;
+              
+
 
         case '/registro-alumno':
             cargarVista('registroAlumno');
