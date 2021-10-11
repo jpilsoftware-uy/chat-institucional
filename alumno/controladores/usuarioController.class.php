@@ -60,7 +60,7 @@
             session_start();
             if(isset($_SESSION['autenticado'])) header ("Location: /principal" .$tipoDeUsuario);
             else return cargarVista("login". $tipoDeUsuario);
-        
+            
         }
     
         public static function MostrarMenuPrincipal(){

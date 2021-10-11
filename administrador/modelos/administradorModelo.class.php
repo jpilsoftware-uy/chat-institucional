@@ -11,6 +11,7 @@ class administradorModelo extends Modelo{
     public $primerApellido;
     public $segundoApellido;
 
+
     
     public function listarUsuariosPendientes(){
         $this -> prepararListadoDeUsuariosPendientes();
@@ -64,7 +65,7 @@ class administradorModelo extends Modelo{
 
     }
    
-
+    
 
 
 

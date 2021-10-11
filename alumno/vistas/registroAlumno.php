@@ -12,36 +12,263 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <title>Registrarse como Alumno</title>
+    <title>Registrarse | Alumno</title>
 </head>
 <body>
-    <h1>Ingrese sus datos</h1>
-
+    
+    <section
+      class="vh-100"
+      style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)"
+    >
     <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-        <div class="alert alert-success">
-            Su usuario esta a la espera de ser aprobado por un administrador!
-        </div>
+        <div class="alert alert-success" >Su usuario esta a la espera de aprobacion del administrador</div>
     <?php endif; ?>
 
     <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-        <div class="alert alert-danger">
-            Su usuario no pudo ser cargado!
-        </div>
+        <div class="alert alert-danger" > Login Incorrecto</div>
     <?php endif; ?>
     
-    <form action="/insertarAlumno" method="POST">
-        Nombre: <input type="text" name="nombre" id="nombre"> <br>
-        Primer Apellido: <input type="text" name="primerApellido" id="primerApellido"> <br>
-        Segundo Apellido: <input type="text" name="segundoApellido" id="segundoApellido"> <br>
-        Cedula de Identidad (sin puntos ni guiones): <input type="text" name="cedula" id="cedula"> <br>
-        Usuario: <input type="text" name="usuario" id="usuario"> <br>
-        Contrasenia: <input type="password" name="contrasenia" id="contrasenia"> <br>
-       
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-12 col-xl-11">
+            <div class="card text-black" style="border-radius: 25px">
+              <div class="card-body p-md-5">
+                <div class="row justify-content-center">
+                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <p
+                      class="text-center h1 mb-5 mx-1 mx-md-4 mt-4"
+                      style="
+                        background: linear-gradient(to right, #009ffd, #2a2a72);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                      "
+                    >
+                      Registrarse
+                    </p>
+                    <form
+                      class="mx-1 mx-md-4"
+                      action="/insertarAlumno"
+                      method="POST"
+                    >
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Nombre</span>
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="Ingrese su nombre"
+                          class="form-control"
+                          maxlength="20"
+                          id="nombre"
+                          name="nombre"
+                        />
+                      </div>
 
-        <button action="submit" name="tipoDeUsuario" id="tipoDeUsuario" value="Alumno">Registrar Usuario</button>
-        <button formaction="/">Volver al inicio</button>
-        
-    </form>
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Primer Apellido</span>
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="Ingrese su primer apellido"
+                          class="form-control"
+                          maxlength="20"
+                          id="primerApellido"
+                          name="primerApellido"
+                        />
+                      </div>
 
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Segundo Apellido</span>
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="Ingrese su segundo apellido"
+                          class="form-control"
+                          maxlength="20"
+                          id="segundoApellido"
+                          name="segundoApellido"
+                        />
+                      </div>
+
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Cedula</span>
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="(sin puntos ni guiones)"
+                          class="form-control"
+                          maxlength="8"
+                          id="cedula"
+                          name="cedula"
+                        />
+                      </div>
+
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Usuario</span>
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="Ingrese su usuario"
+                          class="form-control"
+                          maxlength="20"
+                          id="usuario"
+                          name="usuario"
+                        />
+                      </div>
+
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Contraseña</span>
+                        </div>
+                        <input
+                          type="password"
+                          placeholder="Ingrese su contraseña"
+                          class="form-control"
+                          maxlength="32"
+                          id="contrasenia"
+                          name="contrasenia"
+                        />
+                      </div>
+
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Contraseña</span>
+                        </div>
+                        <input
+                          type="password"
+                          placeholder="Repita su contraseña"
+                          class="form-control"
+                          maxlength="32"
+                          id="contraseniaRepetida"
+                          name="contraseniaRepetida"
+                        />
+                      </div>
+
+                      <div
+                        class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
+                      >
+                        <button
+                          class="btn btn-md mr-3"
+                          style="
+                            border-radius: 25px;
+                            background-image: linear-gradient(
+                              to right,
+                              #5aff15,
+                              #00b712
+                            );
+                            border: 0px;
+                            color: #fff;
+                          "
+                          name="tipoDeUsuario" 
+                          value="Alumno"
+                          id="btnRegistrarse"
+                          action="submit"
+                          onClick="return validarFormulario()"
+                        >
+                          Registrarse
+                        </button>
+
+                        <button
+                          action="submit"
+                          formaction="/"
+                          class="btn btn-md btn-block"
+                          style="
+                            border-radius: 25px;
+                            background-image: linear-gradient(
+                              to right,
+                              #09c6f9,
+                              #045de9
+                            );
+                            border: 0px;
+                            color: #fff;
+                          "
+                        >
+                          Inicio
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <div
+                    class="
+                      col-md-10 col-lg-6 col-xl-7
+                      d-flex
+                      align-items-center
+                      order-1 order-lg-2
+                    "
+                  >
+                    <img
+                      src="https://i.ibb.co/PjSWs5Z/imagen-registro.png"
+                      class="img-fluid"
+                      alt="Sample image"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/registro.js"></script>
 </body>
 </html>
