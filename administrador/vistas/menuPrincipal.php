@@ -18,7 +18,7 @@
 <body>
     <form action="" method="post">
         <button action="submit" formaction="usuarios-pendientes">Habilitar Usuarios</button>
-        <button action="submit" formaction="crear-grupo">Crear Grupos</button>
+        <button action="submit" formaction="/crearGrupos">Crear Grupos</button>
         <button formaction="/">Volver al inicio</button>
     </form>
 </body>
