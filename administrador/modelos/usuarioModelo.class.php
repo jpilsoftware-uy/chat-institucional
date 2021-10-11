@@ -14,16 +14,13 @@ class UsuarioModelo extends Modelo{
     
 
     public function guardarUsuario(){
-        if($this -> checkearUsuario($this -> usuario) == true){
+        if( ($this -> checkearUsuario($this -> usuario) || $this -> checkearCedula($this -> cedula)) == true){
             return false;
-        } else if($this -> checkearUsuario($this -> usuario) == false ){
+        } else if( ($this -> checkearUsuario($this -> usuario) || $this -> checkearCedula($this -> cedula)) == false ){
             $this -> prepararInsercion();
             $this -> sentencia -> execute();
             return true;
         }
-
-        /*$this -> checkearUsuario($this -> usuario) ? generarHtml("registro" .$this-> tipoDeUsuario, ['exito' => false]) : $this -> prepararInsercion();
-        $this -> sentencia -> execute();*/
 
         if($this -> sentencia -> error){
             throw new Exception("Lo sentimos hubo un problema al registrar al usuario" . $this -> sentencia -> error);
@@ -44,7 +41,6 @@ class UsuarioModelo extends Modelo{
                 $this -> tipoDeUsuario,
                 $this -> estado
             );
-
     }
 
     private function checkearUsuario($usuario){ 
@@ -53,14 +49,25 @@ class UsuarioModelo extends Modelo{
             $this -> sentencia -> bind_param("s", $usuario);
             $this -> sentencia -> execute();
             $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
-            if ($resultado['usuario'] === $usuario):
+            if ($resultado['usuario'] == $usuario){
                 return true;
-            elseif($resultado['usuario'] !== $usuario):
+            } else if ($resultado['usuario'] !== $usuario){
                 return false;
-            endif;
+            }
     }
 
-   
+   private function checkearCedula($cedula){
+       $sql = "SELECT cedula FROM usuario WHERE cedula = ?";
+       $this -> sentencia = $this -> conexion -> prepare($sql);
+       $this -> sentencia -> bind_param("i", $cedula);
+       $this -> sentencia -> execute();
+       $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
+       if($resultado['cedula'] == $cedula){
+           return true;
+       } else if ($resultado['cedula'] !== $cedula){
+           return false;
+       }
+   }
     
     //iniciar sesion
     public function autenticar(){

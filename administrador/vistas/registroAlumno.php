@@ -1,33 +1,40 @@
+<?php 
+    require '../utils/autoloader.php';
+
+    if(!isset($_SESSION['autenticado'])){
+        header('Location: /');
+        die();
+    } 
+?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://i.ibb.co/qMgNQf5/Logo-Dibujo.png">
+    <link rel="icon" href="https://i.ibb.co/qMgNQf5/Logo-Dibujo.png" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <title>Registrarse | Alumno</title>
+    <title>Registrar Alumno | Administrador</title>
 </head>
 <body>
-    
+<body>
     <section
       class="vh-100"
       style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)"
     >
     <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-        <div class="alert alert-success" >Su usuario esta a la espera de aprobacion del administrador</div>
+        <div style="color: #00FF00">Alumno registrado con exito</div>
     <?php endif; ?>
 
     <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-        <div class="alert alert-danger" > Login Incorrecto</div>
+        <div style="color: #F90000">La carga de su usuario tuvo algun error</div>
     <?php endif; ?>
-    
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-12 col-xl-11">
@@ -43,11 +50,11 @@
                         -webkit-text-fill-color: transparent;
                       "
                     >
-                      Registrarse
+                      Registrar Alumno
                     </p>
                     <form
                       class="mx-1 mx-md-4"
-                      action="/insertarAlumno"
+                      action="/registrarAlumno"
                       method="POST"
                     >
                       <div
@@ -219,19 +226,19 @@
                             border: 0px;
                             color: #fff;
                           "
-                          name="tipoDeUsuario" 
-                          value="Alumno"
                           id="btnRegistrarse"
+                          name="tipoDeUsuario"
+                          value="Alumno"
                           action="submit"
                           onClick="return validarFormulario()"
                         >
-                          Registrarse
+                          Registrar Alumno
                         </button>
 
                         <button
                           action="submit"
-                          formaction="/"
-                          class="btn btn-md btn-block"
+                          class="btn btn-md"
+                          formaction="/principalAdministrador"
                           style="
                             border-radius: 25px;
                             background-image: linear-gradient(
@@ -257,7 +264,7 @@
                     "
                   >
                     <img
-                      src="https://i.ibb.co/PjSWs5Z/imagen-registro.png"
+                      src="https://i.ibb.co/kqmftKZ/registro-alumno.png"
                       class="img-fluid"
                       alt="Sample image"
                     />
