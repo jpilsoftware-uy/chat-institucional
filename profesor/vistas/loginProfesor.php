@@ -17,36 +17,143 @@
     <title>Iniciar Sesion | Profesor</title>
 </head>
 <body>
+    <section
+      class="vh-100"
+      style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)"
+    >
+
     <?php if(isset($parametros['falla']) && $parametros['falla'] == true): ?>
         <div class="alert alert-danger" style="color: #FF0000"> Login Incorrecto</div>
     <?php endif; ?>
-    
-    <h1 class="text-center mt-3">Ingrese sus datos para Iniciar Sesion</h1>
-    <hr>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <form action="/inicioProfesor" method="POST">
 
-                    <div class="input-group mb-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-12 col-xl-11">
+            <div class="card text-black" style="border-radius: 25px">
+              <div class="card-body p-md-5">
+                <div class="row justify-content-center">
+                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <p
+                      class="text-center h1 mb-5 mx-1 mx-md-4 mt-4"
+                      style="
+                        background: linear-gradient(to right, #009ffd, #2a2a72);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                      "
+                    >
+                      Iniciar Sesion
+                    </p>
+                    <form
+                      class="mx-1 mx-md-4"
+                      method="POST"
+                      action="/inicioProfesor"
+                    >
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Usuario</span>
+                          <span class="input-group-text">Usuario</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Ingrese su usuario" name="usuario" maxlength="20">
-                    </div>
-                    <div class="input-group mb-3">
+                        <input
+                          type="text"
+                          placeholder="Ingrese su usuario"
+                          class="form-control"
+                          maxlength="20"
+                          name="usuario"
+                          id="usuario"
+                        />
+                      </div>
+
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
+                          <span class="input-group-text">Contraseña</span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña" name="contrasenia" maxlenght="32">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-success" name="tipoDeUsuario" id="tipoDeUsuario" value="Profesor">Iniciar Sesion</button>
-                    <button type="submit" formaction="/registro-profesor" class="btn btn-primary">Registrarse</button>
-                </form>
+                        <input
+                          type="password"
+                          placeholder="Ingrese su contraseña"
+                          class="form-control"
+                          maxlength="32"
+                          name="contrasenia"
+                          id="contrasenia"
+                        />
+                      </div>
+                      <div
+                        class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
+                      >
+                        <button
+                          type="submit"
+                          name="tipoDeUsuario" 
+                          value="Profesor"
+                          id="tipoDeUsuario"
+                          class="btn btn-md mr-3 btn-block"
+                          style="
+                            border-radius: 25px;
+                            background-image: linear-gradient(
+                              to right,
+                              #5aff15,
+                              #00b712
+                            );
+                            border: 0px;
+                            color: #fff;
+                          "
+                        >
+                          Iniciar Sesion
+                        </button>
+
+                        <button
+                          type="submit"
+                          class="btn btn-md"
+                          formaction="/registro-profesor"
+                          style="
+                            border-radius: 25px;
+                            background-image: linear-gradient(
+                              to right,
+                              #09c6f9,
+                              #045de9
+                            );
+                            border: 0px;
+                            color: #fff;
+                          "
+                        >
+                          Registrarse
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <div
+                    class="
+                      col-md-10 col-lg-6 col-xl-7
+                      d-flex
+                      align-items-center
+                      order-1 order-lg-2
+                    "
+                  >
+                    <img
+                      src="https://i.ibb.co/dkLDn1r/imagen-login.png"
+                      class="img-fluid"
+                      alt="Sample image"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-
+      </div>
+    </section>
 </body>
 </html>
