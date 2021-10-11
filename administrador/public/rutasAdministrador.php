@@ -46,7 +46,7 @@
             break;
 
         case '/registrarAlumno':
-            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preAltaDeUsuarioPorAdministrador($_POST['cedula'],$_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'],$_POST['tipoDeUsuario']);
+            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preAltaDeUsuario($_POST['cedula'],$_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'],$_POST['tipoDeUsuario']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /registro-alumno");
             break;
 
