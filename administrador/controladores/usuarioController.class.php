@@ -4,7 +4,7 @@
     class usuarioController extends UsuarioModelo{
         
         
-        public static function preAltaDeUsuario($cedula,$nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $tipoDeUsuario, $estado="pendiente" ){
+        public static function preAltaDeUsuario($cedula,$nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $tipoDeUsuario, $estado="pendiente"){
            
             if($nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== "" && $cedula !== "" && $tipoDeUsuario !== "" && $estado !== "" ){  
                 try{
@@ -119,5 +119,33 @@
             return $profesoresAprobados;
         }
         
+        public static function preAltaDeUsuarioPorAdministrador($cedula, $nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $tipoDeUsuario, $estado="aprobado"){
+            if($nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== "" && $cedula !== "" && $tipoDeUsuario !== "" && $estado !== ""){
+                try{
+                    $u = new UsuarioModelo();
+                    $u -> cedula = $cedula;
+                    $u -> nombre = $nombre;
+                    $u -> primerApellido = $primerApellido;
+                    $u -> segundoApellido = $segundoApellido;
+                    $u -> usuario = $usuario;
+                    $u -> contrasenia = $contrasenia;
+                    $u -> tipoDeUsuario =  $tipoDeUsuario;
+                    $u -> estado = $estado;
+                    $generarFormulario = $u -> guardarUsuario();
+                    if ($generarFormulario == true){
+                        return generarHtml('registro'. $tipoDeUsuario, ['exito' => true]);
+                    } else if ($generarFormulario == false){
+                        return generarHtml('registro' . $tipoDeUsuario, ['exito' => false]);
+                    }
+                }
+                catch(Exception $e){
+                    return generarHtml('registro' . $tipoDeUsuario , ['exito' => false]);
+                    error_log($e -> getMessage());
+                    return "No se pudo guardar ";
+               }
+            }else{
+                return generarHtml('registro' .$tipoDeUsuario , ['exito' => false]);
+            }    
+        }
 
 }
