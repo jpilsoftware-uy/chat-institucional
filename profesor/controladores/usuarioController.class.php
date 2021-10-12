@@ -70,9 +70,10 @@
     
         public static function MostrarMenuPrincipal(){
             session_start();
-            if(!isset($_SESSION['autenticado'])) header("Location : /inicio");
+            if(!isset($_SESSION['autenticado'])) header("Location : /inicio" . $tipoDeUsuario);
             else return cargarVista("menuPrincipal");
         }
+
         private static function crearSesion($usuario){
             session_start();
             ob_start(); 
@@ -88,8 +89,6 @@
         }
         //iniciar sesion
 
-        
-        
         //modificar datos de usuario
         public static function modificarDatosDeUsuario($nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia){
             
@@ -123,5 +122,29 @@
             $profesoresAprobados = $p -> listarProfesoresAprobados();
             return $profesoresAprobados;
         }
+
+        //eliminar usuario
+
+        public static function preEliminarUsuario(){
+            try{
+                $cedula = $_SESSION['cedula'];
+                $u = new UsuarioModelo();
+                $u -> cedula = $cedula;
+                $u -> eliminarUsuario();
+                session_destroy();
+                return header("Location: /");
+            } catch (Exception $e){
+                error_log();
+                generarHtml("/eliminarUsuario", ['exito' => false]);
+            }
+        }
+
+        //cerrar sesion
+        
+        public static function cerrarSesion(){
+            session_destroy();
+            return header("Location: /");
+        }
+
 
 }
