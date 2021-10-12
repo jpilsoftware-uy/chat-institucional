@@ -20,7 +20,7 @@
             break;
 
 
-        case '/eliminar-usuarios':
+        case '/borrar-usuarios':
             if($_SERVER['REQUEST_METHOD'] === "POST") administradorController::eliminarUsuarios($_POST['cedula']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /usuarios-pendientes');
             break;
@@ -50,8 +50,6 @@
             if($_SERVER['REQUEST_METHOD']== 'GET') cargarVista('crearGrupos');
             break;
               
-
-
         case '/registro-alumno':
             cargarVista('registroAlumno');
             break;
@@ -64,6 +62,15 @@
         case '/cerrar-sesion':
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::cerrarSesion();
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAlumno");
+            break;
+
+        case '/eliminar-usuarios':
+            cargarVista('eliminarUsuarios');
+            break;
+
+        case '/baja-usuario':
+            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preEliminarUsuarios($_POST['cedula']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /eliminar-usuarios");
             break;
 
 

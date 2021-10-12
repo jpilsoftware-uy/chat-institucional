@@ -52,7 +52,7 @@ class administradorModelo extends Modelo{
     
   
     private function prepararListadoDeUsuariosAprobados(){
-        $sql = "SELECT cedula, nombre, primerApellido, segundoApellido, cedula, usuario FROM usuario WHERE estado='aprobado'";
+        $sql = "SELECT cedula, nombre, primerApellido, segundoApellido, cedula, usuario, tipoDeUsuario FROM usuario WHERE estado='aprobado' AND tipoDeUsuario='Alumno' OR tipoDeUsuario='Profesor'";
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
 

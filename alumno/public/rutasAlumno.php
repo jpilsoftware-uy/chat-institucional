@@ -84,10 +84,13 @@
             break;
 
         case '/eliminar-usuario':
-            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preEliminarUsuario();
+            cargarVista('eliminarUsuarios');
+            break;
+        
+        case '/baja-usuario':
+            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preEliminarUsuarios($_POST['cedula']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAlumno");
             break;
-
 
         
     }

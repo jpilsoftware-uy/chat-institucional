@@ -32,13 +32,5 @@
             $u -> eliminarUsuario();
             return header('Location: /usuarios-pendientes');
         }
-      
-
-
-
-
-
         
-
-
-    }
+}
