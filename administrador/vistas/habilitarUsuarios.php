@@ -49,7 +49,7 @@
                     echo "<td> " . $usuario['tipoDeUsuario'] . "</td>";
                     echo "<td> 
                             <button name='cedula' formaction='/aprobar-usuarios' value='".$usuario['cedula']."'>  Aceptar Alumno  </button> <br>
-                            <button name='cedula' formaction='/eliminar-usuarios' value='".$usuario['cedula']."'>  Eliminar Alumno  </button> </td>";
+                            <button name='cedula' formaction='/borrar-usuarios' value='".$usuario['cedula']."'>  Eliminar Alumno  </button> </td>";
                     echo "</tr>";
                 }
             ?>

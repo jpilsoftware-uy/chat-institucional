@@ -159,9 +159,13 @@ class UsuarioModelo extends Modelo{
     //eliminar usuario
 
     public function eliminarUsuario(){
-        $this -> prepararEliminacionDeUsuario();
-        $this -> sentencia -> execute();
-        
+        if( ($this -> checkearCedula($this -> cedula)) == true){
+            $this -> prepararEliminacionDeUsuario();
+            $this -> sentencia -> execute();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private function prepararEliminacionDeUsuario(){

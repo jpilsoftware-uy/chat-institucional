@@ -24,7 +24,7 @@
     <?php endif; ?>
 
     <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-        <div class="alert alert-danger" > Login Incorrecto</div>
+        <div class="alert alert-danger" >Su usuario no pudo ser registrado</div>
     <?php endif; ?>
     
       <div class="container h-100">

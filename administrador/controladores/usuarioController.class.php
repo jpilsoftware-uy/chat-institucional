@@ -125,17 +125,36 @@
 
         //eliminar usuario
 
-        public static function preEliminarUsuario(){
-            try{
-                $cedula = $_SESSION['cedula'];
-                $u = new UsuarioModelo();
-                $u -> cedula = $cedula;
-                $u -> eliminarUsuario();
-                session_destroy();
-                return header("Location: /");
-            } catch (Exception $e){
-                error_log();
-                generarHtml("/eliminarUsuario", ['exito' => false]);
+        public static function preEliminarUsuarios($cedula){
+            if($cedula !== ""){
+                try{
+                    if($_SESSION['tipoDeUsuario'] == "Alumno" || $_SESSION['tipoDeUsuario'] == "Profesor"){
+                        if($_SESSION['cedula'] == $cedula){
+                            $u = new UsuarioModelo();
+                            $u -> cedula = $cedula;
+                            $resultado = $u -> eliminarUsuario();
+                            if($resultado == true){
+                                self::cerrarSesion();
+                            } else {
+                                return generarHtml("eliminarUsuarios", ['exito' => false]);
+                            }
+                        } else {
+                            return generarHtml("eliminarUsuarios", ['exito' => false]);
+                        }
+                    } else if ($_SESSION['tipoDeUsuario'] == "Administrador"){
+                        $u = new UsuarioModelo();
+                        $u -> cedula = $cedula;
+                        $resultado = $u -> eliminarUsuario();
+                        if($resultado == true){
+                            return generarHtml("eliminarUsuarios", ['exito' => true]);
+                        } else {
+                            return generarHtml("eliminarUsuarios", ['exito' => false]);
+                        }
+                    }
+                } catch(Exception $e){
+                    error_log();
+                    generarHtml("eliminarUsuarios", ['exito' => false]);
+                }
             }
         }
 
@@ -145,6 +164,4 @@
             session_destroy();
             return header("Location: /");
         }
-
-
 }
