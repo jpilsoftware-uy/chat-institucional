@@ -21,6 +21,7 @@
         <button action="submit" formaction="/crearGrupos">Crear Grupos</button>
         <button action="submit" formaction="/registro-alumno">Registrar Alumno</button>
         <button formaction="/cerrar-sesion">Cerrar Sesion</button>
+        <button formaction="/eliminar-usuarios">Eliminar Usuarios</button>
     </form>
 </body>
 </html>
