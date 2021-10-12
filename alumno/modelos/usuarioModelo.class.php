@@ -155,4 +155,18 @@ class UsuarioModelo extends Modelo{
         $sql = "SELECT cedula, nombre, primerApellido, segundoApellido, usuario FROM usuario WHERE estado = 'aprobado' AND tipoDeUsuario = 'Profesor' ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
+
+    //eliminar usuario
+
+    public function eliminarUsuario(){
+        $this -> prepararEliminacionDeUsuario();
+        $this -> sentencia -> execute();
+        
+    }
+
+    private function prepararEliminacionDeUsuario(){
+        $sql = "DELETE FROM usuario WHERE cedula = ?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $this -> cedula);
+    }
 }

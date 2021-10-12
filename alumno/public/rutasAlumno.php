@@ -78,7 +78,15 @@
             chatController::listarMensajesChat();
             break;
 
+        case '/cerrar-sesion':
+            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::cerrarSesion();
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAlumno");
+            break;
 
+        case '/eliminar-usuario':
+            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preEliminarUsuario();
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAlumno");
+            break;
 
 
         
