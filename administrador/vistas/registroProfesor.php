@@ -20,7 +20,7 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <title>Registrar Alumno | Administrador</title>
+    <title>Registrar Profesor | Administrador</title>
 </head>
 <body>
 <body>
@@ -29,12 +29,12 @@
       style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)"
     >
     <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-    <div class="alert alert-success" >Alumno registrado exitosamente</div>
-  <?php endif; ?>
+        <div class="alert alert-success" >Profesor registrado exitosamente</div>
+    <?php endif; ?>
 
-  <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-    <div class="alert alert-danger" >No se pudo registrar el alumno, uno de los campos esta vacio</div>
-  <?php endif; ?> 
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
+        <div class="alert alert-danger" >No se pudo registrar al profesor, Alguno de los campos esta vacio</div>
+    <?php endif; ?> 
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-12 col-xl-11">
@@ -50,11 +50,11 @@
                         -webkit-text-fill-color: transparent;
                       "
                     >
-                      Registrar Alumno
+                      Registrar Profesor
                     </p>
                     <form
                       class="mx-1 mx-md-4"
-                      action="/registrarAlumno"
+                      action="/registrarProfesor"
                       method="POST"
                     >
                       <div
@@ -228,11 +228,11 @@
                           "
                           id="btnRegistrarse"
                           name="tipoDeUsuario"
-                          value="Alumno"
+                          value="Profesor"
                           action="submit"
                           onClick="return validarFormulario()"
                         >
-                          Registrar Alumno
+                          Registrar Profesor
                         </button>
 
                         <button
@@ -264,7 +264,7 @@
                     "
                   >
                     <img
-                      src="https://i.ibb.co/kqmftKZ/registro-alumno.png"
+                      src="https://i.ibb.co/T0VxKL6/registro-profesor.png"
                       class="img-fluid"
                       alt="Sample image"
                     />
