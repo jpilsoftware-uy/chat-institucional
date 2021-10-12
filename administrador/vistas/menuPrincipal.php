@@ -22,6 +22,7 @@
         <button action="submit" formaction="/registro-alumno">Registrar Alumno</button>
         <button formaction="/cerrar-sesion">Cerrar Sesion</button>
         <button formaction="/eliminar-usuarios">Eliminar Usuarios</button>
+        <button formaction="/registro-profesor">Registrar Profesor</button>
     </form>
 </body>
 </html>
