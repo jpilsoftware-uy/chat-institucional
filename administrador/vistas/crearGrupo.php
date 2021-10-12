@@ -25,21 +25,17 @@
     
     <form action="/insertarGrupo" method="POST">
         Nombre del grupo: <input type="text" name="idGrupo"></br>
-        Seleccione Orientacion <select>
+        Seleccione Orientacion :
+        <select name="tipoDeOrientacion">
             <option selected disabled hidden>...</option>
-            <option name="tipoDeOrienacion" value="3er Año - Énfasis en Desarrollo Web">3er Año - Énfasis en Desarrollo Web </option>
-            <option name="tipoDeOrienacion" value="3er Año - Énfasis en Desarrollo y Soporte">3er Año - Énfasis en Desarrollo y Soporte</option>
-            <option name="tipoDeOrienacion" value="3er Año - Énfasis en Desarrollo de Videojuegos">3er Año - Énfasis en Desarrollo de Videojuegos</option>
-            <option name="tipoDeOrienacion" value="1er año - Bachillerato De Informatica">1er año - Bachillerato De Informatica</option>
-            <option name="tipoDeOrienacion" value="2er año - Bachillerato De Informatica">2er año - Bachillerato De Informatica</option>
+            <option value="3er Anio - Enfasis en Desarrollo Web">3er Año - Énfasis en Desarrollo Web </option>
+            <option value="3er Anio - Enfasis en Desarrollo y Soporte">3er Año - Énfasis en Desarrollo y Soporte</option>
+            <option value="3er Anio - Enfasis en Desarrollo de Videojuegos">3er Año - Énfasis en Desarrollo de Videojuegos</option>
+            <option value="1er Anio - Bachillerato De Informatica">1er año - Bachillerato De Informatica</option>
+            <option value="2do Anio - Bachillerato De Informatica">2do año - Bachillerato De Informatica</option>
         </select> </br>
-        <button type="submit">Enviar</button>
-
-
-       
-
-
-    
+        <button type="submit">Enviar</button>   
+        <button type="submit" formaction="/principalAdministrador">Volver</button>   
     </form>
     
 

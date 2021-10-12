@@ -46,7 +46,7 @@
             break; 
         
         case '/insertarGrupo':
-            if($_SERVER['REQUEST_METHOD']== 'POST') grupoController::preAltaDeGrupo($_POST['idGrupo'],$_POST['tipoDeOrienacion']);
+            if($_SERVER['REQUEST_METHOD']== 'POST') grupoController::preAltaDeGrupo($_POST['idGrupo'],$_POST['tipoDeOrientacion']);
             if($_SERVER['REQUEST_METHOD']== 'GET') cargarVista('crearGrupos');
             break;
               

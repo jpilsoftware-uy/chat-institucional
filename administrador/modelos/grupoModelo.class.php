@@ -6,6 +6,7 @@ class grupoModelo extends Modelo{
     public $tipoDeOrientacion;
 
     public function guardarGrupo(){
+          
        
 
         $this -> prepararInsercionDeGrupo();
