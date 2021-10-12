@@ -1,3 +1,12 @@
+<?php 
+    require '../utils/autoloader.php';
+
+    if(!isset($_SESSION['autenticado'])){
+        header('Location: /');
+        die();
+    } 
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,7 +26,7 @@
 <body>
   <section class="vh-100" style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)">
   <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-    <div class="alert alert-success" >Usuario Eliminar Exitosamente</div>
+    <div class="alert alert-success" >Usuario eliminado exitosamente</div>
   <?php endif; ?>
 
   <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>

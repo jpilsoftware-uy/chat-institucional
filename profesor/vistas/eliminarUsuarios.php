@@ -1,3 +1,12 @@
+<?php 
+    require '../utils/autoloader.php';
+
+    if(!isset($_SESSION['autenticado'])){
+        header('Location: /');
+        die();
+    } 
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
