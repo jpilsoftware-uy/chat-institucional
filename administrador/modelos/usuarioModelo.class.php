@@ -121,8 +121,13 @@ class UsuarioModelo extends Modelo{
     //modificar datos
 
     public function actualizarUsuario(){
-        $this -> prepararActualizacionDeUsuario();
-        $this -> sentencia -> execute();
+        if(($this -> checkearCedula($this -> cedula)) == true){
+            $this -> prepararActualizacionDeUsuario();
+            $this -> sentencia -> execute();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private function prepararActualizacionDeUsuario(){
