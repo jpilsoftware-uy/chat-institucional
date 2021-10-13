@@ -4,9 +4,12 @@
     if(!isset($_SESSION['autenticado'])){
         header('Location: /');
         die();
+        session_destroy();
     } 
-?>
 
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
