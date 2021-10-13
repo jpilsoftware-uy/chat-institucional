@@ -4,6 +4,7 @@
     if(!isset($_SESSION['autenticado'])){
         header('Location: /');
         die();
+        session_destroy();
     } 
 
 
@@ -51,7 +52,7 @@
         
     </table>
 
-         
+         <button action ="submit" formaction="/principalAlumno">Volver</button>  
          
          </form>
     
