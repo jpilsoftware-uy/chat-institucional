@@ -47,6 +47,7 @@
               $u = new usuarioModelo();
               $u -> usuario = $usuario;
               $u -> contrasenia = $contrasenia;
+              $u -> tipoDeUsuario= $tipoDeUsuario;
               $u -> autenticar(); 
               self::crearSesion($u);
 

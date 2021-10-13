@@ -1,8 +1,15 @@
-<?php     
-
+<?php 
     require '../utils/autoloader.php';
 
-?>    
+    if(!isset($_SESSION['autenticado'])){
+        header('Location: /');
+        die();
+        session_destroy();
+    } 
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -4,7 +4,11 @@
     if(!isset($_SESSION['autenticado'])){
         header('Location: /');
         die();
+        session_destroy();
     } 
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +64,8 @@
 </table>
         
          <textarea name="mensajeConsulta" > </textarea>
-         <button action="submit" formaction="/insertarConsulta" >Enviar </button>    
+         <button action="submit" formaction="/insertarConsulta" >Enviar </button>  
+         <button action ="submit" formaction="/principalAlumno">Volver</button>  
         </form>
 
  
