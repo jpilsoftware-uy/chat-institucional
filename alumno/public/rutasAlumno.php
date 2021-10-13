@@ -46,15 +46,6 @@
         case '/chat':
             cargarVista('chat');
             break;    
-        
-        case '/modificar-datos':
-            cargarVista('modificarDatos');
-            break;
-
-        case '/insertar-modificacion':
-            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::modificarDatosDeUsuario($_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'], $_POST['grupo']);
-            if($_SERVER['REQUEST_METHOD'] === "GET") cargarVista('modificarDatos');
-            break;
 
         case '/enviarMensaje':
             if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearMensaje($_POST['mensajeEnviado']);
@@ -91,6 +82,14 @@
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preEliminarUsuarios($_POST['cedula']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAlumno");
             break;
+        
+        case '/modificar-datos-usuario':
+            cargarVista('actualizarUsuario');
+            break;
 
+        case '/actualizar-datos-usuario':
+            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preModificarDatosDeUsuario($_POST['cedula'], $_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
+            break;
         
     }

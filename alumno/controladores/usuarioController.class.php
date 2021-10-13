@@ -90,27 +90,49 @@
         //iniciar sesion
 
         //modificar datos de usuario
-        public static function modificarDatosDeUsuario($nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia){
-            
-            if($nombre != "" && $primerApellido != "" && $segundoApellido != "" && $usuario != "" && $contrasenia != ""){
+        public static function preModificarDatosDeUsuario($cedula, $nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia){
+            if($cedula !== "" && $nombre != "" && $primerApellido != "" && $segundoApellido != "" && $usuario != "" && $contrasenia != ""){
                 try{
-                    $u = new UsuarioModelo();
-                    $u -> cedula = $_SESSION['cedula'];
-                    $u -> nombre = $nombre;
-                    $u -> primerApellido = $primerApellido;
-                    $u -> segundoApellido = $segundoApellido;
-                    $u -> usuario = $usuario;
-                    $u -> contrasenia = $contrasenia;
-                    $u -> actualizarUsuario();
-                    session_destroy();
-                    return header('Location: /');
+                    if($_SESSION['tipoDeUsuario'] == "Alumno" || $_SESSION['tipoDeUsuario'] == "Profesor"){
+                        if($_SESSION['cedula'] == $cedula){
+                            $u = new UsuarioModelo();
+                            $u -> cedula = $cedula;
+                            $u -> nombre = $nombre;
+                            $u -> primerApellido = $primerApellido;
+                            $u -> segundoApellido = $segundoApellido;
+                            $u -> usuario = $usuario;
+                            $u -> contrasenia = $contrasenia;
+                            $u -> actualizarUsuario();
+                            if($u -> actualizarUsuario() == true){
+                                self::cerrarSesion();
+                            } else {
+                                return generarHtml("actualizarUsuario", ['exito' => false]);
+                            }
+                        } else {
+                            return generarHtml("actualizarUsuario", ['exito' => false]);
+                        }
+                    } else if ($_SESSION['tipoDeUsuario'] == "Administrador") {
+                        $u = new UsuarioModelo();
+                        $u -> cedula = $cedula;
+                        $u -> nombre = $nombre;
+                        $u -> primerApellido = $primerApellido;
+                        $u -> segundoApellido = $segundoApellido;
+                        $u -> usuario = $usuario;
+                        $u -> contrasenia = $contrasenia;
+                        $u -> actualizarUsuario();
+                        if($u -> actualizarUsuario() == true){
+                            return generarHtml("actualizarUsuario", ['exito' => true]);
+                        } else {
+                            return generarHtml("actualizarUsuario", ['exito' => false]);
+                        }
+                    }
                 }
                 catch(Exception $e){
                     error_log();
-                    header("Location: /modificar-datos");
+                    return generarHtml("actualizarUsuario", ['exito' => false]);
                 }
             } else {
-                return generarHtml('/modificarDatos', ['exito' => false]);
+                return generarHtml('actualizarUsuario', ['exito' => false]);
             }
         }
 

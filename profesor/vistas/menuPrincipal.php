@@ -39,7 +39,8 @@
                     <button type="submit" formaction="/pre-chat" class="btn btn-success mb-3">Modulo de chat</button> <br>
                     <button type="submit" formaction="/responderConsultas" class="btn btn-success mb-3">Responder Consultas de Profesores</button> <br>
                     <button type="submit" formaction="/cerrar-sesion" class="btn btn-danger mb-3">Cerrar Sesion</button> <br>
-                    <button type="submit" formaction="/eliminar-usuario" class="btn btn-success mb-3">Eliminar Usuario</button> 
+                    <button type="submit" formaction="/eliminar-usuario" class="btn btn-success mb-3">Eliminar Usuario</button> <br>
+                    <button type="submit" formaction="/modificar-datos-usuario" class="btn btn-success mb-3">Modificar Datos</button>
                 </form>
             </div>
         </div>
