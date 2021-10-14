@@ -27,10 +27,11 @@
             $("#modalInformacion").modal('show');
         });
     </script>
+    
     <title>Modificar Datos</title>
 </head>
 <body>
-    <section class="vh-100" style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)">
+    <section class="vh-100" style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)" id="section">
     <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
         <div class="alert alert-success" >El usuario fue modificado exitosamente</div>
     <?php endif; ?>
@@ -121,7 +122,7 @@
                                 <p>Ahora si, podes modificar tus datos </p>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn text-center" style=" border-radius: 25px; background-image: linear-gradient(to right,#5aff15, #00b712); border: 0px; color: #fff;">Modificar Datos</button>
+                                <button type="submit" class="btn text-center" style=" border-radius: 25px; background-image: linear-gradient(to right,#5aff15, #00b712); border: 0px; color: #fff;" onClick="return validarFormulario()">Modificar Datos</button>
                                 <button type="button" class="btn text-center" style=" border-radius: 25px; background-image: linear-gradient(to right,#ff0000, #990000); border: 0px; color: #fff;" data-dismiss="modal">Cancelar</button>
                             </div>
                         </div>
@@ -153,5 +154,6 @@
             </div>
         </form>
     </section>
+    <script src="../js/modificar-datos.js"></script>
 </body>
 </html>

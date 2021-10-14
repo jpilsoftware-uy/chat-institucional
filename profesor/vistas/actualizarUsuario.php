@@ -153,5 +153,6 @@
             </div>
         </form>
     </section>
+    <script src="../js/modificar-datos.js"></script>
 </body>
 </html>

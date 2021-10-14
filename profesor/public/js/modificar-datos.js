@@ -1,3 +1,5 @@
+
+
 function validarFormulario() {
     let nombre = document.querySelector("#nombre").value;
     let primerApellido = document.querySelector("#primerApellido").value;
@@ -10,6 +12,10 @@ function validarFormulario() {
         return false;
     }
 }
+
+
+
+
 
 function comprobarCedula() {
     let cedula = document.querySelector("#cedula").value;
@@ -66,6 +72,7 @@ function comprobarUsuario(usuario) {
     }
 }
 
+
 function comprobarContrasenias() {
     let contrasenia = document.querySelector("#contrasenia").value;
     let contraseniaRepetida = document.querySelector("#contraseniaRepetida").value;
@@ -86,7 +93,6 @@ function comprobarContrasenias() {
 
 }
 
-
 function mostrarMensajeError(mensaje, id) {
     let elemento = document.querySelector(id);
     elemento.classList.add("is-invalid");
@@ -103,3 +109,4 @@ function mostrarMensajeError(mensaje, id) {
         elemento.classList.remove("is-invalid");
     }, 5000);
 }
+
