@@ -92,7 +92,7 @@
 
         //modificar datos de usuario
         public static function preModificarDatosDeUsuario($cedula, $nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia){
-            if($cedula !== "" && $nombre != "" && $primerApellido != "" && $segundoApellido != "" && $usuario != "" && $contrasenia != ""){
+            if($cedula !== "" && $nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== ""){
                 try{
                     if($_SESSION['tipoDeUsuario'] == "Alumno" || $_SESSION['tipoDeUsuario'] == "Profesor"){
                         if($_SESSION['cedula'] == $cedula){
@@ -103,8 +103,8 @@
                             $u -> segundoApellido = $segundoApellido;
                             $u -> usuario = $usuario;
                             $u -> contrasenia = $contrasenia;
-                            $u -> actualizarUsuario();
-                            if($u -> actualizarUsuario() == true){
+                            $resultado = $u -> actualizarUsuario();
+                            if($resultado == true){
                                 self::cerrarSesion();
                             } else {
                                 return generarHtml("actualizarUsuario", ['exito' => false]);

@@ -100,7 +100,7 @@ class UsuarioModelo extends Modelo{
     }
     
     private function prepararAutenticacion(){
-        $sql= "SELECT  cedula,nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado FROM usuario WHERE usuario= ? ";
+        $sql= "SELECT cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado FROM usuario WHERE usuario= ? ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("s", $this -> usuario);
     }
@@ -130,7 +130,7 @@ class UsuarioModelo extends Modelo{
     }
 
     private function prepararActualizacionDeUsuario(){
-        $this -> contrasenia = $this -> hashearContrasenia($this -> contrasenia);
+        $contrasenia = $this -> hashearContrasenia($this -> contrasenia);
         $sql = "UPDATE usuario SET nombre = ?, primerApellido = ?, segundoApellido = ?, usuario = ?, contrasenia = ? WHERE cedula = ?";
         $this -> sentencia = $this-> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("sssssi",
@@ -138,7 +138,7 @@ class UsuarioModelo extends Modelo{
             $this -> primerApellido,
             $this -> segundoApellido,
             $this -> usuario,
-            $this -> contrasenia,
+            $contrasenia,
             $this -> cedula
         );
     }
