@@ -18,6 +18,7 @@
     <section
       class="vh-100"
       style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)"
+      id="section"
     >
     <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
         <div class="alert alert-success" >Su usuario esta a la espera de aprobacion del administrador</div>
