@@ -15,52 +15,21 @@ Instalar PHP
 
 # crear tablas
 
-create table chat (idChat int auto_increment primary key, 
-ciCreador int(8),
-materia varchar(30),
-grupo varchar(6),
-estadoDelChat varchar (10)
-);
+create table chat (idChat int auto_increment primary key, ciCreador int(8), materia varchar(30), grupo varchar(6), estadoDelChat varchar (10) );
 
-create table usuario(
-cedula int(8) primary key not null,
-nombre varchar (20) not null,
-primerApellido  varchar (20) not null, 
-segundoApellido varchar (20), 
-usuario varchar(255) not null, 
-contrasenia varchar(255) not null, 
-tipoDeUsuario varchar(13) not null, 
-estado varchar(10) not null
-);
+create table usuario( cedula int(8) primary key not null, nombre varchar (20) not null, primerApellido varchar (20) not null, segundoApellido varchar (20), usuario varchar(255) not null, contrasenia varchar(255) not null, tipoDeUsuario varchar(13) not null, estado varchar(10) not null );
 
-create table consulta (idConsulta int primary key auto_increment not null,
-mensajeConsulta varchar (255) not null,
-mensajeRespuesta varchar (255) , 
-cedulaProfesor int (8) not null, 
-cedulaAlumno int (8) not null, 
-estadoConsulta varchar (15) not null
-);
+create table consulta (idConsulta int primary key auto_increment not null, mensajeConsulta varchar (255) not null, mensajeRespuesta varchar (255) , cedulaProfesor int (8) not null, cedulaAlumno int (8) not null, estadoConsulta varchar (15) not null , usuarioAlumno varchar(255), usuarioProfesor varchar(255));
 
-create table mensaje (idMensaje int auto_increment primary key, 
-idChatMensaje int,
-ciCreadorMensaje int(8),
-mensajeEnviado varchar (500),
-usuarioCreadorMensaje varchar(20),
-fecha timestamp,
-FOREIGN KEY (idChatMensaje) REFERENCES chat (idChat)
-);
+create table mensaje (idMensaje int auto_increment primary key, idChatMensaje int, ciCreadorMensaje int(8), mensajeEnviado varchar (500), usuarioCreadorMensaje varchar(20), fecha timestamp, FOREIGN KEY (idChatMensaje) REFERENCES chat (idChat));
 
 create table orientaciones(tipoDeOrientacion varchar (60) primary key,materia1 varchar (60)  , materia2 varchar (60)  , materia3 varchar (60), materia4 varchar (60) , materia5 varchar (60) , materia6 varchar (60) , materia7 varchar (60) , materia8 varchar (60) , materia9 varchar (60) , materia10 varchar (60) , materia11 varchar (60) , materia12 varchar (60) , materia13 varchar (60) );
 
-create table grupo (idGrupo varchar (10) primary key,  tipoDeOrientacion varchar (20) , foreign key (tipoDeOrientacion) references orientaciones(tipoDeOrientacion) );
+create table grupo (idGrupo varchar (10) primary key,  tipoDeOrientacion varchar (60) , foreign key (tipoDeOrientacion) references orientaciones(tipoDeOrientacion) );
 
 create table grupoQueCursaAlumno (id int primary key auto_increment , cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeAlumno varchar(10), FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeAlumno) REFERENCES grupo (idGrupo) ); 
 
 create table grupoQueDictaProfesor (id int primary key auto_increment ,cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeProfesor varchar(10), FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeProfesor) REFERENCES grupo (idGrupo) );
-
-
-
-
 
 
 # Crear Usuarios
