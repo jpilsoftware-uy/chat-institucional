@@ -112,7 +112,7 @@
                                     </div>
                                     <input type="text" placeholder="Ingrese su cedula" class="form-control" maxlength="8" name="cedula" id="cedula"/>   
                                 </div>
-                                <p>Segundo, ingresa tu nueva contraseña, de esta manera evitamos que la escribas mal 😉</p>
+                                <p>Segundo, ingresa tu nueva contraseña otra vez, de esta manera evitamos que la escribas mal 😉</p>
                                 <div class="d-flex flex-row align-items-center mb-4 input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Contraseña</span>
