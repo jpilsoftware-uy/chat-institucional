@@ -1,4 +1,17 @@
-# chat-institucional
+# Chat Institucional
+
+_Chat institucional es una aplicacion que permite la comunicacion entre profesores y alumnos mediante consultas asincronicas o un chat online_
+
+## Pre-Requisitos 📋
+
+_Antes de empezar, vas a necesitar las siguientes cosas:_
+
+```
+Instalar Docker
+```
+```
+Instalar PHP
+```
 
 # crear tablas
 
