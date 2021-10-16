@@ -29,13 +29,15 @@
       style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)"
       id="section"
     >
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-        <div class="alert alert-success" >Profesor registrado exitosamente</div>
-    <?php endif; ?>
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == true && $mensaje !== ""): 
+      echo "<div class='alert alert-success' > " . $mensaje .  " </div>";
+      endif; 
+    ?>
 
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-        <div class="alert alert-danger" >No se pudo registrar al profesor, Alguno de los campos esta vacio</div>
-    <?php endif; ?> 
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == false && $mensaje !== ""): 
+      echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
+      endif; 
+    ?>  
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-12 col-xl-11">
