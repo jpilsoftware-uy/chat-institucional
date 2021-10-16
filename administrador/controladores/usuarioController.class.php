@@ -169,9 +169,9 @@
                         $u -> cedula = $cedula;
                         $resultado = $u -> eliminarUsuario();
                         if($resultado == true){
-                            return generarHtml("eliminarUsuarios", ['exito' => true]);
+                            return generarHtml("eliminarUsuarios", ['exito' => true], "El usuario fue eliminado con exito del sistema");
                         } else {
-                            return generarHtml("eliminarUsuarios", ['exito' => false]);
+                            return generarHtml("eliminarUsuarios", ['exito' => false], "La cedula ingresada no existe en el sistema");
                         }
                     }
                 } catch(Exception $e){
