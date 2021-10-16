@@ -7,12 +7,10 @@
         case '/':
             cargarVista('loginAdministrador');
             break;
-        
 
         case '/usuarios-pendientes':
             cargarVista('habilitarUsuarios');
             break;
-
 
         case '/aprobar-usuarios':
             if($_SERVER['REQUEST_METHOD'] === "POST") administradorController::actualizarEstadoUsuarios($_POST['cedula']);
@@ -61,7 +59,7 @@
         
         case '/cerrar-sesion':
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::cerrarSesion();
-            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAlumno");
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAdministrador");
             break;
 
         case '/eliminar-usuarios':
@@ -90,9 +88,4 @@
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preModificarDatosDeUsuario($_POST['cedula'], $_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
             break;
-
-
-
-
-
     }
