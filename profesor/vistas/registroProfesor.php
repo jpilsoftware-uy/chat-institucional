@@ -20,13 +20,15 @@
       style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)"
       id="section"
     >
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-        <div class="alert alert-success" >Su usuario esta a la espera de aprobacion del administrador</div>
-    <?php endif; ?>
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == true && $mensaje !== ""): 
+        echo "<div class='alert alert-success' > " . $mensaje .  " </div>";
+        endif; 
+    ?>
 
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-        <div class="alert alert-danger" >Su usuario no pudo ser registrado</div>
-    <?php endif; ?>
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == false && $mensaje !== ""): 
+        echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
+        endif; 
+    ?>
     
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">

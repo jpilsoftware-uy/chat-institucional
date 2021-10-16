@@ -24,19 +24,19 @@
                     $u -> estado = $estado;
                     $generarFormulario = $u -> guardarUsuario();
                     if ($generarFormulario == true){
-                        return generarHtml('registro'. $tipoDeUsuario, ['exito' => true]);
+                        return generarHtml('registro'. $tipoDeUsuario, ['exito' => true], "Usuario registrado con exito");
                     } else if ($generarFormulario == false){
-                        return generarHtml('registro' . $tipoDeUsuario, ['exito' => false]);
+                        return generarHtml('registro' . $tipoDeUsuario, ['exito' => false], "La cedula o el usuario ingresados ya existen en el sistema");
                     }
                 }
                 catch(Exception $e){
 
-                    return generarHtml('registro' . $tipoDeUsuario , ['exito' => false]);
+                    return generarHtml('registro' . $tipoDeUsuario , ['exito' => false], "Por alguna razon desconocida no se pudo ingresar");
                     error_log($e -> getMessage());
                     return "No se pudo guardar ";
                }
             }else{
-                return generarHtml('registro' .$tipoDeUsuario , ['exito' => false]);
+                return generarHtml('registro' .$tipoDeUsuario , ['exito' => false], "Uno de los campos esta vacio");
             }
         }
     
@@ -56,7 +56,7 @@
             }
             catch(Exception $e){
                 error_log("fallo login del usuario " . $usuario);
-                generarHtml("login" .$tipoDeUsuario , ["falla" => true]);
+                generarHtml("login" .$tipoDeUsuario , ["exito" => false], "Usuario y/o contraseña incorrectos");
             }
             
             
@@ -107,10 +107,10 @@
                             if($resultado == true){
                                 self::cerrarSesion();
                             } else {
-                                return generarHtml("actualizarUsuario", ['exito' => false]);
+                                return generarHtml("actualizarUsuario", ['exito' => false], "La cedula ingresada no existe en el sistema");
                             }
                         } else {
-                            return generarHtml("actualizarUsuario", ['exito' => false]);
+                            return generarHtml("actualizarUsuario", ['exito' => false], "Su cedula no coincide con la ingresada en el sistema");
                         }
                     } else if ($_SESSION['tipoDeUsuario'] == "Administrador") {
                         $u = new UsuarioModelo();
@@ -122,18 +122,18 @@
                         $u -> contrasenia = $contrasenia;
                         $u -> actualizarUsuario();
                         if($u -> actualizarUsuario() == true){
-                            return generarHtml("actualizarUsuario", ['exito' => true]);
+                            return generarHtml("actualizarUsuario", ['exito' => true], "Usuario modificado exitosamente");
                         } else {
-                            return generarHtml("actualizarUsuario", ['exito' => false]);
+                            return generarHtml("actualizarUsuario", ['exito' => false], "La cedula ingresada no existe en el sistema");
                         }
                     }
                 }
                 catch(Exception $e){
                     error_log();
-                    return generarHtml("actualizarUsuario", ['exito' => false]);
+                    return generarHtml("actualizarUsuario", ['exito' => false], "Por algun motivo desconocido, no se pudo modificar los datos del usuario");
                 }
             } else {
-                return generarHtml('actualizarUsuario', ['exito' => false]);
+                return generarHtml('actualizarUsuario', ['exito' => false], "Uno de los campos se encuentra vacio");
             }
         }
 
@@ -159,25 +159,27 @@
                             if($resultado == true){
                                 self::cerrarSesion();
                             } else {
-                                return generarHtml("eliminarUsuarios", ['exito' => false]);
+                                return generarHtml("eliminarUsuarios", ['exito' => false], "La cedula ingresada no existe en el sistema");
                             }
                         } else {
-                            return generarHtml("eliminarUsuarios", ['exito' => false]);
+                            return generarHtml("eliminarUsuarios", ['exito' => false], "La cedula ingresada no existe en el sistema");
                         }
                     } else if ($_SESSION['tipoDeUsuario'] == "Administrador"){
                         $u = new UsuarioModelo();
                         $u -> cedula = $cedula;
                         $resultado = $u -> eliminarUsuario();
                         if($resultado == true){
-                            return generarHtml("eliminarUsuarios", ['exito' => true]);
+                            return generarHtml("eliminarUsuarios", ['exito' => true], "El usuario fue eliminado con exito del sistema");
                         } else {
-                            return generarHtml("eliminarUsuarios", ['exito' => false]);
+                            return generarHtml("eliminarUsuarios", ['exito' => false], "La cedula ingresada no existe en el sistema");
                         }
                     }
                 } catch(Exception $e){
                     error_log();
-                    generarHtml("eliminarUsuarios", ['exito' => false]);
+                    generarHtml("eliminarUsuarios", ['exito' => false], "Por alguna razon, no se pudo eliminar su usuario");
                 }
+            } else {
+                return generarHtml("eliminarUsuarios", ['exito' => false], "El campo cedula se encuentra vacio");
             }
         }
 

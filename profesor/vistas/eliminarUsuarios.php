@@ -25,9 +25,11 @@
 </head>
 <body>
   <section class="vh-100" style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)">
-  <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-    <div class="alert alert-danger" >La cedula es incorrecta</div>
-  <?php endif; ?> 
+
+  <?php if(isset($parametros['exito']) && $parametros['exito'] == false && $mensaje !== ""): 
+      echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
+      endif; 
+  ?>
   <form action="" method="POST">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">

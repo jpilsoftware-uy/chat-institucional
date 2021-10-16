@@ -19,13 +19,15 @@
 </head>
 <body>
   
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-        <div style="color: #00FF00">Respuesta enviada</div>
-    <?php endif; ?>
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == true && $mensaje !== ""): 
+        echo "<div class='alert alert-success' > " . $mensaje .  " </div>";
+        endif; 
+    ?>
 
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-        <div style="color: #F90000">La respuesta no se pudo enviar </div>
-    <?php endif; ?>
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == false && $mensaje !== ""): 
+        echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
+        endif; 
+    ?>
 
 <table>
         <thead>
