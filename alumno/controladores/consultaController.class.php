@@ -27,6 +27,7 @@
 
         public static function mostrarConsultas(){
             $a = new ConsultaModelo();
+            $a -> cedula = $_SESSION['cedula'];
             $consultasEnviadas = $a -> listarConsultas();
             return $consultasEnviadas;
 
@@ -55,11 +56,24 @@
 
         public static function mostrarRespuesta(){
             $a = new ConsultaModelo();
+            $a -> cedula = $_SESSION['cedula'];
             $respuestasEnviadas = $a -> listarRespuesta();
             return $respuestasEnviadas;
 
         }
 
 
+        public  static function cambiarEstadoAVisto(){
+            
+                try{
+                $v = new ConsultaModelo();
+                $v -> cedula = $_SESSION['cedula'];
+                $v -> guardarEstado();
+                    }catch(Exception $e){
+                    error_log($e -> getMessage());
+                    return "error";
+                }
+           
+        }
 
     }

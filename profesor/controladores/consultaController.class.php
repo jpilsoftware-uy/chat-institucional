@@ -61,5 +61,17 @@
         }
 
 
+        public  static function cambiarEstadoAVisto(){
+            
+                try{
+                $v = new ConsultaModelo();
+                $v -> cedulaAlumno = $_SESSION['cedula'];
+                $v -> guardarEstado();
+                    }catch(Exception $e){
+                    error_log($e -> getMessage());
+                    return "error";
+                }
+           
+        }
 
     }

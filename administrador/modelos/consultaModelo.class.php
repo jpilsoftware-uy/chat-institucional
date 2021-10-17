@@ -62,7 +62,6 @@ class consultaModelo extends Modelo{
             $this -> usuarioProfesor,
             $this -> idConsulta,
             ); 
-        //$this ->  sentencia -> execute();
     }
 
 
@@ -79,6 +78,18 @@ class consultaModelo extends Modelo{
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);   
         return $resultado;
     }
+    public function guardarEstado(){
+        $this -> prepararInsercionDeEstado(); 
+        $this -> sentencia -> execute();
+    }
 
+    private function prepararInsercionDeEstado(){
+        $sql = "UPDATE consulta SET estadoConsulta='visto' WHERE cedulaAlumno= ? && estadoConsulta='respondido'";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i",
+            $this -> cedulaAlumno,
+            ); 
+
+    }
 
 }

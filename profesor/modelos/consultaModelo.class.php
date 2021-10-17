@@ -29,7 +29,7 @@ class consultaModelo extends Modelo{
 
 
     private function prepararListadoDeConsultas(){
-        $sql = "SELECT idConsulta, mensajeConsulta, mensajeRespuesta, cedulaAlumno, cedulaProfesor, estadoConsulta FROM consulta WHERE cedulaProfesor= ? && estadoConsulta='enviado'" ;
+        $sql = "SELECT idConsulta, mensajeConsulta, mensajeRespuesta, cedulaAlumno, cedulaProfesor, estadoConsulta, usuarioAlumno, usuarioProfesor FROM consulta WHERE cedulaProfesor= ? && estadoConsulta='enviado'" ;
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("i", $_SESSION['cedula']);
         $this -> sentencia -> execute();
@@ -62,7 +62,6 @@ class consultaModelo extends Modelo{
             $this -> usuarioProfesor,
             $this -> idConsulta,
             ); 
-        //$this ->  sentencia -> execute();
     }
 
 
@@ -79,6 +78,18 @@ class consultaModelo extends Modelo{
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);   
         return $resultado;
     }
+    public function guardarEstado(){
+        $this -> prepararInsercionDeEstado(); 
+        $this -> sentencia -> execute();
+    }
 
+    private function prepararInsercionDeEstado(){
+        $sql = "UPDATE consulta SET estadoConsulta='visto' WHERE cedulaAlumno= ? && estadoConsulta='respondido'";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i",
+            $this -> cedulaAlumno,
+            ); 
+
+    }
 
 }
