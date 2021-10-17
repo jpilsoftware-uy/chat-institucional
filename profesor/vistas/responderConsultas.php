@@ -45,7 +45,6 @@
                     echo "<tr>";
                     echo "<td> " . $consulta['usuarioAlumno'] . "</td>";
                     echo "<td> " . $consulta['mensajeConsulta'] . "</td>";
-                    echo "<td> " . $consulta['idConsulta'] . "</td>";
                     echo "<td>  <input type='radio' name='idConsulta' value= '$consulta[idConsulta]' >  </td>";
                     echo "</tr>";
                 }
@@ -59,7 +58,8 @@
 
          <textarea name="mensajeRespuesta" ></textarea>
          <button action="submit" formaction="/insertarRespuesta">Enviar </button>
-         
+         <button action ="submit" formaction="/principalProfesor">Volver</button>  
+
          
          
          </form>

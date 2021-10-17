@@ -51,10 +51,10 @@
             if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearMensaje($_POST['mensajeEnviado']);
             break;             
         
-        case '/crearChat':
+        /*case '/crearChat':
             if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearChat($_POST['']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /pre-chat');
-            break;
+            break;*/
 
         case '/unirse-chat':
             cargarVista('unirseChat');
@@ -91,5 +91,11 @@
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preModificarDatosDeUsuario($_POST['cedula'], $_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
             break;
-        
+        case '/consultaTerminada':
+            consultaController::cambiarEstadoAVisto();
+            header('location: /principalAlumno');
+            break;
+        case '/crearChat':
+            cargarVista('iniciarChat');
+            break;    
     }

@@ -37,7 +37,11 @@
     <?php endif; ?>
 
 
+    
+
 <form action="" method="post">
+   
+
         <button action="submit" formaction="/crearChat">Crear chat</button>
         <button action="submit" formaction="/unirse-chat">Unirse a un chat</button>
         <button formaction="/principalAlumno">Volver atras</button>
