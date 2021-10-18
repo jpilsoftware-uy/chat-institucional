@@ -72,6 +72,9 @@ class chatModelo extends Modelo{
     }
 
 
+    
+
+
 
 
 }
