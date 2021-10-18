@@ -27,23 +27,8 @@ create table orientaciones(tipoDeOrientacion varchar (60) primary key,materia1 v
 
 create table grupo (idGrupo varchar (10) primary key,  tipoDeOrientacion varchar (60) , foreign key (tipoDeOrientacion) references orientaciones(tipoDeOrientacion) );
 
-create table grupoQueCursaAlumno (id int primary key auto_increment , cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeAlumno varchar(10), FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeAlumno) REFERENCES grupo (idGrupo) ); 
+create table grupoDeUsuario (id int primary key auto_increment , cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeUsuario varchar(10), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo)); 
 
-create table grupoQueDictaProfesor (id int primary key auto_increment ,cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeProfesor varchar(10), FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeProfesor) REFERENCES grupo (idGrupo) );
-
-
-# Crear Usuarios
-
-INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado) VALUES (11111111, 'admin', 'admin', 'admin', 'admin', '$2y$10$3jAdYrk4ZMDlRRU1XUa8nucyWfMGBbdM64QhGqvu6khubKUgdu2Pq',
-'Administrador', 'aprobado');
-
-INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado) VALUES (52399205, 'Pedro', 'Oyarzun', 'Fagundez', 'pedrooyarzun', '$2y$10$h2ZWXH.Av9OtEVO7FNpVVepR2hk2eOshFGDgJVnPvSLxvo6p1OpSC',
-'Profesor', 'aprobado');
-
-INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado) VALUES (36792178, 'Ivan', 'Braida', 'Sanchez', 'ivanbraida', '$2y$10$w7z0eMrQuG3ryAHe349ZAeox314orLDfEesL8yz790VdzSJFDgDPe',
-'Alumno', 'aprobado');
-
-# Crear Orientaciones
 insert into orientaciones values ("1er anio - Bachillerato De Informatica","Programacion I","Sistemas Operativos I","Logica para informatica","Metodos discretos","Lab. de Soporte de Equipos Informaticos","Geometria","Lab. de Tecnologias Electricas Aplicadas","Matematica","Ingles","Ciencias Sociales - Historia","Biologia CTS","Analisis y produccion de Textos","Quimica");
 
 insert into orientaciones values ("2er anio - Bachillerato De Informatica","Programacion II","Sistemas Operativos II","Disenio Web","Sistemas de Bases de Datos I","Lab. de Redes de Área Local","Geometria","Electronica aplicada a la Informatica","Matematica","Ingles","Ciencias Sociales - Economia","Analisis y produccion de Textos","Fisica","");
