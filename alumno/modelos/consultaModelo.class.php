@@ -100,20 +100,31 @@ class consultaModelo extends Modelo{
     }
 
 
-    public function historialDeConsultas(){
-        $this -> prepararHistorialDeConsultas();
+    public function historialDeConsultasAlumno(){
+        $this -> prepararHistorialDeConsultasAlumno();
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
         return $resultado;
     }
 
 
-    private function prepararHistorialDeConsultas(){
-        $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioProfesor FROM consulta WHERE cedulaAlumno= ? && estadoConsulta = 'visto'";
+    private function prepararHistorialDeConsultasAlumno(){
+        $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioProfesor, usuarioAlumno FROM consulta WHERE cedulaAlumno= ? && estadoConsulta = 'visto'";
         $this -> sentencia = $this -> conexion -> prepare($sql);
-        $this -> sentencia -> bind_param("i",
-            $this -> cedula
-        );
+        $this -> sentencia -> bind_param("i", $this -> cedulaAlumno);
+    }
+
+    public function historialDeConsultasProfesor(){
+        $this -> prepararHistorialDeConsultasProfesor();
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+    }
+
+    private function prepararHistorialDeConsultasProfesor(){
+        $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioAlumno FROM consulta WHERE cedulaProfesor = ? && estadoConsulta = 'visto'";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $this -> cedulaProfesor);
     }
 
 }

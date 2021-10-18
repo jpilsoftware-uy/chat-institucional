@@ -35,7 +35,7 @@
                                     <table class="table table-striped table-fixed">
                                         <thead class="text-center" style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)">
                                             <tr>
-                                                <th style="color: white; font-weight: bold;">Profesor</th>
+                                                <th style="color: white; font-weight: bold;">Alumno</th>
                                                 <th style="color: white; font-weight: bold;">Mensaje Consulta</th>
                                                 <th style="color: white; font-weight: bold;">Mensaje Respuesta</th>
                                             </tr>
@@ -43,7 +43,7 @@
                                         <tbody class="text-center">
                                             <?php
                                                 $consulta = new consultaController();
-                                                $consultas = $consulta -> preHistorialDeConsultasAlumno();
+                                                $consultas = $consulta -> preHistorialDeConsultasProfesor();
                                                 if($consultas == false){
                                                     echo "<tr>";
                                                     echo "<td colspan='3'> Usted no tiene consultas </td>";
@@ -51,7 +51,7 @@
                                                 } else {
                                                     foreach ($consultas as $consulta){
                                                         echo "<tr>";
-                                                        echo " <td> " . $consulta['usuarioProfesor'] . "</td>";
+                                                        echo " <td> " . $consulta['usuarioAlumno'] . "</td>";
                                                         echo " <td> " . $consulta['mensajeConsulta'] . "</td>";
                                                         echo " <td> " . $consulta['mensajeRespuesta'] . "</td>";
                                                         echo "</tr>";
@@ -61,8 +61,8 @@
                                             ?>
                                         </tbody>
                                     </table>
-                                    <form action="/principalAlumno" method="POST">
-                                        <button type="submit" formaction="/principalAlumno" class="btn text-center" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff; font-weight: bold;">Volver al Inicio</button>
+                                    <form action="/principalProfesor" method="POST">
+                                        <button type="submit" class="btn text-center" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff; font-weight: bold;">Volver al Inicio</button>
                                     </form>
                                 </div>
                             </div>
