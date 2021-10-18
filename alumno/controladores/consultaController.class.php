@@ -13,14 +13,14 @@
                     $p -> usuarioAlumno = $_SESSION['usuario'];
                     $p -> guardarConsulta();
 
-                    return generarHtml('consultaAlumno', ['exito' => true]);
+                    return generarHtml('consultaAlumno', ['exito' => true], "Consulta enviada exitosamente");
                 }
                 catch(Exception $e){
                     error_log($e -> getMessage());
                     return "No se pudo guardar la consulta";
                 }
             }else{
-                return generarHtml('consultaAlumno',  ['exito' => false]);
+                return generarHtml('consultaAlumno',  ['exito' => false], "El campo mensaje se encuentra vacio");
             }
         }
 
