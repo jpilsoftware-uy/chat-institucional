@@ -97,5 +97,9 @@
             break;
         case '/crearChat':
             cargarVista('iniciarChat');
-            break;    
+            break;
+            
+        case '/ver-historial':
+            cargarVista('historialConsultas');
+            break;
     }

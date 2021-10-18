@@ -49,11 +49,15 @@ class consultaModelo extends Modelo{
         $this -> sentencia -> execute();   
          
     }
+
+    
     public function guardarRespuesta(){
         $this -> prepararInsercionDeRespuesta(); 
         $this -> sentencia -> execute();   
          
     }
+
+
     private function prepararInsercionDeRespuesta(){
         $sql = "UPDATE consulta SET mensajeRespuesta= ?, usuarioProfesor= ?, estadoConsulta='respondido' WHERE idConsulta= ? ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
@@ -78,18 +82,38 @@ class consultaModelo extends Modelo{
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);   
         return $resultado;
     }
+
+
     public function guardarEstado(){
         $this -> prepararInsercionDeEstado(); 
         $this -> sentencia -> execute();
     }
+
 
     private function prepararInsercionDeEstado(){
         $sql = "UPDATE consulta SET estadoConsulta='visto' WHERE cedulaAlumno= ? && estadoConsulta='respondido'";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("i",
             $this -> cedula,
-            ); 
+        ); 
 
+    }
+
+
+    public function historialDeConsultas(){
+        $this -> prepararHistorialDeConsultas();
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+    }
+
+
+    private function prepararHistorialDeConsultas(){
+        $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioProfesor FROM consulta WHERE cedulaAlumno= ? && estadoConsulta = 'visto'";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i",
+            $this -> cedula
+        );
     }
 
 }
