@@ -41,11 +41,12 @@
             <div class="col-md-12 text-center">
                 <form method="POST">
                     <button action="submit" formaction="hacer-consulta" class="btn btn-success mb-3">Hacer una Consulta a un Profesor</button> <br>
-                    <button action="submit" formaction="ver-respuesta" class="btn btn-success mb-3">Ver Respuestas del Profesor</button> <br>
+                    <button action="submit" formaction="ver-respuesta" class="btn btn-success mb-3">Ver Respuestas de consultas Recientes</button> <br>
                     <button action="submit" formaction="pre-chat" class="btn btn-success mb-3">Modulo de Chat</button> <br>
                     <button action="submit" formaction="/modificar-datos-usuario" class="btn btn-success mb-3">Modificar mis datos</button> <br>
-                    <button action="submit" formaction="/cerrar-sesion" class="btn btn-danger">Cerrar Sesion</button>
-                    <button action="submit" formaction="/eliminar-usuario" class="btn btn-success">Eliminar Usuario</button>
+                    <button action="submit" formaction="/cerrar-sesion" class="btn btn-danger mb-3">Cerrar Sesion</button> <br>
+                    <button action="submit" formaction="/eliminar-usuario" class="btn btn-success mb-3">Eliminar Usuario</button> <br>
+                    <button action="submit" formaction="/ver-historial" class="btn btn-success">Ver Historial de Consultas</button>
                 </form>
             </div>
         </div>
