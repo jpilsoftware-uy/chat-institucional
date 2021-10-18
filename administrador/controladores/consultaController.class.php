@@ -84,13 +84,34 @@
             }
         }
 
-        public static function preHistorialDeConsultas(){
+        public static function preHistorialDeConsultasAlumno(){
             try{
                 $c = new ConsultaModelo();
-                $c -> cedula = $_SESSION['cedula'];
-                $resultado = $c ->  historialDeConsultas();
-                return $resultado;
+                $c -> cedulaAlumno = $_SESSION['cedula'];
+                $resultado = $c ->  historialDeConsultasAlumno();
+                if(empty($resultado)){
+                    return false;
+                } else {
+                    return $resultado;
+                }
             }
+            catch(Exception $e){
+                error_log($e -> getMessage());
+                return generarHtml('historialConsultas', ['exito' => false], "No se pudo listar las consultas");
+            }
+        }
+
+        public static function preHistorialDeConsultasProfesor(){
+            try{
+                $c = new ConsultaModelo();
+                $c -> cedulaProfesor = $_SESSION['cedula'];
+                $resultado = $c -> historialDeConsultasProfesor();
+                if(empty($resultado)){
+                    return false;
+                } else {
+                    return $resultado;
+                }
+            } 
             catch(Exception $e){
                 error_log($e -> getMessage());
                 return generarHtml('historialConsultas', ['exito' => false], "No se pudo listar las consultas");
