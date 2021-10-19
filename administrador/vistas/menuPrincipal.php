@@ -115,6 +115,17 @@
                                             <button formaction="/cerrar-sesion" class="btn" style="border-radius: 25px; background-image: linear-gradient(to right,#ff0000, #990000); border: 0px; color: #fff; font-weight: bold;">Cerrar Sesion</button>
                                         </div>
                                 </div>
+
+                                <div class="card mt-4 mb-4 text-center">
+                                    <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Agenda de Consultas </div>
+                                        <div class="card-body">
+                                            <p class="card-text"> En esta seccion se puede ver toda la agenda de consultas del sistema. </p>
+                                            <a href="/agenda-de-consultas" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Ver Agenda</a>
+                                            <p class="card-text mt-1">
+                                                <small class="text-muted"> Ultima actualizacion: 7/20/2021 </small>
+                                            </p>
+                                        </div>
+                                </div>
                             </div>
                         </div>
                     </div>
