@@ -46,7 +46,7 @@
                                                 $consultas = $consulta -> preHistorialDeConsultasAlumno();
                                                 if($consultas == false){
                                                     echo "<tr>";
-                                                    echo "<td colspan='3'> Usted no tiene consultas </td>";
+                                                    echo "<td colspan='3'> Usted no tiene consultas en el sistema </td>";
                                                     echo "</tr>";
                                                 } else {
                                                     foreach ($consultas as $consulta){

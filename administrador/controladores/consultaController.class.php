@@ -3,7 +3,7 @@
 
     class consultaController {
         public static function preAltaDeConsulta($mensajeConsulta, $cedulaProfesor){
-            if( $mensajeConsulta != "" && $cedulaProfesor != "" ){
+            if($mensajeConsulta != "" && $cedulaProfesor != ""){
                 try{
                     $p = new ConsultaModelo();
                     $p -> mensajeConsulta = $mensajeConsulta;
@@ -63,7 +63,12 @@
                 $a = new ConsultaModelo();
                 $a -> cedula = $_SESSION['cedula'];
                 $respuestasEnviadas = $a -> listarRespuesta();
-                return $respuestasEnviadas;
+                if(empty($respuestasEnviadas)){
+                    return false;
+                } else {
+                    return $respuestasEnviadas;
+                }
+                
             } 
             catch(Exception $e){
                 error_log($e -> getMessage());
