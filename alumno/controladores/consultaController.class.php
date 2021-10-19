@@ -117,4 +117,22 @@
                 return generarHtml('historialConsultas', ['exito' => false], "No se pudo listar las consultas");
             }
         }
+
+        public static function preListarTodasLasConsultas(){
+            try{
+                $c = new ConsultaModelo();
+                $resultado = $c -> listarTodasLasConsultas();
+                if(empty($resultado)){
+                    return false;
+                } else {
+                    return $resultado;
+                }
+            }
+            catch(Exception $e){
+                error_log($e -> getMessage());
+                return generarHtml('agendaConsultas', ['exito' => false], "No se pudo listar las consultas");      
+            }
+        }
+
+        
     }
