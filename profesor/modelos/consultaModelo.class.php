@@ -124,7 +124,7 @@ class consultaModelo extends Modelo{
 
 
     private function prepararHistorialDeConsultasProfesor(){
-        $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioAlumno FROM consulta WHERE cedulaProfesor = ? && estadoConsulta = 'visto'";
+        $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioAlumno FROM consulta WHERE cedulaProfesor = ? && estadoConsulta = 'respondido' OR estadoConsulta = 'visto'";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("i", $this -> cedulaProfesor);
     }
@@ -141,5 +141,6 @@ class consultaModelo extends Modelo{
         $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioAlumno, usuarioProfesor FROM consulta";
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
+    
 
 }
