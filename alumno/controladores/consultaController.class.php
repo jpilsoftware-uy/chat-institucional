@@ -3,7 +3,11 @@
 
     class consultaController {
         public static function preAltaDeConsulta($mensajeConsulta, $cedulaProfesor){
-            if($mensajeConsulta != "" && $cedulaProfesor != ""){
+            if($mensajeConsulta == ""){
+                return generarHtml("consultaAlumno", ['exito' => false], "El campo mensaje esta vacio");
+            } else if($cedulaProfesor == ""){
+                return generarHtml("consultaAlumno", ['exito' => false], "No se selecciono ningun profesor");
+            } else {
                 try{
                     $p = new ConsultaModelo();
                     $p -> mensajeConsulta = $mensajeConsulta;
@@ -16,10 +20,8 @@
                 }
                 catch(Exception $e){
                     error_log($e -> getMessage());
-                    return "No se pudo guardar la consulta";
+                    return generarHtml('consultaAlumno', ['exito' => false], "No se pudo guardar la consulta");
                 }
-            }else{
-                return generarHtml('consultaAlumno',  ['exito' => false], "El campo mensaje se encuentra vacio");
             }
         }
 

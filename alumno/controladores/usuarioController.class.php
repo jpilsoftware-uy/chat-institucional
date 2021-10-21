@@ -162,7 +162,7 @@
                                 return generarHtml("eliminarUsuarios", ['exito' => false], "La cedula ingresada no existe en el sistema");
                             }
                         } else {
-                            return generarHtml("eliminarUsuarios", ['exito' => false], "La cedula ingresada no existe en el sistema");
+                            return generarHtml("eliminarUsuarios", ['exito' => false], "La cedula ingresada no corresponde con la suya");
                         }
                     } else if ($_SESSION['tipoDeUsuario'] == "Administrador"){
                         $u = new UsuarioModelo();
