@@ -24,32 +24,119 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/menuDesplegable.css">
+    <script src="https://kit.fontawesome.com/626834a84d.js" crossorigin="anonymous"></script>
     <title>Menu Principal | Alumno</title>
+    <style>
+    
+    
+</style>
 </head>
-<body>
-    <?php 
-    $nombre = $_SESSION['nombre'];
-    $h1 = '
-    <h1 class="text-center mt-3">Bienvenido ' . $nombre . '!</h1>
-    ';
-    echo $h1;
-    ?>
-    <hr>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <form method="POST">
-                    <button action="submit" formaction="hacer-consulta" class="btn btn-success mb-3">Hacer una Consulta a un Profesor</button> <br>
-                    <button action="submit" formaction="ver-respuesta" class="btn btn-success mb-3">Ver Respuestas de consultas Recientes</button> <br>
-                    <button action="submit" formaction="pre-chat" class="btn btn-success mb-3">Modulo de Chat</button> <br>
-                    <button action="submit" formaction="/modificar-datos-usuario" class="btn btn-success mb-3">Modificar mis datos</button> <br>
-                    <button action="submit" formaction="/cerrar-sesion" class="btn btn-danger mb-3">Cerrar Sesion</button> <br>
-                    <button action="submit" formaction="/eliminar-usuario" class="btn btn-success mb-3">Eliminar Usuario</button> <br>
-                    <button action="submit" formaction="/ver-historial" class="btn btn-success">Ver Historial de Consultas</button>
-                </form>
-            </div>
+<body id="body">
+  
+
+    <header>
+        <div class ="icon_menu" > 
+            <i class="fas fa-bars" id="botonAbrir"></i>
+            
         </div>
-    </div>
+        <div class="mensajeDeBienvenida">
+        <?php 
+        echo "<h1 class='ml-4'>Bienvenido ". $_SESSION['nombre']. " !</h1>";
+         ?> 
+        </div> 
+       
+    </header>
+    <div class="menu" id="menu">
+        <div class="perfil">
+            <i class="fas fa-user-circle"></i>
+            <?php 
+            echo "<h4>".$_SESSION['usuario']."</h4>";
+            ?>
+        </div>
+
+        <div class="opcionesMenu">
+            <a href="/principalAlumno" class="seleccionado">
+                <div class="opcion">
+                <i class="fas fa-home" title="Inicio"></i>
+                    <h4>Inicio</h4>
+                </div>                
+            </a>
+            <a href="/modificar-datos-usuario" >
+                <div class="opcion">
+                    <i class="fas fa-user-edit" title="Editar perfil"></i>
+                    <h4>Editar perfil</h4>
+                </div>                
+            </a>
+            <a href="/eliminar-usuario">
+                <div class="opcion">
+                    <i class="fas fa-times-circle" title="Eliminar Usuario"></i>
+                    <h4>Eliminar perfil</h4>
+                </div>
+            
+                <a href="/cerrar-sesion" >
+                    <div class="opcion">
+                    <i class="fas fa-sign-out-alt" title="Cerrar Sesion"></i>
+                    <h4>Cerrar Sesion</h4>
+                    </div>
+                </a>
+                           
+
+  
+    <main class="vh-100" >
+        <div class="card-deck-wrapper">
+                                <div class="card-deck">
+
+                                    <div class="card mt-4 mb-3 text-center mx-4">
+                                        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Chat</div>
+                                            <div class="card-body">
+                                                <p class="card-text"> En esta seccion se puede chatear con los usuarios que desee. </p>
+                                                <a href="/pre-chat" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Chat</a>
+                                                <p class="card-text mt-1">
+                                                    <small class="text-muted"> Ultima actualizacion: 10/20/21 </small>
+                                                </p>
+                                            </div>
+                                    </div>
+
+                                    <div class="card mt-4 mb-4 text-center mx-4">
+                                        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Consultas </div>
+                                            <div class="card-body">
+                                                <p class="card-text"> En esta seccion se puede hacer consultas al profesor que desee. </p>
+                                                <a href="/hacer-consulta" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Consultas</a>
+                                                <p class="card-text mt-1">
+                                                    <small class="text-muted"> Ultima actualizacion: 10/20/2021 </small>
+                                                </p>
+                                            </div>
+                                    </div>
+                                    <div class="card mt-4 mb-4 text-center mx-4">
+                                        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Ver Respuestas de consultas Recientes </div>
+                                            <div class="card-body">
+                                                <p class="card-text"> En esta seccion puedes ver respuestas de consultas recientes. </p>
+                                                <a href="ver-respuesta" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Ver Respuestas</a>
+                                                <p class="card-text mt-1">
+                                                    <small class="text-muted"> Ultima actualizacion: 10/21/2021 </small>
+                                                </p>
+                                            </div>
+                                    </div>
+
+                                    <div class="card mt-4 mb-4 text-center mx-4">
+                                        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Ver Historial de Consultas </div>
+                                            <div class="card-body">
+                                                <p class="card-text"> En esta seccion puedes ver el historial de tus consultas. </p>
+                                                <a href="/ver-historial" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Ver historial</a>
+                                                <p class="card-text mt-1">
+                                                    <small class="text-muted"> Ultima actualizacion: 10/21/2021 </small>
+                                                </p>
+                                            </div>
+                                    </div>
+
+
+                                    
+
+                            
+    </main>
+    
+    <script src="../js/menu.js"></script>
 </body>
 </html>

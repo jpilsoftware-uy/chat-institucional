@@ -51,10 +51,10 @@
             if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearMensaje($_POST['mensajeEnviado']);
             break;             
         
-        /*case '/crearChat':
+        case '/crearChat':
             if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearChat($_POST['']);
-            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /pre-chat');
-            break;*/
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /iniciarChat');
+            break;
 
         case '/unirse-chat':
             cargarVista('unirseChat');
@@ -70,8 +70,7 @@
             break;
 
         case '/cerrar-sesion':
-            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::cerrarSesion();
-            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAlumno");
+            usuarioController::cerrarSesion();
             break;
 
         case '/eliminar-usuario':
@@ -95,11 +94,19 @@
             consultaController::cambiarEstadoAVisto();
             header('location: /principalAlumno');
             break;
-        case '/crearChat':
+        case '/iniciarChat':
             cargarVista('iniciarChat');
-            break;
+
+            break;    
+        case '/editar':
+            cargarVista('editar');
+            break;    
+        case '/unirseGrupo':
+            if($_SERVER['RQUEST_METHOD'] === "POST") grupoController::unirseAGrupo($_POST['idGrupoDeUsuario']);
+            if($_SERVER['RQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
+            break;    
+
             
         case '/ver-historial':
             cargarVista('historialConsultas');
             break;
-    }

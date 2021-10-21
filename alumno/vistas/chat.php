@@ -52,6 +52,7 @@
             
             <textarea name="mensajeEnviado"placeholder="Ingresa tu mensaje..."></textarea>
             <input type="submit" value="Enviar Mensaje" name="enviar">
+            <button action ="submit" formaction="/principalAlumno">Volver</button>  
         </form>
     </div>
 </body>

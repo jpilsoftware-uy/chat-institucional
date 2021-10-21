@@ -10,37 +10,103 @@
 
 
 ?>
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="eliminar-usuarios.css">
-  <link rel="icon" href="https://i.ibb.co/qMgNQf5/Logo-Dibujo.png" />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-    crossorigin="anonymous"
-  />
-  <title>Eliminar Usuario</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.ibb.co/qMgNQf5/Logo-Dibujo.png">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/menuDesplegable.css">
+    <script src="https://kit.fontawesome.com/626834a84d.js" crossorigin="anonymous"></script>
+    <title> Eliminar Perfil | Alumno</title>
+    <style>
+    
+    
+</style>
 </head>
-<body>
+
+<body id="body">
+  
+
+    <header>
+        <div class ="icon_menu" > 
+            <i class="fas fa-bars" id="botonAbrir"></i>
+            
+        </div>
+        <div class="mensajeDeBienvenida">
+        <?php 
+        echo "<h1 class='ml-4'>Eliminar Perfil</h1>";
+         ?> 
+        </div> 
+       
+    </header>
+    <div class="menu" id="menu">
+        <div class="perfil">
+            <i class="fas fa-user-circle"></i>
+            <?php 
+            echo "<h4>".$_SESSION['usuario']."</h4>";
+            ?>
+        </div>
+
+        <div class="opcionesMenu">
+            <a href="/principalAlumno" >
+                <div class="opcion">
+                <i class="fas fa-home" title="Inicio"></i>
+                    <h4>Inicio</h4>
+                </div>                
+            </a>
+            <a href="/modificar-datos-usuario" >
+                <div class="opcion">
+                    <i class="fas fa-user-edit" title="Editar perfil"></i>
+                    <h4>Editar perfil</h4>
+                </div>                
+            </a>
+            <a href="/eliminar-usuario" class="seleccionado">
+                <div class="opcion">
+                    <i class="fas fa-times-circle" title="Eliminar Usuario"></i>
+                    <h4>Eliminar perfil</h4>
+                </div>
+            
+                <a href="/cerrar-sesion" >
+                    <div class="opcion">
+                    <i class="fas fa-sign-out-alt" title="Cerrar Sesion"></i>
+                    <h4>Cerrar Sesion</h4>
+                    </div>
+                </a>
+                           
+        </div>
+    </div>
+    
+    <main class="vh-100" >
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
+    <div class="alert alert-danger" >La cedula es incorrecta</div>
+    <?php endif; ?> 
+    
+
+
   <section class="vh-100" style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)">
   <?php if(isset($parametros['exito']) && $parametros['exito'] == false && $mensaje !== ""): 
       echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
       endif; 
   ?>
   <form action="" method="POST">
+
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-12 col-xl-11">
-          <div class="card text-black" style="border-radius: 25px">
+          <div class="card text-black  mt-4" style="border-radius: 25px">
             <div class="card-body p-md-5">
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                  <p class="text-center h1 mb-5 mx-1 mx-md-4 mt-4" style="background: linear-gradient(to right, #009ffd, #2a2a72);-webkit-background-clip: text; -webkit-text-fill-color: transparent;">Eliminar Usuarios</p>
+                  <p class="text-center h1 mb-5 mx-1 mx-md-4 mt-4" style="background: linear-gradient(to right, #009ffd, #2a2a72);-webkit-background-clip: text; -webkit-text-fill-color: transparent;">Eliminar</p>
                     <div class="d-flex flex-row align-items-center mb-4 input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">Cedula</span>
@@ -68,7 +134,7 @@
       <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header"">
+            <div class="modal-header">
               <h5 class="modal-title col-11 text-center" style="font-weight: bold;" id="exampleModalLabel">Eliminar Usuario</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -86,8 +152,11 @@
         </div>
       </div>
   </form>
-  </section>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+                            
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="../js/menu.js"></script>
 </body>
 </html>
