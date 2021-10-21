@@ -35,6 +35,7 @@
         });
     </script>
 </head>
+
 <body id="body">
   
 
@@ -87,12 +88,19 @@
         </div>
     </div>
     <main class="vh-100" >
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-        <div class="alert alert-success" >El usuario fue modificado exitosamente</div>
-    <?php endif; ?>
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-        <div class="alert alert-danger" >No se pudo modificar el usuario</div>
-    <?php endif; ?> 
+    
+
+    <section class="vh-100" style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)">
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == true && $mensaje !== ""): 
+        echo "<div class='alert alert-success' > " . $mensaje .  " </div>";
+        endif; 
+    ?>
+
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == false && $mensaje !== ""): 
+        echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
+        endif; 
+    ?>
+
         <form action="/actualizar-datos-usuario" method="POST">
             <div class="container h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">

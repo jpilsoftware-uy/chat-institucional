@@ -32,12 +32,15 @@
 </head>
 <body>
     <section class="vh-100" style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)" id="section">
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-        <div class="alert alert-success" >El usuario fue modificado exitosamente</div>
-    <?php endif; ?>
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-        <div class="alert alert-danger" >No se pudo modificar el usuario</div>
-    <?php endif; ?> 
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == true && $mensaje !== ""): 
+        echo "<div class='alert alert-success' > " . $mensaje .  " </div>";
+        endif; 
+    ?>
+
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == false && $mensaje !== ""): 
+        echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
+        endif; 
+    ?>  
         <form action="/actualizar-datos-usuario" method="POST">
             <div class="container h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -112,7 +115,7 @@
                                     </div>
                                     <input type="text" placeholder="Ingrese su cedula" class="form-control" maxlength="8" name="cedula" id="cedula"/>   
                                 </div>
-                                <p>Segundo, ingresa tu nueva contraseña, de esta manera evitamos que la escribas mal 😉</p>
+                                <p>Segundo, ingresa tu nueva contraseña otra vez, de esta manera evitamos que la escribas mal 😉</p>
                                 <div class="d-flex flex-row align-items-center mb-4 input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Contraseña</span>

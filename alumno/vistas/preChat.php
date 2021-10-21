@@ -35,6 +35,7 @@
         });
     </script>
 </head>
+
 <body id="body">
   
 
@@ -87,13 +88,18 @@
         </div>
     </div>
     <main class="vh-100" >
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == true): ?>
-        <div class="alert alert-success">Su chat fue creado exitosamente, dirijase a "Unirse a un chat"</div>
-    <?php endif; ?>
+    
 
-    <?php if(isset($parametros['exito']) && $parametros['exito'] == false): ?>
-        <div class="alert alert-danger">El chat ya existe en el sistema</div>
-    <?php endif; ?>
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == true && $mensaje !== ""): 
+        echo "<div class='alert alert-success' > " . $mensaje .  " </div>";
+        endif; 
+    ?>
+
+    <?php if(isset($parametros['exito']) && $parametros['exito'] == false && $mensaje !== ""): 
+        echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
+        endif; 
+    ?>
+
 
 
     

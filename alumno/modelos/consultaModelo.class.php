@@ -29,7 +29,7 @@ class consultaModelo extends Modelo{
 
 
     private function prepararListadoDeConsultas(){
-        $sql = "SELECT idConsulta, mensajeConsulta, mensajeRespuesta, cedulaAlumno, cedulaProfesor, estadoConsulta FROM consulta WHERE cedulaProfesor= ? && estadoConsulta='enviado'" ;
+        $sql = "SELECT idConsulta, mensajeConsulta, mensajeRespuesta, cedulaAlumno, cedulaProfesor, estadoConsulta, usuarioAlumno FROM consulta WHERE cedulaProfesor= ? && estadoConsulta='enviado'" ;
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("i",  $this -> cedula);
         $this -> sentencia -> execute();
@@ -49,11 +49,15 @@ class consultaModelo extends Modelo{
         $this -> sentencia -> execute();   
          
     }
+
+    
     public function guardarRespuesta(){
         $this -> prepararInsercionDeRespuesta(); 
         $this -> sentencia -> execute();   
          
     }
+
+
     private function prepararInsercionDeRespuesta(){
         $sql = "UPDATE consulta SET mensajeRespuesta= ?, usuarioProfesor= ?, estadoConsulta='respondido' WHERE idConsulta= ? ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
@@ -78,18 +82,64 @@ class consultaModelo extends Modelo{
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);   
         return $resultado;
     }
+
+
     public function guardarEstado(){
         $this -> prepararInsercionDeEstado(); 
         $this -> sentencia -> execute();
     }
+
 
     private function prepararInsercionDeEstado(){
         $sql = "UPDATE consulta SET estadoConsulta='visto' WHERE cedulaAlumno= ? && estadoConsulta='respondido'";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("i",
             $this -> cedula,
-            ); 
+        ); 
 
+    }
+
+
+    public function historialDeConsultasAlumno(){
+        $this -> prepararHistorialDeConsultasAlumno();
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+    }
+
+
+    private function prepararHistorialDeConsultasAlumno(){
+        $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioProfesor, usuarioAlumno FROM consulta WHERE cedulaAlumno= ? && estadoConsulta = 'visto'";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $this -> cedulaAlumno);
+    }
+
+
+    public function historialDeConsultasProfesor(){
+        $this -> prepararHistorialDeConsultasProfesor();
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+    }
+
+
+    private function prepararHistorialDeConsultasProfesor(){
+        $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioAlumno FROM consulta WHERE cedulaProfesor = ? && estadoConsulta = 'visto'";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $this -> cedulaProfesor);
+    }
+
+
+    public function listarTodasLasConsultas(){
+        $this -> prepararListarTodasLasConsultas();
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+    }
+
+    private function prepararListarTodasLasConsultas(){
+        $sql = "SELECT mensajeConsulta, mensajeRespuesta, usuarioAlumno, usuarioProfesor FROM consulta";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
     }
 
 }

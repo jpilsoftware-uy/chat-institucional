@@ -32,6 +32,7 @@
     
 </style>
 </head>
+
 <body id="body">
   
 
@@ -81,8 +82,8 @@
                     </div>
                 </a>
                            
-        </div>
-    </div>
+
+  
     <main class="vh-100" >
         <div class="card-deck-wrapper">
                                 <div class="card-deck">
