@@ -22,16 +22,32 @@
    <script src="js/chat.js"></script>
 </head>
 <body>
+
     <h1>Iniciar Chat</h1>
     <div>  Seleccione Grupo    </div>
-        <select>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+        <form action="" method="POST">
+        <?php
+        $grupo = new grupoController();
+        $grupos = $grupo -> mostrarGrupoDeUsuario();
         
-        </select> </br>
+        if($grupos == false){
+            
+            echo "<select>";
+            echo "<option>". "No tienes grupo" ."</option>";
+            echo "</select>" . "</br>";
+        }else{ 
+            echo "<select name='grupo'>";
+            foreach($grupos as $grupo){
+            echo "<option>" . $grupo['idGrupo'] ."</option>";
+            }
+            echo "</select>" . "</br>";
+        }   
+        ?>
+        <button action="submit" formaction="/crearChat" value="$grupo['idGrupo']">Iniciar Chat</button>
+        <button action="submit" formaction="/pre-chat">Volver atras</button>
+    </form>
         
-
-   </div>
+        
+        
 </body>
 </html>

@@ -82,10 +82,7 @@
             usuarioController::cerrarSesion();
             break;
 
-        case '/cerrar-sesion':
-            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::cerrarSesion();
-            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAlumno");
-            break;
+        
 
         case '/eliminar-usuario':
             cargarVista('eliminarUsuarios');
@@ -93,7 +90,7 @@
 
         case '/baja-usuario':
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preEliminarUsuarios($_POST['cedula']);
-            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAlumno");
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalProfesor");
             break;
 
         case '/modificar-datos-usuario':
@@ -104,4 +101,5 @@
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preModificarDatosDeUsuario($_POST['cedula'], $_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
             break;
+        
     }
