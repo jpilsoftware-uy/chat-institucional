@@ -92,7 +92,8 @@
 
   <?php if(isset($parametros['exito']) && $parametros['exito'] == false && $mensaje !== ""): 
       echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
-      endif; 
+      endif;
+      ?> 
  
   <form action="" method="POST">
 

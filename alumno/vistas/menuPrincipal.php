@@ -32,9 +32,9 @@
     
 </style>
 </head>
-
 <body id="body">
   
+
 
     <header>
         <div class ="icon_menu" > 
@@ -82,10 +82,10 @@
                     </div>
                 </a>
                            
-
-  
+        </div>
+    </div>
     <main class="vh-100" >
-        <div class="card-deck-wrapper">
+    <div class="card-deck-wrapper">
                                 <div class="card-deck">
 
                                     <div class="card mt-4 mb-3 text-center mx-4">
@@ -130,13 +130,11 @@
                                                 </p>
                                             </div>
                                     </div>
-
-
                                     
-
                             
     </main>
     
     <script src="../js/menu.js"></script>
+
 </body>
 </html>

@@ -110,3 +110,4 @@
         case '/ver-historial':
             cargarVista('historialConsultas');
             break;
+}            
