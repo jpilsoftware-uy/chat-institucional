@@ -24,7 +24,7 @@
                     $u -> estado = $estado;
                     $generarFormulario = $u -> guardarUsuario();
                     if ($generarFormulario == true){
-                        return generarHtml('registro'. $tipoDeUsuario, ['exito' => true], "Usuario registrado con exito");
+                        return generarHtml('registro'. $tipoDeUsuario, ['exito' => true], "Su usuario fue registrado, ahora debe ser aprobado por el administrador");
                     } else if ($generarFormulario == false){
                         return generarHtml('registro' . $tipoDeUsuario, ['exito' => false], "La cedula o el usuario ingresados ya existen en el sistema");
                     }
