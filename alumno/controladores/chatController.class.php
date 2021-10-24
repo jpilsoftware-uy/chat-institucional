@@ -12,10 +12,10 @@ class chatController extends chatModelo {
             $c -> ciCreador = $_SESSION['cedula'];
             $c -> estadoDelChat = "abierto";
             $c -> guardarChat();
-            return generarHtml('preChat', ['exito' => true]);
+            return generarHtml('preChat', ['exito' => true],"Se creo el chat con exito");
 
         }catch(Exception $e){
-            return generarHtml('preChat', ['exito' => false]);
+            return generarHtml('preChat', ['exito' => false], "No se pudo crear chat");
             error_log($e -> getMessage());
             return "No se pudo guardar ";
         } 
@@ -33,12 +33,12 @@ class chatController extends chatModelo {
                 $m -> guardarMensaje();
                 return cargarVista('chat');
             }catch(Exception $e){
-                return generarHtml('chat' . $tipoDeUsuario , ['exito' => false]);
+                return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"No se pudo enviar el mensaje");
                 error_log($e -> getMessage());
                 return "No se pudo guardar ";
             } 
         }else{
-            return generarHtml('chat' . $tipoDeUsuario , ['exito' => false]);
+            return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"El mensaje no puede ser vacio");
         }
     }
 
@@ -70,7 +70,7 @@ class chatController extends chatModelo {
             $resultado = $c -> listadoDeChats();
             return $resultado;
         } catch (Exception $e){
-            return generarHtml('unirseChat', ['exito' => false]);
+            return generarHtml('unirseChat', ['exito' => false],"no hay chat disponibles");
             error_log($e -> getMessage());
             return "No se pudo listar";
             

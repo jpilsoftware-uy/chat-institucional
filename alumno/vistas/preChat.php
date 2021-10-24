@@ -60,7 +60,7 @@
         </div>
 
         <div class="opcionesMenu">
-            <a href="/principalProfesor" >
+            <a href="/principalAlumno" >
                 <div class="opcion">
                 <i class="fas fa-home" title="Inicio"></i>
                     <h4>Inicio</h4>
