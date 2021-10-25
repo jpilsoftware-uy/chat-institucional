@@ -28,11 +28,10 @@ class grupoController extends grupoModelo{
     public static function mostrarGrupoDeUsuario(){
         $g = new grupoModelo();
         $g -> cedula = $_SESSION['cedula'];
-        $grupo = $g -> prepararGrupoDeUsuario();
-        if(empty($grupo)){
+        if($g -> traerGrupoDeUsuario() == false){
             return false;
         }else{
-            return $grupo;
+            return $g -> traerGrupoDeUsuario();
         }
     }
 
