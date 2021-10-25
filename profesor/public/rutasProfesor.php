@@ -44,8 +44,8 @@
             break;             
             
         case '/crearChat':
-            if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearChat($_POST['']);
-            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /pre-chat');
+            if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearChat($_POST['idGrupoDeUsuario']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /iniciarChat');
             break;
     
         case '/unirse-chat':
