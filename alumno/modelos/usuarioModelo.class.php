@@ -84,7 +84,7 @@ class UsuarioModelo extends Modelo{
         }
 
         if($resultado){
-            $comparacion = $this -> compararPasswords($resultado['contrasenia']) && $resultado['estado'] == "aprobado" &&  $resultado['tipoDeUsuario'] == $this -> tipoDeUsuario;
+            $comparacion = $this -> compararPasswords($resultado['contrasenia']) && $resultado['estado'] == "aprobado" &&  $resultado['tipoDeUsuario'] == $this -> tipoDeUsuario ;
             if($comparacion){
                 $this -> asignarDatosDeUsuario($resultado);
             }

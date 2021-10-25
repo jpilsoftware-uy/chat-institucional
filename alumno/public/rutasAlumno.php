@@ -96,18 +96,21 @@
             break;
         case '/iniciarChat':
             cargarVista('iniciarChat');
-
             break;    
         case '/editar':
             cargarVista('editar');
             break;    
         case '/unirseGrupo':
-            if($_SERVER['RQUEST_METHOD'] === "POST") grupoController::unirseAGrupo($_POST['idGrupoDeUsuario']);
-            if($_SERVER['RQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
+            if($_SERVER['REQUEST_METHOD'] === "POST") grupoController::unirseAGrupo($_POST['idGrupoDeUsuario']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
             break;    
 
             
         case '/ver-historial':
             cargarVista('historialConsultas');
             break;
+
+            
+        
+
 }            

@@ -66,7 +66,7 @@
                     <h4>Inicio</h4>
                 </div>                
             </a>
-            <a href="/modificar-datos-usuario" class="seleccionado" >
+            <a href="/modificar-datos-usuario"  >
                 <div class="opcion">
                     <i class="fas fa-user-edit" title="Editar perfil"></i>
                     <h4>Editar perfil</h4>
@@ -100,19 +100,34 @@
         endif; 
     ?>
 
+    <div class="card-deck-wrapper">
+                                <div class="card-deck">
 
+                                    <div class="card mt-4 mb-3 text-center mx-4">
+                                        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Crear chat</div>
+                                            <div class="card-body">
+                                                <p class="card-text"> En esta seccion se puede crear el chat. </p>
+                                                <a href="/crearChat" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Crear </a>
+                                                <p class="card-text mt-1">
+                                                    <small class="text-muted"> Ultima actualizacion: 10/21/21 </small>
+                                                </p>
+                                            </div>
+                                    </div>
+
+                                    <div class="card mt-4 mb-4 text-center mx-4">
+                                        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;">Unirse a un chat </div>
+                                            <div class="card-body">
+                                                <p class="card-text"> En esta seccion puede unirse a un chat ya creado</p>
+                                                <a href="/unirse-chat" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Unirse</a>
+                                                <p class="card-text mt-1">
+                                                    <small class="text-muted"> Ultima actualizacion: 10/21/2021 </small>
+                                                </p>
+                                            </div>
+                                    </div>
 
     
 
-    <form action="" method="post">
-   
-
-        <button action="submit" formaction="/crearChat">Crear chat</button>
-        <button action="submit" formaction="/unirse-chat">Unirse a un chat</button>
-        <button formaction="/principalAlumno">Volver atras</button>
-
-    </form>
-                                    
+                          
 
                             
     </main>
