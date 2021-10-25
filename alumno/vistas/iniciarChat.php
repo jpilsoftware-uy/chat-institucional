@@ -113,20 +113,22 @@
                     echo "<option>". "No tienes grupo" ."</option>";
                     echo "</select>" . "</br>";
                 }else{ 
-                    echo "<select name='grupo' class='opcionGrupos'>";
+                    echo "<select class='opcionGrupos' name='idGrupoDeUsuario'>";
+                    echo "<option selected disabled hidden>". "Seleccione un grupo" ."</option>";
+
                     foreach($grupos as $grupo){
-                        
-                    echo "<option>" . $grupo['idGrupoDeUsuario'] ."</option>";
+
+                    echo "<option value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
                     }
                     echo "</select>";
                 }   
                 ?>
                 </div>
-                <button action="submit" formaction="/crearChat" value="$grupo['idGrupoDeUsuario']">Iniciar Chat</button>
+                <button action="submit" formaction="/crearChat">Iniciar Chat</button>
                 <button action="submit" formaction="/pre-chat">Volver atras</button>
             </form>
             
-           
+                
 
             
 

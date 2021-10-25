@@ -19,11 +19,12 @@ class chatModelo extends Modelo{
 
 
     private function prepararGuardarChat(){
-        $sql = "INSERT INTO chat (ciCreador, estadoDelChat) VALUES (?, ?)";
+        $sql = "INSERT INTO chat (ciCreador, estadoDelChat, Grupo) VALUES (?, ?, ?)";
         $this -> sentencia = $this -> conexion -> prepare($sql);
-        $this -> sentencia -> bind_param("is",
+        $this -> sentencia -> bind_param("iss",
             $this -> ciCreador,
-            $this -> estadoDelChat
+            $this -> estadoDelChat,
+            $this -> grupo,
         );
     }
     public function guardarMensaje(){

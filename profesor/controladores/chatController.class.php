@@ -6,18 +6,24 @@ require '../utils/autoloader.php';
 
 class chatController extends chatModelo {
 
-    public static function crearChat(){
-        try{
-            $c = new chatModelo();
-            $c -> ciCreador = $_SESSION['cedula'];
-            $c -> estadoDelChat = "abierto";
-            $c -> guardarChat();
-            return generarHtml('preChat', ['exito' => true],"Se creo el chat con exito");
+    public static function crearChat($idGrupoDeUsuario){
+        if($idGrupoDeUsuario !=""){
+            try{
+                $c = new chatModelo();
+                $c -> grupo = $idGrupoDeUsuario;
+                $c -> ciCreador = $_SESSION['cedula'];
+                $c -> estadoDelChat = "abierto";
+                $c -> guardarChat();
+                return generarHtml('iniciarChat', ['exito' => true],"Se creo el chat con exito");
 
-        }catch(Exception $e){
-            return generarHtml('preChat', ['exito' => false], "No se pudo crear chat");
-            error_log($e -> getMessage());
-            return "No se pudo guardar ";
+            }catch(Exception $e){
+                return generarHtml('iniciarChat', ['exito' => false], "No se pudo crear chat");
+                error_log($e -> getMessage());
+                return "No se pudo guardar ";
+            }
+        }else{
+            return generarHtml('iniciarChat', ['exito' => false], "No tiene grupo");
+
         } 
     }
 
