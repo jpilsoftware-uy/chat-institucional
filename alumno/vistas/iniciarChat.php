@@ -107,7 +107,6 @@
                 <?php
                 $grupo = new grupoController();
                 $grupos = $grupo -> mostrarGrupoDeUsuario();
-                
                 if($grupos == false){
                     
                     echo "<select  class='opcionGrupos'> ";
@@ -116,13 +115,14 @@
                 }else{ 
                     echo "<select name='grupo' class='opcionGrupos'>";
                     foreach($grupos as $grupo){
-                    echo "<option>" . $grupo['idGrupo'] ."</option>";
+                        
+                    echo "<option>" . $grupo['idGrupoDeUsuario'] ."</option>";
                     }
-                    echo "</select>" . "</br>";
+                    echo "</select>";
                 }   
                 ?>
                 </div>
-                <button action="submit" formaction="/crearChat" value="$grupo['idGrupo']">Iniciar Chat</button>
+                <button action="submit" formaction="/crearChat" value="$grupo['idGrupoDeUsuario']">Iniciar Chat</button>
                 <button action="submit" formaction="/pre-chat">Volver atras</button>
             </form>
             

@@ -111,4 +111,7 @@
             if($_SERVER['REQUEST_METHOD'] === "POST") grupoController::unirseAGrupo($_POST['idGrupoDeUsuario']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
             break;      
+        case '/iniciarChat':
+            cargarVista('iniciarChat');
+            break;                
     }

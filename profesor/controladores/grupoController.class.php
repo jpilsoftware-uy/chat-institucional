@@ -28,13 +28,13 @@ class grupoController extends grupoModelo{
     public static function mostrarGrupoDeUsuario(){
         $g = new grupoModelo();
         $g -> cedula = $_SESSION['cedula'];
-        $grupo = $g -> prepararGrupoDeUsuario();
+        $grupo = $g -> TraerGrupoDeUsuario();
         if(empty($grupo)){
             return false;
         }else{
             return $grupo;
         }
-
+        
     }
 
 
@@ -82,7 +82,7 @@ class grupoController extends grupoModelo{
     
     public static function mostrarGrupoParaElgir(){
         $g = new grupoModelo();
-        $grupo = $g -> prepararGrupoParaElegir();
+        $grupo = $g -> traerGrupoParaElegir();
         return $grupo;
     }
     

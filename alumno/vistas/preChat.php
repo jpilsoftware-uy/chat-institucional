@@ -107,7 +107,7 @@
                                         <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Crear chat</div>
                                             <div class="card-body">
                                                 <p class="card-text"> En esta seccion se puede crear el chat. </p>
-                                                <a href="/crearChat" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Crear </a>
+                                                <a href="/iniciarChat" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Crear </a>
                                                 <p class="card-text mt-1">
                                                     <small class="text-muted"> Ultima actualizacion: 10/21/21 </small>
                                                 </p>

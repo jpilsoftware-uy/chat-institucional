@@ -41,15 +41,20 @@ class grupoModelo extends Modelo{
     
 
 
-    public function prepararGrupoDeUsuario(){
-        $this -> TraerGrupoDeUsuario();
+    public function TraerGrupoDeUsuario(){
+        $this -> prepararGrupoDeUsuario();
         $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        return $resultado;
     }
 
-    private function TraerGrupoDeUsuario(){
-        $sql ="SELECT * FROM grupoDeUsuario  where cedula= ? ";
+    private function prepararGrupoDeUsuario(){
+        
+        $sql ="SELECT idGrupoDeUsuario FROM grupoDeUsuario  where cedula= ? ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("i", $this -> cedula);
+       
+
     }
 
 
@@ -81,7 +86,7 @@ class grupoModelo extends Modelo{
         } else{
             return true;
         }
-}
+    }
 
 
     private function prepararInsercionDeGrupoDeUsuario(){
@@ -107,13 +112,13 @@ class grupoModelo extends Modelo{
         $this -> sentencia -> bind_param("i", $this -> cedula);
     }
 
-    public function prepararGrupoParaElegir(){
-        $this -> TraerGrupoParaElegir();
+    public function traerGrupoParaElegir(){
+        $this -> prepararGrupoParaElegir();
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
         return $resultado;
     }
-    private function TraerGrupoParaElegir(){
+    private function prepararGrupoParaElegir(){
         $sql ="SELECT * FROM grupo";
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
