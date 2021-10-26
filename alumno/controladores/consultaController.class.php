@@ -121,7 +121,7 @@
             } 
             catch(Exception $e){
                 error_log($e -> getMessage());
-                return generarHtml('historialConsultas', ['exito' => false], "No se pudo listar las consultas");
+                return generarHtml('historialConsultas', ['exito' => false], "No se pudo listar las consultas")
             }
         }
 
@@ -137,9 +137,8 @@
             }
             catch(Exception $e){
                 error_log($e -> getMessage());
-                return generarHtml('agendaConsultas', ['exito' => false], "No se pudo listar las consultas");      
+                return generarHtml('agendaConsultas', ['exito' => false], "No se pudo listar las consultas")    
             }
         }
 
-        ajshdkjafjhsgdfhjgdshjfghjdfghj
     }
