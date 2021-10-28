@@ -100,7 +100,7 @@
         echo " <div class='alert alert-danger'> " . $mensaje  . " </div> ";
         endif; 
     ?>
-
+    
        
             <div class="container h-100">
             <form action="/actualizar-datos-usuario" method="POST">
@@ -145,7 +145,7 @@
                                             <button type="button" data-toggle="modal" data-target="#modalModificar" class="btn btn-md mr-3 btn-block" style=" border-radius: 25px; background-image: linear-gradient(to right,#f53803, #f5d020); border: 0px; color: #fff;">
                                               Modificar Datos
                                             </button>
-                                            <button type="submit" formaction="/principalAlumno" class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
+                                            <button type="submit" formaction="/principalProfesor" class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
                                               Volver
                                             </button>
                                           </div>
@@ -177,6 +177,9 @@
                                             <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <button type="submit" formaction="/unirseGrupo"  class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
                                               Unirse
+                                            </button>
+                                            <button type="submit" formaction="/elegirMateria"  class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
+                                              Elegir Materias
                                             </button>
                                             </div>     
                                         </div>
