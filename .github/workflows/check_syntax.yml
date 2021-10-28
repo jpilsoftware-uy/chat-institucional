@@ -17,4 +17,6 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Checkear sintaxis de modelo
-          run: find . -iname '*.php' -exec php -l '{}' \;
+          run: find . -iname '*.php' -exec php -l '{}' \; | grep '^Sin errores de sintaxis' -v  | less
+          continue-on-error: false
+          
