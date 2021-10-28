@@ -16,13 +16,13 @@ class grupoModelo extends Modelo{
         if($this -> checkearSiExisteGrupo($this -> idGrupo) == false){
             $this -> prepararInsercionDeGrupo();
             $this -> sentencia -> execute();
-            return true;
+            return truesdfsdfsdfsdf
         } else {
             return false;
         }   
     }
 
-
+zxfgdfcvbcvb
     private function prepararInsercionDeGrupo(){
         $sql = "INSERT INTO grupo (idGrupo,tipoDeOrientacion) VALUES (?,?)";
         $this -> sentencia = $this -> conexion -> prepare($sql);
