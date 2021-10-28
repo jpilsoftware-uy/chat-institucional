@@ -15,7 +15,7 @@ Instalar PHP
 
 # crear tablas
 
-create table chat (idChat int auto_increment primary key, ciCreador int(8), materia varchar(30), grupo varchar(6), estadoDelChat varchar (10) );
+create table chat (idChat int auto_increment primary key, ciCreador int(8), materia varchar(60), grupo varchar(10), estadoDelChat varchar (10) );
 
 create table usuario( cedula int(8) primary key not null, nombre varchar (20) not null, primerApellido varchar (20) not null, segundoApellido varchar (20), usuario varchar(255) not null, contrasenia varchar(255) not null, tipoDeUsuario varchar(13) not null, estado varchar(10) not null );
 
@@ -27,7 +27,9 @@ create table orientaciones(tipoDeOrientacion varchar (60) primary key,materia1 v
 
 create table grupo (idGrupo varchar (10) primary key,  tipoDeOrientacion varchar (60) , foreign key (tipoDeOrientacion) references orientaciones(tipoDeOrientacion) );
 
-create table grupoDeUsuario (id int primary key auto_increment , cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeUsuario varchar(10), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo)); 
+create table grupoDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeUsuario varchar(10), materia varchar (60), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo)); 
+
+
 
 insert into orientaciones values ("1er anio - Bachillerato De Informatica","Programacion I","Sistemas Operativos I","Logica para informatica","Metodos discretos","Lab. de Soporte de Equipos Informaticos","Geometria","Lab. de Tecnologias Electricas Aplicadas","Matematica","Ingles","Ciencias Sociales - Historia","Biologia CTS","Analisis y produccion de Textos","Quimica");
 
@@ -36,7 +38,6 @@ insert into orientaciones values ("2er anio - Bachillerato De Informatica","Prog
 insert into orientaciones values ("3er Anio - Enfasis en Desarrollo y Soporte","Programacion III","Sistemas Operativos III","Gestion de Proyecto","Analisis y diseño de Aplicaciones","Redes de Datos y Seguridad","Sistemas de Bases de Datos II","Formacion Empresarial","Matematica","Ingles","Ciencias Sociales - Sociologia","Filosofia","","");
 
 insert into orientaciones values ("3er Anio - Enfasis en Desarrollo Web","Programacion Web","Sistemas Operativos III","Gestion de Proyectos Web","Analisis y diseño de Aplicaciones","Disenio Web","Sistemas de Bases de Datos II","Formacion Empresarial","Matematica","Ingles","Ciencias Sociales - Sociologia","Filosofia","","");
-
 
 # Crear Usuarios
 INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado) VALUES (11111111, 'admin', 'admin', 'admin', 'admin', '$2y$10$3jAdYrk4ZMDlRRU1XUa8nucyWfMGBbdM64QhGqvu6khubKUgdu2Pq', 'Administrador', 'aprobado');
