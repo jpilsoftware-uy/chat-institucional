@@ -3,10 +3,10 @@ name: localhost
 on:
   push:
     branches: 
-      - main
+      - '**'
   pull_request:
     branches:
-      - main
+      - '**'
 
   workflow_dispatch:
 
@@ -17,4 +17,4 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Checkear sintaxis de modelo
-          run: php -l modelos/usuarioModelo.class.php
+          run: 'find . -name *.php -exec php -l {} \;'
