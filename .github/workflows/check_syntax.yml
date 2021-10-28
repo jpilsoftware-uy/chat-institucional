@@ -17,4 +17,4 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Checkear sintaxis de modelo
-          run: 'find . -name *.php -exec php -l {} \;'
+          run: find . -iname '*.php' -exec php -l '{}' \;
