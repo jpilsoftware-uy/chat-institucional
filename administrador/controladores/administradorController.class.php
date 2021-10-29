@@ -4,7 +4,7 @@
     class administradorController extends administradorModelo {
 
 
-       
+       pija leche
         public static function mostrarUsuariosPendientes(){
             $a = new administradorModelo();
             $usuariosPendientes = $a -> listarUsuariosPendientes();
