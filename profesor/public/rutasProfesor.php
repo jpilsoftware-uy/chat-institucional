@@ -114,4 +114,18 @@
         case '/iniciarChat':
             cargarVista('iniciarChat');
             break;                
+        case '/elegirMateria':
+            cargarVista('elegirMateria');
+            break;   
+        case '/mostrarMateria':
+            if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario']) && orientacionesController::mostrarMaterias();
+            break;
+        case '/insertarMateria':
+
+            if($_SERVER['REQUEST_METHOD']==="POST")materiaController::insertarMateria($_POST['materia']);
+            break;
+            
+           
+          
+
     }

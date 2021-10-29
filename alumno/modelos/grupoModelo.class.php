@@ -131,4 +131,11 @@ class grupoModelo extends Modelo{
         $sql ="SELECT * FROM grupo";
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
+
+
+
+   
+
+
+   
 }
