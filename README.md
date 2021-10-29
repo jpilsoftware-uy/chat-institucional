@@ -27,7 +27,9 @@ create table orientaciones(tipoDeOrientacion varchar (60) primary key,materia1 v
 
 create table grupo (idGrupo varchar (10) primary key,  tipoDeOrientacion varchar (60) , foreign key (tipoDeOrientacion) references orientaciones(tipoDeOrientacion) );
 
-create table grupoDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeUsuario varchar(10), materia varchar (60), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo)); 
+create table grupoDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeUsuario varchar(10), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo)); 
+
+create table materiaDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20),  idGrupoDeUsuario varchar(10), materia varchar (60), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula),  FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo)); 
 
 
 
@@ -38,7 +40,6 @@ insert into orientaciones values ("2er anio - Bachillerato De Informatica","Prog
 insert into orientaciones values ("3er Anio - Enfasis en Desarrollo y Soporte","Programacion III","Sistemas Operativos III","Gestion de Proyecto","Analisis y diseño de Aplicaciones","Redes de Datos y Seguridad","Sistemas de Bases de Datos II","Formacion Empresarial","Matematica","Ingles","Ciencias Sociales - Sociologia","Filosofia","","");
 
 insert into orientaciones values ("3er Anio - Enfasis en Desarrollo Web","Programacion Web","Sistemas Operativos III","Gestion de Proyectos Web","Analisis y diseño de Aplicaciones","Disenio Web","Sistemas de Bases de Datos II","Formacion Empresarial","Matematica","Ingles","Ciencias Sociales - Sociologia","Filosofia","","");
-
 # Crear Usuarios
 INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado) VALUES (11111111, 'admin', 'admin', 'admin', 'admin', '$2y$10$3jAdYrk4ZMDlRRU1XUa8nucyWfMGBbdM64QhGqvu6khubKUgdu2Pq', 'Administrador', 'aprobado');
 
