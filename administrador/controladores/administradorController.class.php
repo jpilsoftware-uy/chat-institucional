@@ -3,7 +3,7 @@
 
     class administradorController extends administradorModelo {
 
-
+pija anashe
        
         public static function mostrarUsuariosPendientes(){
             $a = new administradorModelo();
