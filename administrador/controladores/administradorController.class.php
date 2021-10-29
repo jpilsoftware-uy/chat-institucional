@@ -12,7 +12,6 @@
 
         public static function actualizarEstadoUsuarios($cedula){
             $a = new administradorModelo();
-            var_dump($cedula);
             $a -> cedula = $cedula;
             $a -> guardarEstadoUsuarios();
             
