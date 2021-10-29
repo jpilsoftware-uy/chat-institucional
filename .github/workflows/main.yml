@@ -19,14 +19,3 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check syntax in all php files of repo
         run: for archivo in $(find . | grep php); do  php -l $archivo || exit 1; done
-
-  CheckVarDump:
-    runs-on: [self-hosted]
-    continue-on-error: false
-    steps:
-      - uses: actions/checkout@v2
-      - name: Check if exist a var_dump in php files
-        run: for archivo in $(find . | grep php); do grep -q var_dump $archivo && exit 1; done
-
-      - name: Check if exist a print_r in php files
-        run: for archivo in $(find . | grep php); do grep -q print_r $archivo && exit 1; done 
