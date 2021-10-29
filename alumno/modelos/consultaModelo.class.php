@@ -25,7 +25,6 @@ class consultaModelo extends Modelo{
                 $this -> usuarioAlumno, 
                 $this -> usuarioProfesor,
                 ); 
-                sklfhkjshkjsfdg
     }
 
 
