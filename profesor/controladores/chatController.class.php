@@ -16,7 +16,9 @@ class chatController extends chatModelo {
                 $c -> estadoDelChat = "abierto";
                 $c -> cedulaParticipante =  $_SESSION['cedula'];
                 $c -> guardarChat();
-                return generarHtml('iniciarChat', ['exito' => true],"Se creo el chat con exito");
+                
+                return header('Location: /chat');
+
 
             }catch(Exception $e){
                 return generarHtml('iniciarChat', ['exito' => false], "No se pudo crear chat");

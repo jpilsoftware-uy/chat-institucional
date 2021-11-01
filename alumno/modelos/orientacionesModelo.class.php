@@ -70,6 +70,28 @@ class orientacionesModelo extends modelo{
             return $materias;    
         }
     }
-    
+
+
+
+    public function traerMateriaYGrupo(){
+        $this -> prepararMateriaYgrupo();
+        $this -> sentencia -> execute();
+        $materias = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        if(empty($materias)){
+            
+            return false;
+            
+        }else{
+            
+            return $materias;    
+        }
+    }
+
+    private function prepararMateriaYgrupo(){
+        $sql="SELECT materia FROM materiaDeUsuario WHERE idGrupoDeUsuario=?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("s", $this -> idGrupo);
+
+    }
 
 }

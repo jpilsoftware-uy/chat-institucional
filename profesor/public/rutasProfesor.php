@@ -123,7 +123,7 @@
         case '/insertarMateria':
             if($_SERVER['REQUEST_METHOD']==="POST")materiaController::insertarMateria($_POST['materia']);
             break;
-        case '/mostrarMateriaParaChat':
+        case '/mostrarMateriaParaChatDeProfesor':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupoParaChat($_POST['idGrupoDeUsuario']) && orientacionesController::mostrarMaterias();
             break;        
             
