@@ -123,7 +123,7 @@
                                                echo "</select>" ;   
                                                ?>
                                            
-                                           <button type="submit" formaction="/mostrarMateriaParaChat"  class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
+                                           <button type="submit" formaction="/mostrarMateriaParaChatDeProfesor"  class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
                                            Mostrar Materias
                                            </button>
                                                 
@@ -132,7 +132,7 @@
                                             <form action="" method="POST"> 
                                             <?php
                                                 $materia = new orientacionesController();
-                                                $materias = $materia -> mostrarMaterias();
+                                                $materias = $materia -> mostrarMateriasDeProfesor();
                                                 echo "<select class='form-control' name='materia'>";
                                                 
                                                 if($materias == false){
@@ -140,20 +140,9 @@
                                                     echo "<option selected disabled hidden>No tiene materias</option>";              
                                                 }else{
                                                     foreach($materias as $materia){
-                                                    echo "<option selected disabled hidden>$materia[tipoDeOrientacion]</option>";
-                                                    echo "<option value='$materia[materia1]'>" . $materia['materia1'] ."</option>";
-                                                    echo "<option value='$materia[materia2]'>" . $materia['materia2'] ."</option>";
-                                                    echo "<option value='$materia[materia3]'>" . $materia['materia3'] ."</option>";
-                                                    echo "<option value='$materia[materia4]'>" . $materia['materia4'] ."</option>";
-                                                    echo "<option value='$materia[materia5]'>" . $materia['materia5'] ."</option>";
-                                                    echo "<option value='$materia[materia6]'>" . $materia['materia6'] ."</option>";
-                                                    echo "<option value='$materia[materia7]'>" . $materia['materia7'] ."</option>";
-                                                    echo "<option value='$materia[materia8]'>" . $materia['materia8'] ."</option>";
-                                                    echo "<option value='$materia[materia9]'>" . $materia['materia9'] ."</option>";
-                                                    echo "<option value='$materia[materia10]'>" . $materia['materia10'] ."</option>";
-                                                    echo "<option value='$materia[materia11]'>" . $materia['materia11'] ."</option>";
-                                                    echo "<option value='$materia[materia12]'>" . $materia['materia12'] ."</option>";
-                                                    echo "<option value='$materia[materia13]'>" . $materia['materia13'] ."</option>"; 
+                                                    echo "<option selected disabled hidden>Seleccione materia</option>";
+                                                    echo "<option value='$materia[materia]'>" . $materia['materia'] ."</option>";
+                                                    
                                                     }
                                                 }
                                                 echo "</select>" ;

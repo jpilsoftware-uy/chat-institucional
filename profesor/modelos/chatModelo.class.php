@@ -128,7 +128,6 @@ class chatModelo extends Modelo{
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
         return $resultado;
-        var_dump($resultado);
     
     }
 
