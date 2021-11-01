@@ -70,5 +70,6 @@ class orientacionesModelo extends modelo{
             return $materias;    
         }
     }
+    
 
 }

@@ -101,31 +101,74 @@
     ?>
         
         <h1 class="Titulo">Seleccione Grupo</h1>
-               
-                <form action="" method="POST">
-                <div class="grupos">
-                <?php
-                $grupo = new grupoController();
-                $grupos = $grupo -> mostrarGrupoDeUsuario();
-                if($grupos == false){
-                    
-                    echo "<select  class='opcionGrupos'> ";
-                    echo "<option>". "No tienes grupo" ."</option>";
-                    echo "</select>" . "</br>";
-                }else{ 
-                    echo "<select class='opcionGrupos' name='idGrupoDeUsuario'>";
-                    echo "<option selected disabled hidden>". "Seleccione un grupo" ."</option>";
-
-                    foreach($grupos as $grupo){
-
-                    echo "<option value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
-                    }
-                    echo "</select>";
-                }   
-                ?>
-                </div>
-                <button action="submit" formaction="/crearChat">Iniciar Chat</button>
-                <button action="submit" formaction="/pre-chat">Volver atras</button>
+        <div class="card-deck-wrapper">
+        <div class="card mt-4 mb-4 text-center mx-4">
+        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Materias </div>
+        <div class="card-body">
+        <form action="" method="POST">
+                                    <div class="d-flex flex-row align-items-center mb-4 input-group">
+                                            
+                                        <div class="d-flex flex-row align-items-center mb-4 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Grupo</span>
+                                            </div>
+                                            <?php
+                                               $grupo = new grupoController();
+                                               $grupos = $grupo -> mostrarGrupoDeUsuario();
+                                               echo "<select class='form-control' name='idGrupoDeUsuario'>";
+                                               echo "<option selected disabled hidden>Seleccione grupo</option>";
+                                               foreach($grupos as $grupo){
+                                                   echo "<option  value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
+                                               } 
+                                               echo "</select>" ;   
+                                               ?>
+                                           
+                                           <button type="submit" formaction="/mostrarMateriaParaChat"  class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
+                                           Mostrar Materias
+                                           </button>
+                                                
+                                                  
+                                            </form>
+                                            <form action="" method="POST"> 
+                                            <?php
+                                                $materia = new orientacionesController();
+                                                $materias = $materia -> mostrarMaterias();
+                                                echo "<select class='form-control' name='materia'>";
+                                                
+                                                if($materias == false){
+                                                    
+                                                    echo "<option selected disabled hidden>No tiene materias</option>";              
+                                                }else{
+                                                    foreach($materias as $materia){
+                                                    echo "<option selected disabled hidden>$materia[tipoDeOrientacion]</option>";
+                                                    echo "<option value='$materia[materia1]'>" . $materia['materia1'] ."</option>";
+                                                    echo "<option value='$materia[materia2]'>" . $materia['materia2'] ."</option>";
+                                                    echo "<option value='$materia[materia3]'>" . $materia['materia3'] ."</option>";
+                                                    echo "<option value='$materia[materia4]'>" . $materia['materia4'] ."</option>";
+                                                    echo "<option value='$materia[materia5]'>" . $materia['materia5'] ."</option>";
+                                                    echo "<option value='$materia[materia6]'>" . $materia['materia6'] ."</option>";
+                                                    echo "<option value='$materia[materia7]'>" . $materia['materia7'] ."</option>";
+                                                    echo "<option value='$materia[materia8]'>" . $materia['materia8'] ."</option>";
+                                                    echo "<option value='$materia[materia9]'>" . $materia['materia9'] ."</option>";
+                                                    echo "<option value='$materia[materia10]'>" . $materia['materia10'] ."</option>";
+                                                    echo "<option value='$materia[materia11]'>" . $materia['materia11'] ."</option>";
+                                                    echo "<option value='$materia[materia12]'>" . $materia['materia12'] ."</option>";
+                                                    echo "<option value='$materia[materia13]'>" . $materia['materia13'] ."</option>"; 
+                                                    }
+                                                }
+                                                echo "</select>" ;
+                                                ?>
+                                                                                             
+                                        </div>
+                                     
+                                </div>
+                                <button type="submit" formaction="/crearChat"  class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
+                                Iniciar Chat
+                                </button>
+                                <button type="submit" formaction="/pre-chat"  class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
+                                Volver atras
+                                </button>
+                
             </form>
             
                 
