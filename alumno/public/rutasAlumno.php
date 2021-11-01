@@ -52,7 +52,7 @@
             break;             
         
         case '/crearChat':
-            if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearChat($_POST['idGrupoDeUsuario']);
+            if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearChat($_POST['materia']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /iniciarChat');
             break;
 
@@ -109,6 +109,9 @@
         case '/ver-historial':
             cargarVista('historialConsultas');
             break;
+        case '/mostrarMateriaParaChat':
+            if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupoParaChat($_POST['idGrupoDeUsuario']) && orientacionesController::mostrarMaterias();
+            break;    
 
             
         

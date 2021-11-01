@@ -6,13 +6,15 @@ require '../utils/autoloader.php';
 
 class chatController extends chatModelo {
 
-    public static function crearChat($idGrupoDeUsuario){
-        if($idGrupoDeUsuario !=""){
+    public static function crearChat($materia){
+        if($materia !=""){
             try{
                 $c = new chatModelo();
-                $c -> grupo = $idGrupoDeUsuario;
-                $c -> ciCreador = $_SESSION['cedula'];
+                $c -> grupo = $_SESSION['idGrupoDeUsuario'];
+                $c -> materia = $materia;
+                $c -> cedulaCreador = $_SESSION['cedula'];
                 $c -> estadoDelChat = "abierto";
+                $c -> cedulaParticipante =  $_SESSION['cedula'];
                 $c -> guardarChat();
                 return generarHtml('iniciarChat', ['exito' => true],"Se creo el chat con exito");
 
@@ -25,14 +27,15 @@ class chatController extends chatModelo {
             return generarHtml('iniciarChat', ['exito' => false], "No tiene grupo");
 
         } 
-    }
-
+    }   
+    
+    
     public static function crearMensaje($mensajeEnviado){
         if($mensajeEnviado != ""){
             try{
                 $m= new ChatModelo();
                 $m -> idChatMensaje = $_SESSION['idChat'];
-                $m -> ciCreadorMensaje = $_SESSION['cedula'];
+                $m -> cedulaCreadorMensaje = $_SESSION['cedula'];
                 $m -> mensajeEnviado = $mensajeEnviado;
                 $m -> fecha = $fecha;
                 $m -> usuarioCreadorMensaje = $_SESSION['usuario'];
@@ -88,7 +91,7 @@ class chatController extends chatModelo {
             
             chatController::prepararAsignacionDeIdDeChat($id);
             
-            $nombre = "hola";
+            
             return header('Location: /chat');
         } else {
             echo "Error";
@@ -101,7 +104,7 @@ class chatController extends chatModelo {
         
     }
 
-
+   
 
     
 

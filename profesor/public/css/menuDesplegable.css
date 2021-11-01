@@ -171,3 +171,18 @@ a.seleccionado{
     width:100px; 
     height:25px;
 }
+
+.opcionGrupos{
+    color: black; 
+    border-radius: 10px;
+    background:#b2c2b7;
+}
+
+.Titulo{
+    color: white;
+    text-align:center;
+    font-weight: 300;
+}
+.grupos{
+    text-align:center;
+}

@@ -44,7 +44,7 @@
             break;             
             
         case '/crearChat':
-            if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearChat($_POST['idGrupoDeUsuario']);
+            if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearChat($_POST['materia']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /iniciarChat');
             break;
     
@@ -121,9 +121,11 @@
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario']) && orientacionesController::mostrarMaterias();
             break;
         case '/insertarMateria':
-
             if($_SERVER['REQUEST_METHOD']==="POST")materiaController::insertarMateria($_POST['materia']);
             break;
+        case '/mostrarMateriaParaChat':
+            if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupoParaChat($_POST['idGrupoDeUsuario']) && orientacionesController::mostrarMaterias();
+            break;        
             
            
           
