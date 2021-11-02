@@ -26,7 +26,7 @@
     />
     <link rel="stylesheet" href="css/menuDesplegable.css">
     <script src="https://kit.fontawesome.com/626834a84d.js" crossorigin="anonymous"></script>
-    <title>Chat | Profesor</title>
+    <title>Iniciar Chat | Profesor</title>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script type="text/javascript">
@@ -100,7 +100,7 @@
         endif; 
     ?>
         
-        <h1 class="Titulo">Seleccione Grupo</h1>
+        <h1 class="Titulo">Iniciar Chat</h1>
         <div class="card-deck-wrapper">
         <div class="card mt-4 mb-4 text-center mx-4">
         <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Materias </div>

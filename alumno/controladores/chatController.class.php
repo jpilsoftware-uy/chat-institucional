@@ -30,6 +30,29 @@ class chatController extends chatModelo {
 
         } 
     }   
+    public static function unirseChat($idChat){
+        
+        if($idChat !=""){
+            try{
+                
+                $c = new chatModelo();
+                $c -> idChat = $idChat;
+                $c -> cedulaParticipante = $_SESSION['cedula'];
+                $c -> guardarParticipanteDeChat();
+                
+                return header('Location: /chat');
+
+
+            }catch(Exception $e){
+                return generarHtml('unirseChat', ['exito' => false], "No se pudo crear chat");
+                error_log($e -> getMessage());
+                return "No se pudo guardar ";
+            }
+        }else{
+            return generarHtml('unirseChat', ['exito' => false], "No tiene grupo");
+
+        } 
+    }   
     
     
     public static function crearMensaje($mensajeEnviado){
@@ -76,33 +99,36 @@ class chatController extends chatModelo {
     }
 
     public static function mostrarChats(){
-        try{
-            $c = new chatModelo();
-            $resultado = $c -> listadoDeChats();
-            return $resultado;
-        } catch (Exception $e){
-            return generarHtml('unirseChat', ['exito' => false],"no hay chat disponibles");
-            error_log($e -> getMessage());
-            return "No se pudo listar";
+        
+            $chats = new chatModelo();
+            $chats -> idGrupoDeUsuario = $_SESSION['idGrupoDeUsuario']; 
             
+            
+            if($chats -> listadoDeChats() == false){
+                return false;
+                }else{
+                return $chats -> listadoDeChats();
+                } 
+        
+        
+    }
+
+    public static function asignarIdDeChat($idChat){
+        
+        if($idChat != ""){    
+          
+            chatController::prepararAsignacionDeIdDeChat($idChat);
+            
+            
+            return header('Location: /unirseChat');
+        }else{
+            return generarHtml('unirseChat', ['exito' => false],"ocurrio un error");
         }
     }
 
-    public static function asignarIdDeChat($id){
-        if($id != ""){
-            
-            chatController::prepararAsignacionDeIdDeChat($id);
-            
-            
-            return header('Location: /chat');
-        } else {
-            echo "Error";
-        }
-    }
-
-    private static function prepararAsignacionDeIdDeChat($id){
+    private static function prepararAsignacionDeIdDeChat($idChat){
         ob_start();
-        $_SESSION['idChat'] = $id;
+        $_SESSION['idChat'] = $idChat;
         
     }
 
