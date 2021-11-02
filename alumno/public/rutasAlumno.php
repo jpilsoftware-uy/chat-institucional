@@ -56,14 +56,11 @@
             if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /iniciarChat');
             break;
 
-        case '/unirse-chat':
+        case '/unirseChat':
             cargarVista('unirseChat');
             break;
 
-        case '/iniciar-chat':
-            if($_SERVER['REQUEST_METHOD'] === "POST") chatController::asignarIdDeChat($_POST['id']);
-            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /pre-chat');
-            break;
+        
         
         case '/traermensajes':
             chatController::listarMensajesChat();
@@ -110,8 +107,14 @@
             cargarVista('historialConsultas');
             break;
         case '/mostrarMateriaParaChat':
-            if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupoParaChat($_POST['idGrupoDeUsuario']) && orientacionesController::mostrarMaterias();
+            if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="iniciarChat") && orientacionesController::mostrarMaterias();
             break;    
+        case '/mostrarChats':
+            if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="unirseChat") && chatController::mostrarChats();
+            break;
+        case '/iniciar-chat':
+            if($_SERVER['REQUEST_METHOD'] === "POST")chatController::unirseChat($_POST['idChat']);
+            break;           
 
             
         

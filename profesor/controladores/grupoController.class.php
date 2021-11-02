@@ -76,16 +76,16 @@ class grupoController extends grupoModelo{
     }
 
 
-    public static function asignarVariableDeSessionIdGrupo($idGrupoDeUsuario){
+    public static function asignarVariableDeSessionIdGrupo($idGrupoDeUsuario,$vista){
        
         if($idGrupoDeUsuario != ""){
             
             grupoController::prepararAsignacionDeIdGrupo($idGrupoDeUsuario);
             
-            return header('Location: /elegirMateria');
+            return header('Location: /'.$vista);
         } else {
             
-            generarHtml('elegirMateria',['exito' => false ],"Seleccione un Grupo valido");
+            generarHtml($vista,['exito' => false ],"Seleccione un Grupo valido");
         }
     }
     private static function prepararAsignacionDeIdGrupo($idGrupoDeUsuario){
@@ -94,23 +94,5 @@ class grupoController extends grupoModelo{
             
     }
 
-    
-    public static function asignarVariableDeSessionIdGrupoParaChat($idGrupoDeUsuario){
-       
-        if($idGrupoDeUsuario != ""){
-            
-            grupoController::prepararAsignacionDeIdGrupoParaChat($idGrupoDeUsuario);
-            
-            return header('Location: /iniciarChat');
-        } else {
-            
-            generarHtml('iniciarChat',['exito' => false ],"Seleccione un Grupo valido");
-        }
-    }
-    private static function prepararAsignacionDeIdGrupoParaChat($idGrupoDeUsuario){
-            ob_start();
-            $_SESSION['idGrupoDeUsuario'] = $idGrupoDeUsuario;
-            
-    }
-    
+   
 }

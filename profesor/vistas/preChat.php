@@ -118,7 +118,7 @@
                                         <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;">Unirse a un chat </div>
                                             <div class="card-body">
                                                 <p class="card-text"> En esta seccion puede unirse a un chat ya creado</p>
-                                                <a href="/unirse-chat" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Unirse</a>
+                                                <a href="/unirseChat" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Unirse</a>
                                                 <p class="card-text mt-1">
                                                     <small class="text-muted"> Ultima actualizacion: 10/21/2021 </small>
                                                 </p>

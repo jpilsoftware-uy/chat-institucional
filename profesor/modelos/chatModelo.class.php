@@ -21,7 +21,7 @@ class chatModelo extends Modelo{
         if(($this -> checkearQueNoExistaChat($this -> grupo, $this ->materia ))== false){
             $this -> prepararGuardarChat();
             $this -> sentencia -> execute();
-            $this -> guardarParticipanteDelChat();
+            $this -> guardarParticipanteCreadorDelChat();
             return true;
         }else{
             return false;
@@ -41,11 +41,11 @@ class chatModelo extends Modelo{
         );
     }
 
-    public function guardarParticipanteDelChat(){
+    public function guardarParticipanteCreadorDelChat(){
         if($this -> checkearQueNoExistaElParticipante($this-> cedulaParticipante , $this -> grupo, $this -> materia) == false){
             $this -> prepararTraerIdChatYHacerlaVariableDeSession($this -> grupo, $this -> materia);
             $idChat = $_SESSION['idChat'];
-            $this -> prepararGuardarParticipanteDelChat($idChat);
+            $this -> prepararGuardarParticipanteCreadorDelChat($idChat);
             $this -> sentencia -> execute();
             return true;
         }else{
@@ -66,7 +66,7 @@ class chatModelo extends Modelo{
     
 
 
-    private function prepararGuardarParticipanteDelChat($idChat){
+    private function prepararGuardarParticipanteCreadorDelChat($idChat){
         $sql ="INSERT INTO participantesDeChat (idChat,cedulaParticipante,materia,grupo) VALUES (?,?,?,?)";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("iiss",
@@ -146,13 +146,41 @@ class chatModelo extends Modelo{
     }
 
     private function prepararListadoDeChats(){
-        $sql = "SELECT idChat FROM chat WHERE estadoDelChat= 'abierto' ";
+        $sql = "SELECT * FROM chat WHERE grupo=?";
         $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("s", $this -> idGrupoDeUsuario);
         
     }
 
+    public function guardarParticipanteDeChat(){
+        $this -> prepararTraerMateriaYgrupo();
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
+        $materia = $resultado['materia'];
+        $grupo = $resultado['grupo'];
+        $this -> prepararGuardarParticipanteDeChat($materia,$grupo);
+        $this -> sentencia -> execute();
+    }
 
-  
+    private function prepararTraerMateriaYgrupo(){
+        $sql = "SELECT * FROM chat WHERE  idChat=?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $this -> idChat);
+      
+        
+    }
+    
+
+    private function prepararGuardarParticipanteDeChat($materia,$grupo){
+        $sql ="INSERT INTO participantesDeChat (idChat,cedulaParticipante,materia,grupo) VALUES (?,?,?,?)";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("iiss",
+        $this -> idChat,
+        $this -> cedulaParticipante,
+        $materia,
+        $grupo,
+        );
+    }
     
 
 
