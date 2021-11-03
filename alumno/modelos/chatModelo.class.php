@@ -132,9 +132,9 @@ class chatModelo extends Modelo{
     }
 
     private function prepararMensaje(){
-        $sql = "SELECT * FROM mensaje WHERE idChatMensaje= $_SESSION[idChat]";
+        $sql = "SELECT * FROM mensaje WHERE idChatMensaje=?";
         $this -> sentencia = $this -> conexion -> prepare($sql);
-        
+        $this -> sentencia -> bind_param("s",$this -> idChat);
     }
 
     public function listadoDeChats(){
@@ -153,13 +153,32 @@ class chatModelo extends Modelo{
     }
 
     public function guardarParticipanteDeChat(){
-        $this -> prepararTraerMateriaYgrupo();
+        if($this -> checkearQueNoExistaElParticipanteParaNoInsertarloRepetido($this->  idChat , $this -> cedulaParticipante) == false){
+            $this -> prepararTraerMateriaYgrupo();
+            $this -> sentencia -> execute();
+            $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
+            $materia = $resultado['materia'];
+            $grupo = $resultado['grupo'];
+            $this -> prepararGuardarParticipanteDeChat($materia,$grupo);
+            $this -> sentencia -> execute();
+            return true;
+        }else{
+            return false;
+            
+        }
+        
+    }
+    private function checkearQueNoExistaElParticipanteParaNoInsertarloRepetido($idChat,$cedulaParticipante){
+        $sql = "SELECT idChat,cedulaParticipante from participantesDeChat  where idChat=? && cedulaParticipante=?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("si",$idChat,$cedulaParticipante);
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
-        $materia = $resultado['materia'];
-        $grupo = $resultado['grupo'];
-        $this -> prepararGuardarParticipanteDeChat($materia,$grupo);
-        $this -> sentencia -> execute();
+        if(empty($resultado)){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     private function prepararTraerMateriaYgrupo(){

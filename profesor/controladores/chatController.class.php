@@ -15,10 +15,15 @@ class chatController extends chatModelo {
                 $c -> cedulaCreador = $_SESSION['cedula'];
                 $c -> estadoDelChat = "abierto";
                 $c -> cedulaParticipante =  $_SESSION['cedula'];
-                $c -> guardarChat();
                 
-                return header('Location: /chat');
+                if($c -> guardarChat() == true){
+                    return header('Location: /chat');
 
+                }else {
+                    return generarHtml('iniciarChat', ['exito' => false], "Usted ya creo este chat, por favor vaya a unirse a la otra pantalla");
+
+                }
+                
 
             }catch(Exception $e){
                 return generarHtml('iniciarChat', ['exito' => false], "No se pudo crear chat");
@@ -34,14 +39,11 @@ class chatController extends chatModelo {
         
         if($idChat !=""){
             try{
-                
+                self::asignarIdDeChat($idChat);
                 $c = new chatModelo();
                 $c -> idChat = $idChat;
                 $c -> cedulaParticipante = $_SESSION['cedula'];
                 $c -> guardarParticipanteDeChat();
-                
-                return header('Location: /chat');
-
 
             }catch(Exception $e){
                 return generarHtml('unirseChat', ['exito' => false], "No se pudo crear chat");
@@ -78,6 +80,7 @@ class chatController extends chatModelo {
 
     public static function listarMensajesChat(){
         $mensaje = new ChatModelo();
+        $mensaje -> idChat = $_SESSION['idChat'];
         $mensajes = $mensaje -> mostrarMensaje();
         
         foreach($mensajes as $mensaje){
@@ -91,13 +94,7 @@ class chatController extends chatModelo {
 
 
 
-    public function mostrarMensajes(){
-        $a = new chatModelo();
-        $a -> idChatMensaje = $_SESSION['idChat'];
-        $mensajeEnviado = $a -> mostrarMensaje();
-        return $mensajeEnviado; 
-    }
-
+ 
     public static function mostrarChats(){
         
             $chats = new chatModelo();
@@ -118,8 +115,7 @@ class chatController extends chatModelo {
           
             chatController::prepararAsignacionDeIdDeChat($idChat);
             
-            
-            return header('Location: /unirseChat');
+            return header('Location: /chat');
         }else{
             return generarHtml('unirseChat', ['exito' => false],"ocurrio un error");
         }
