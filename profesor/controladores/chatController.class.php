@@ -48,7 +48,6 @@ class chatController extends chatModelo {
             }catch(Exception $e){
                 return generarHtml('unirseChat', ['exito' => false], "No se pudo crear chat");
                 error_log($e -> getMessage());
-                return "No se pudo guardar ";
             }
         }else{
             return generarHtml('unirseChat', ['exito' => false], "No tiene grupo");
@@ -71,7 +70,6 @@ class chatController extends chatModelo {
             }catch(Exception $e){
                 return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"No se pudo enviar el mensaje");
                 error_log($e -> getMessage());
-                return "No se pudo guardar ";
             } 
         }else{
             return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"El mensaje no puede ser vacio");
@@ -127,6 +125,21 @@ class chatController extends chatModelo {
         
     }
 
+
+    public function cerrarChat(){
+        try{
+            $c = new chatModelo();
+            $c -> idChat = $_SESSION['idChat'];
+            $c -> cerrarElChat();
+            return generarHtml("preChat","exito" == true,"se cerro el chat");
+        }catch(Exception $e){
+            return generarHtml('chat', ['exito' => false], "No se pudo cerrar chat");
+            error_log($e -> getMessage());
+        }
+        
+
+
+    }
    
 
     

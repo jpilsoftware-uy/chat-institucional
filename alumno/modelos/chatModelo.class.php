@@ -94,7 +94,7 @@ class chatModelo extends Modelo{
     }
 
     private function checkearQueNoExistaChat($grupo,$materia){
-        $sql = "SELECT grupo,materia from chat where grupo=? and materia=?";
+        $sql = "SELECT grupo,materia from chat where grupo=? and materia=? && estadoDelChat ='abierto'";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("ss",$grupo,$materia);
         $this -> sentencia -> execute();
@@ -146,14 +146,14 @@ class chatModelo extends Modelo{
     }
 
     private function prepararListadoDeChats(){
-        $sql = "SELECT * FROM chat WHERE grupo=?";
+        $sql = "SELECT * FROM chat WHERE grupo=? && estadoDelChat='abierto'";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("s", $this -> idGrupoDeUsuario);
         
     }
 
     public function guardarParticipanteDeChat(){
-        if($this -> checkearQueNoExistaElParticipanteParaNoInsertarloRepetido($this->  idChat , $this -> cedulaParticipante) == false){
+        if($this -> checkearQueNoExistaElParticipanteParaNoInsertarloRepetido($this->  idChat , $this -> cedulaParticipante) == false ){
             $this -> prepararTraerMateriaYgrupo();
             $this -> sentencia -> execute();
             $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
@@ -201,8 +201,36 @@ class chatModelo extends Modelo{
         );
     }
     
+    public function cerrarElChat(){
+        if($this -> checkearSiEsElCreadorDelChat($this -> cedulaCreador) == true ){
+        $this ->  prepararCambioDeEstadoDeChat();
+        $this -> sentencia -> execute();
+        return true;
+        }else{
+            return false;
+        }
+    }   
+    private function checkearSiEsElCreadorDelChat($cedulaCreador){
+        
+        $sql="SELECT cedulaCreador from chat where cedulaCreador=? ";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $cedulaCreador);
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        if(empty($resultado)){
+            return true; 
+        }else{
+            return false;
+        }
+    
+    }
 
+    private function prepararCambioDeEstadoDeChat(){
+        $sql ="UPDATE chat SET estadoDelChat='cerrado' WHERE estadoDelChat='abierto' && idChat= ?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $this -> idChat);
 
+    }
 
 
 }
