@@ -17,7 +17,6 @@
     <title>Iniciar Sesion | Profesor</title>
 </head>
 <body>
-  <h1>PEDRO OYARZUN FAGUNDEZ</h1>
     <section
       class="vh-100"
       style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)"
