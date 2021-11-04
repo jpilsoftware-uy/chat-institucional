@@ -59,8 +59,6 @@
         case '/unirseChat':
             cargarVista('unirseChat');
             break;
-
-        
         
         case '/traermensajes':
             chatController::listarMensajesChat();
@@ -87,31 +85,37 @@
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preModificarDatosDeUsuario($_POST['cedula'], $_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
             break;
+
         case '/consultaTerminada':
             consultaController::cambiarEstadoAVisto();
             header('location: /principalAlumno');
             break;
+
         case '/iniciarChat':
             cargarVista('iniciarChat');
-            break;    
+            break;
+
         case '/editar':
             cargarVista('editar');
-            break;    
+            break;
+
         case '/unirseGrupo':
             if($_SERVER['REQUEST_METHOD'] === "POST") grupoController::unirseAGrupo($_POST['idGrupoDeUsuario']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
             break;    
-
             
         case '/ver-historial':
             cargarVista('historialConsultas');
             break;
+
         case '/mostrarMateriaParaChat':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="iniciarChat") && orientacionesController::mostrarMaterias();
-            break;    
+            break;
+
         case '/mostrarChats':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="unirseChat") && chatController::mostrarChats();
             break;
+
         case '/iniciar-chat':
             if($_SERVER['REQUEST_METHOD'] === "POST")chatController::unirseChat($_POST['idChat']);
             break;           

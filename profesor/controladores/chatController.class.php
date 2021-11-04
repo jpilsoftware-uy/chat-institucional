@@ -60,7 +60,7 @@ class chatController extends chatModelo {
     public static function crearMensaje($mensajeEnviado){
         if($mensajeEnviado != ""){
             try{
-                $m= new ChatModelo();
+                $m= new chatModelo();
                 $m -> idChatMensaje = $_SESSION['idChat'];
                 $m -> cedulaCreadorMensaje = $_SESSION['cedula'];
                 $m -> mensajeEnviado = $mensajeEnviado;
@@ -79,7 +79,7 @@ class chatController extends chatModelo {
     }
 
     public static function listarMensajesChat(){
-        $mensaje = new ChatModelo();
+        $mensaje = new chatModelo();
         $mensaje -> idChat = $_SESSION['idChat'];
         $mensajes = $mensaje -> mostrarMensaje();
         

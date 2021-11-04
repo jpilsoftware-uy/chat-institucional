@@ -2,7 +2,7 @@
 
 require '../utils/autoloader.php';
 
-class consultaModelo extends Modelo{
+class consultaModelo extends modelo{
     public $idConsulta;
     public $mensajeConsulta; 
     public $mensajeRespuesta; 

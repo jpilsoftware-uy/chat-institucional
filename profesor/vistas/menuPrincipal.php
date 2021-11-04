@@ -100,10 +100,21 @@
                                     </div>
 
                                     <div class="card mt-4 mb-4 text-center mx-4">
-                                        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Consultas </div>
+                                        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Responder Consultas </div>
                                             <div class="card-body">
                                                 <p class="card-text"> En esta seccion puede responder sus consultas pendientes. </p>
-                                                <a href="/responderConsultas" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Consultas</a>
+                                                <a href="/responderConsultas" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Responder Consultas</a>
+                                                <p class="card-text mt-1">
+                                                    <small class="text-muted"> Ultima actualizacion: 10/21/2021 </small>
+                                                </p>
+                                            </div>
+                                    </div>
+
+                                    <div class="card mt-4 mb-4 text-center mx-4">
+                                        <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Ver historial de Consultas </div>
+                                            <div class="card-body">
+                                                <p class="card-text"> En esta seccion puede ver sus consultas anteriores respondidas </p>
+                                                <a href="/ver-historial" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Ver historial</a>
                                                 <p class="card-text mt-1">
                                                     <small class="text-muted"> Ultima actualizacion: 10/21/2021 </small>
                                                 </p>

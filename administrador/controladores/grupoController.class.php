@@ -26,12 +26,12 @@ class grupoController extends grupoModelo{
 
 
     public static function mostrarGrupoDeUsuario(){
-        $g = new grupoModelo();
-        $g -> cedula = $_SESSION['cedula'];
-        if($g -> traerGrupoDeUsuario() == false){
+        $grupo = new grupoModelo();
+        $grupo -> cedula = $_SESSION['cedula'];
+        if($grupo -> traerGrupoDeUsuario() == false){
             return false;
         }else{
-            return $g -> traerGrupoDeUsuario();
+            return $grupo -> traerGrupoDeUsuario();
         }
     }
 
@@ -74,5 +74,25 @@ class grupoController extends grupoModelo{
         $grupo = $g -> prepararGrupoParaElegir();
         return $grupo;
     }
-    
+
+
+    public static function asignarVariableDeSessionIdGrupo($idGrupoDeUsuario,$vista){
+       
+        if($idGrupoDeUsuario != ""){
+            
+            grupoController::prepararAsignacionDeIdGrupo($idGrupoDeUsuario);
+            
+            return header('Location: /'.$vista);
+        } else {
+            
+            generarHtml($vista,['exito' => false ],"Seleccione un Grupo valido");
+        }
+    }
+    private static function prepararAsignacionDeIdGrupo($idGrupoDeUsuario){
+            ob_start();
+            $_SESSION['idGrupoDeUsuario'] = $idGrupoDeUsuario;
+            
+    }
+
+   
 }
