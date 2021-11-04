@@ -51,7 +51,7 @@
                                         <form action="/insertarRespuesta" method="POST">
                                             <tbody class="text-center">
                                                 <?php
-                                                    $consulta = new ConsultaController();
+                                                    $consulta = new consultaController();
                                                     $consultas = $consulta -> mostrarConsultas();
                                                     if($consultas == false){
                                                         echo "<tr>";

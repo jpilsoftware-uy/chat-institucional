@@ -53,7 +53,7 @@
                                         </thead>
                                         <tbody class="text-center">
                                             <?php
-                                                $respuesta = new ConsultaController();
+                                                $respuesta = new consultaController();
                                                 $respuestas = $respuesta -> mostrarRespuesta();
                                                 if($respuestas == false){
                                                     echo "<tr>";
