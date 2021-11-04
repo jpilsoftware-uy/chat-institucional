@@ -6,7 +6,7 @@ class materiaController extends materiaModelo{
     public static function insertarMateria($materia){
         if($materia !="" ){
             try{
-                $g = new MateriaModelo();
+                $g = new materiaModelo();
                 $g -> materia = $materia;
                 $g -> idGrupoDeUsuario = $_SESSION['idGrupoDeUsuario']; 
                 $g -> cedula = $_SESSION['cedula'];

@@ -1,7 +1,7 @@
 <?php
 require '../utils/autoloader.php';
 
-class grupoModelo extends Modelo{
+class grupoModelo extends modelo{
     public $idGrupo;
     public $tipoDeOrientacion;
     public $cedula;
@@ -131,4 +131,11 @@ class grupoModelo extends Modelo{
         $sql ="SELECT * FROM grupo";
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
+
+
+
+   
+
+
+   
 }

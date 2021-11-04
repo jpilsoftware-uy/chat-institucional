@@ -2,7 +2,7 @@
 
 require '../utils/autoloader.php';
 
-class chatModelo extends Modelo{
+class chatModelo extends modelo{
     public $cedulaCreador ;
     public $idChatMensaje;  
     public $cedulaCreadorMensaje;

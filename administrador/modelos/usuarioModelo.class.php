@@ -1,7 +1,7 @@
 <?php
 
 require '../utils/autoloader.php';
-class UsuarioModelo extends Modelo{
+class usuarioModelo extends modelo{
     
     public $nombre;
     public $primerApellido;

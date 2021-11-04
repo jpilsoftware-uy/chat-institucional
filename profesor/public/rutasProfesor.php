@@ -51,8 +51,6 @@
         case '/unirseChat':
             cargarVista('unirseChat');
             break;
-    
-      
             
         case '/traermensajes':
             chatController::listarMensajesChat();
@@ -79,8 +77,6 @@
             usuarioController::cerrarSesion();
             break;
 
-        
-
         case '/eliminar-usuario':
             cargarVista('eliminarUsuarios');
             break;
@@ -98,7 +94,6 @@
             if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preModificarDatosDeUsuario($_POST['cedula'], $_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
             break;
-
         
         case '/ver-historial':
             cargarVista('historialConsultas');
@@ -107,19 +102,24 @@
         case '/unirseGrupo':
             if($_SERVER['REQUEST_METHOD'] === "POST") grupoController::unirseAGrupo($_POST['idGrupoDeUsuario']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /modificar-datos-usuario");
-            break;      
+            break;
+
         case '/iniciarChat':
             cargarVista('iniciarChat');
-            break;                
+            break;
+
         case '/elegirMateria':
             cargarVista('elegirMateria');
-            break;   
+            break;
+
         case '/mostrarMateria':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="elegirMateria") && orientacionesController::mostrarMaterias();
             break;
+
         case '/insertarMateria':
             if($_SERVER['REQUEST_METHOD']==="POST")materiaController::insertarMateria($_POST['materia']);
             break;
+
         case '/mostrarMateriaParaChatDeProfesor':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="iniciarChat") && orientacionesController::mostrarMateriasDeProfesor();
             break;        
@@ -131,6 +131,7 @@
         case '/mostrarChats':
              if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="unirseChat") && chatController::mostrarChats();
             break;
+            
         case '/iniciar-chat':
             if($_SERVER['REQUEST_METHOD'] === "POST")chatController::unirseChat($_POST['idChat']);
             break;        

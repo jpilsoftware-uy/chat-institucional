@@ -1,7 +1,7 @@
 <?php
 require '../utils/autoloader.php';
 
-class materiaModelo extends Modelo{
+class materiaModelo extends modelo{
     public $materia;
     public $idGrupoDeUsuario;
     public $cedula;
@@ -52,3 +52,4 @@ class materiaModelo extends Modelo{
 
     
 }
+

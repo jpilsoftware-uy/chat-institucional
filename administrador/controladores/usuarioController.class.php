@@ -1,7 +1,7 @@
 <?php
 
     require '../utils/autoloader.php';
-    class usuarioController extends UsuarioModelo{
+    class usuarioController extends usuarioModelo{
         
         
         public static function preAltaDeUsuario($cedula,$nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $tipoDeUsuario){
@@ -13,7 +13,7 @@
 
             if($nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== "" && $cedula !== "" && $tipoDeUsuario !== "" && $estado !== "" ){  
                 try{
-                    $u = new UsuarioModelo();
+                    $u = new usuarioModelo();
                     $u -> cedula = $cedula;
                     $u -> nombre = $nombre;
                     $u -> primerApellido = $primerApellido;
@@ -96,7 +96,7 @@
                 try{
                     if($_SESSION['tipoDeUsuario'] == "Alumno" || $_SESSION['tipoDeUsuario'] == "Profesor"){
                         if($_SESSION['cedula'] == $cedula){
-                            $u = new UsuarioModelo();
+                            $u = new usuarioModelo();
                             $u -> cedula = $cedula;
                             $u -> nombre = $nombre;
                             $u -> primerApellido = $primerApellido;
@@ -113,7 +113,7 @@
                             return generarHtml("actualizarUsuario", ['exito' => false], "Su cedula no coincide con la ingresada en el sistema");
                         }
                     } else if ($_SESSION['tipoDeUsuario'] == "Administrador") {
-                        $u = new UsuarioModelo();
+                        $u = new usuarioModelo();
                         $u -> cedula = $cedula;
                         $u -> nombre = $nombre;
                         $u -> primerApellido = $primerApellido;
@@ -141,7 +141,7 @@
         //listar profesores
 
         public static function mostrarProfesoresAprobados(){
-            $p = new UsuarioModelo();
+            $p = new usuarioModelo();
             $profesoresAprobados = $p -> listarProfesoresAprobados();
             return $profesoresAprobados;
         }
@@ -153,7 +153,7 @@
                 try{
                     if($_SESSION['tipoDeUsuario'] == "Alumno" || $_SESSION['tipoDeUsuario'] == "Profesor"){
                         if($_SESSION['cedula'] == $cedula){
-                            $u = new UsuarioModelo();
+                            $u = new usuarioModelo();
                             $u -> cedula = $cedula;
                             $resultado = $u -> eliminarUsuario();
                             if($resultado == true){
@@ -165,7 +165,7 @@
                             return generarHtml("eliminarUsuarios", ['exito' => false], "La cedula ingresada no corresponde con la suya");
                         }
                     } else if ($_SESSION['tipoDeUsuario'] == "Administrador"){
-                        $u = new UsuarioModelo();
+                        $u = new usuarioModelo();
                         $u -> cedula = $cedula;
                         $resultado = $u -> eliminarUsuario();
                         if($resultado == true){

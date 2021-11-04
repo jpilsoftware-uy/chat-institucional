@@ -1,7 +1,7 @@
 <?php
 require '../utils/autoloader.php';
 
-class grupoModelo extends Modelo{
+class grupoModelo extends modelo{
     public $idGrupo;
     public $tipoDeOrientacion;
     public $cedula;

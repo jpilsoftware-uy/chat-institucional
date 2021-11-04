@@ -9,7 +9,7 @@
                 return generarHtml("consultaAlumno", ['exito' => false], "No se selecciono ningun profesor");
             } else {
                 try{
-                    $p = new ConsultaModelo();
+                    $p = new consultaModelo();
                     $p -> mensajeConsulta = $mensajeConsulta;
                     $p -> cedulaAlumno = $_SESSION['cedula'];
                     $p -> cedulaProfesor = $cedulaProfesor;
@@ -28,7 +28,7 @@
 
         public static function mostrarConsultas(){
             try{
-                $a = new ConsultaModelo();
+                $a = new consultaModelo();
                 $a -> cedula = $_SESSION['cedula'];
                 $consultasEnviadas = $a -> listarConsultas();
                 return $consultasEnviadas;
@@ -44,7 +44,7 @@
            
             if( $mensajeRespuesta != "" &&  $idConsulta !=""){
                 try{
-                    $p = new ConsultaModelo();
+                    $p = new consultaModelo();
                     $p -> idConsulta= $idConsulta;
                     $p -> mensajeRespuesta = $mensajeRespuesta;
                     $p -> usuarioProfesor = $_SESSION['usuario'];
@@ -62,7 +62,7 @@
 
         public static function mostrarRespuesta(){
             try{
-                $a = new ConsultaModelo();
+                $a = new consultaModelo();
                 $a -> cedula = $_SESSION['cedula'];
                 $respuestasEnviadas = $a -> listarRespuesta();
                 if(empty($respuestasEnviadas)){
@@ -81,7 +81,7 @@
 
         public  static function cambiarEstadoAVisto(){
             try{
-                $v = new ConsultaModelo();
+                $v = new consultaModelo();
                 $v -> cedula = $_SESSION['cedula'];
                 $v -> guardarEstado();
             }
@@ -93,7 +93,7 @@
 
         public static function preHistorialDeConsultasAlumno(){
             try{
-                $c = new ConsultaModelo();
+                $c = new consultaModelo();
                 $c -> cedulaAlumno = $_SESSION['cedula'];
                 $resultado = $c ->  historialDeConsultasAlumno();
                 if(empty($resultado)){
@@ -110,7 +110,7 @@
 
         public static function preHistorialDeConsultasProfesor(){
             try{
-                $c = new ConsultaModelo();
+                $c = new consultaModelo();
                 $c -> cedulaProfesor = $_SESSION['cedula'];
                 $resultado = $c -> historialDeConsultasProfesor();
                 if(empty($resultado)){
@@ -127,7 +127,7 @@
 
         public static function preListarTodasLasConsultas(){
             try{
-                $c = new ConsultaModelo();
+                $c = new consultaModelo();
                 $resultado = $c -> listarTodasLasConsultas();
                 if(empty($resultado)){
                     return false;

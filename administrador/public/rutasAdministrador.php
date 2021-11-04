@@ -17,23 +17,19 @@
             if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /usuarios-pendientes');
             break;
 
-
         case '/borrar-usuarios':
             if($_SERVER['REQUEST_METHOD'] === "POST") administradorController::eliminarUsuarios($_POST['cedula']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /usuarios-pendientes');
             break;
-        
 
         case '/inicioAdministrador':
             if($_SERVER['REQUEST_METHOD'] === 'GET') usuarioController::MostrarLogin();  
             if($_SERVER['REQUEST_METHOD'] === 'POST') usuarioController::iniciarSesion($_POST['usuario'],$_POST['contrasenia'],$_POST['tipoDeUsuario']);
             break;
-
             
         case '/principalAdministrador':
             usuarioController::MostrarMenuPrincipal();
             break; 
-        
         
         case'/login-administrador':
             cargarVista('loginAdministrador');

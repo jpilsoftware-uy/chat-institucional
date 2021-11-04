@@ -3,7 +3,7 @@
 require '../utils/autoloader.php';
  
 
-class administradorModelo extends Modelo{
+class administradorModelo extends modelo{
     public $cedula;
     public $usuario;
     public $contrasenia;

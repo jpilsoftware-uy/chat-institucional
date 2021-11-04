@@ -6,44 +6,81 @@ require '../utils/autoloader.php';
 
 class chatController extends chatModelo {
 
-    public static function crearChat(){
-        try{
-            $c = new chatModelo();
-            $c -> ciCreador = $_SESSION['cedula'];
-            $c -> estadoDelChat = "abierto";
-            $c -> guardarChat();
-            return generarHtml('preChat', ['exito' => true]);
+    public static function crearChat($materia){
+        if($materia !=""){
+            try{
+                $c = new chatModelo();
+                $c -> grupo = $_SESSION['idGrupoDeUsuario'];
+                $c -> materia = $materia;
+                $c -> cedulaCreador = $_SESSION['cedula'];
+                $c -> estadoDelChat = "abierto";
+                $c -> cedulaParticipante =  $_SESSION['cedula'];
+                
+                if($c -> guardarChat() == true){
+                    return header('Location: /chat');
 
-        }catch(Exception $e){
-            return generarHtml('preChat', ['exito' => false]);
-            error_log($e -> getMessage());
-            return "No se pudo guardar ";
+                }else {
+                    return generarHtml('iniciarChat', ['exito' => false], "Usted ya creo este chat, por favor vaya a unirse a la otra pantalla");
+
+                }
+                
+
+            }catch(Exception $e){
+                return generarHtml('iniciarChat', ['exito' => false], "No se pudo crear chat");
+                error_log($e -> getMessage());
+                return "No se pudo guardar ";
+            }
+        }else{
+            return generarHtml('iniciarChat', ['exito' => false], "No tiene grupo");
+
         } 
-    }
+    }   
+    public static function unirseChat($idChat){
+        
+        if($idChat !=""){
+            try{
+                self::asignarIdDeChat($idChat);
+                $c = new chatModelo();
+                $c -> idChat = $idChat;
+                $c -> cedulaParticipante = $_SESSION['cedula'];
+                $c -> guardarParticipanteDeChat();
 
+            }catch(Exception $e){
+                return generarHtml('unirseChat', ['exito' => false], "No se pudo crear chat");
+                error_log($e -> getMessage());
+                return "No se pudo guardar ";
+            }
+        }else{
+            return generarHtml('unirseChat', ['exito' => false], "No tiene grupo");
+
+        } 
+    }   
+    
+    
     public static function crearMensaje($mensajeEnviado){
         if($mensajeEnviado != ""){
             try{
-                $m= new ChatModelo();
+                $m= new chatModelo();
                 $m -> idChatMensaje = $_SESSION['idChat'];
-                $m -> ciCreadorMensaje = $_SESSION['cedula'];
+                $m -> cedulaCreadorMensaje = $_SESSION['cedula'];
                 $m -> mensajeEnviado = $mensajeEnviado;
                 $m -> fecha = $fecha;
                 $m -> usuarioCreadorMensaje = $_SESSION['usuario'];
                 $m -> guardarMensaje();
                 return cargarVista('chat');
             }catch(Exception $e){
-                return generarHtml('chat' . $tipoDeUsuario , ['exito' => false]);
+                return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"No se pudo enviar el mensaje");
                 error_log($e -> getMessage());
                 return "No se pudo guardar ";
             } 
         }else{
-            return generarHtml('chat' . $tipoDeUsuario , ['exito' => false]);
+            return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"El mensaje no puede ser vacio");
         }
     }
 
     public static function listarMensajesChat(){
-        $mensaje = new ChatModelo();
+        $mensaje = new chatModelo();
+        $mensaje -> idChat = $_SESSION['idChat'];
         $mensajes = $mensaje -> mostrarMensaje();
         
         foreach($mensajes as $mensaje){
@@ -57,45 +94,40 @@ class chatController extends chatModelo {
 
 
 
-    public function mostrarMensajes(){
-        $a = new chatModelo();
-        $a -> idChatMensaje = $_SESSION['idChat'];
-        $mensajeEnviado = $a -> mostrarMensaje();
-        return $mensajeEnviado; 
-    }
-
+ 
     public static function mostrarChats(){
-        try{
-            $c = new chatModelo();
-            $resultado = $c -> listadoDeChats();
-            return $resultado;
-        } catch (Exception $e){
-            return generarHtml('unirseChat', ['exito' => false]);
-            error_log($e -> getMessage());
-            return "No se pudo listar";
+        
+            $chats = new chatModelo();
+            $chats -> idGrupoDeUsuario = $_SESSION['idGrupoDeUsuario']; 
             
-        }
-    }
-
-    public static function asignarIdDeChat($id){
-        if($id != ""){
             
-            chatController::prepararAsignacionDeIdDeChat($id);
-            
-            $nombre = "hola";
-            return header('Location: /chat');
-        } else {
-            echo "Error";
-        }
-    }
-
-    private static function prepararAsignacionDeIdDeChat($id){
-        ob_start();
-        $_SESSION['idChat'] = $id;
+            if($chats -> listadoDeChats() == false){
+                return false;
+                }else{
+                return $chats -> listadoDeChats();
+                } 
+        
         
     }
 
+    public static function asignarIdDeChat($idChat){
+        if($idChat != ""){    
+          
+            chatController::prepararAsignacionDeIdDeChat($idChat);
+            
+            return header('Location: /chat');
+        }else{
+            return generarHtml('unirseChat', ['exito' => false],"ocurrio un error");
+        }
+    }
 
+    private static function prepararAsignacionDeIdDeChat($idChat){
+        ob_start();
+        $_SESSION['idChat'] = $idChat;
+        
+    }
+
+   
 
     
 
