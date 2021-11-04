@@ -129,9 +129,14 @@ class chatController extends chatModelo {
     public function cerrarChat(){
         try{
             $c = new chatModelo();
+            $c -> cedulaCreador = $_SESSION['cedula'];
             $c -> idChat = $_SESSION['idChat'];
-            $c -> cerrarElChat();
-            return generarHtml("preChat","exito" == true,"se cerro el chat");
+           if ($c -> cerrarElChat()== true){
+            return generarHtml("preChat","exito" == true,"se cerro el chat");   
+           }else{
+            return generarHtml("chat","exito" == false ,"Usted no es el creador del chat");
+           }
+            
         }catch(Exception $e){
             return generarHtml('chat', ['exito' => false], "No se pudo cerrar chat");
             error_log($e -> getMessage());
