@@ -119,7 +119,9 @@
         case '/iniciar-chat':
             if($_SERVER['REQUEST_METHOD'] === "POST")chatController::unirseChat($_POST['idChat']);
             break;           
-
+        case '/cerrarChat':
+            chatController::cerrarChat();
+            break;    
             
         
 

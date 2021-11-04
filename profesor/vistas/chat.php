@@ -46,6 +46,8 @@
             <textarea name="mensajeEnviado"placeholder="Ingresa tu mensaje..."></textarea>
             <input type="submit" value="Enviar Mensaje" name="enviar">
             <button action ="submit" formaction="/principalProfesor">Volver</button> 
+            <button action ="submit" formaction="/cerrarChat">Cerrar Chat</button>  
+
         </form>
     </div>
 </body>

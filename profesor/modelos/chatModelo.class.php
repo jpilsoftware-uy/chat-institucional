@@ -146,7 +146,7 @@ class chatModelo extends modelo{
     }
 
     private function prepararListadoDeChats(){
-        $sql = "SELECT * FROM chat WHERE grupo=?";
+        $sql = "SELECT * FROM chat WHERE grupo=? && estadoDelChat='abierto'";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("s", $this -> idGrupoDeUsuario);
         
@@ -201,8 +201,18 @@ class chatModelo extends modelo{
         );
     }
     
+    public function cerrarElChat(){
+        $this ->  prepararCambioDeEstadoDeChat();
+        $this -> sentencia -> execute();
 
+    }
 
+    private function prepararCambioDeEstadoDeChat(){
+        $sql ="UPDATE chat SET estadoDelChat='cerrado' WHERE estadoDelChat='abierto' && idChat= ?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $this -> idChat);
+
+    }
 
 
 }
