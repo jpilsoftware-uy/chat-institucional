@@ -88,4 +88,10 @@
         case '/agenda-de-consultas':
             cargarVista('agendaConsultas');
             break;
+        case '/registroUsuario':
+            cargarVista('registrarUsuario');
+            break;   
+        case '/moduloUsuarios':
+            cargarVista('moduloUsuarios');
+            break;     
     }

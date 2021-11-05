@@ -53,7 +53,7 @@
                       <button type="button" data-toggle="modal" data-target="#modalEliminar" class="btn btn-md mr-3 btn-block" style=" border-radius: 25px; background-image: linear-gradient(to right,#ff0000, #990000); border: 0px; color: #fff;">
                         Eliminar Usuario
                       </button>
-                      <button type="submit" formaction="/principalAdministrador" class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
+                      <button type="submit" formaction="/moduloUsuarios" class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
                         Volver
                       </button>
                     </div>
