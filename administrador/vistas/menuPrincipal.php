@@ -87,7 +87,7 @@
                                 <div class="card mt-4 mb-4 text-center">
                                     <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72);color: white;font-weight: bold;text-align: center;"> Modulo Usuario </div>
                                         <div class="card-body">
-                                            <p class="card-text"> </p>
+                                            <p class="card-text"> En esta seccion puede trabajar con todo lo que tenga que ver con el usuario</p>
                                             <a href="/moduloUsuarios" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Modulo Usuario </a>
                                             <p class="card-text mt-1">
                                                 <small class="text-muted"> Ultima actualizacion: 11/5/2021 </small>

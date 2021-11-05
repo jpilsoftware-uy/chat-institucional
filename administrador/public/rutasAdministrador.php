@@ -54,8 +54,7 @@
             break;
         
         case '/cerrar-sesion':
-            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::cerrarSesion();
-            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /principalAdministrador");
+            usuarioController::cerrarSesion();
             break;
 
         case '/eliminar-usuarios':
