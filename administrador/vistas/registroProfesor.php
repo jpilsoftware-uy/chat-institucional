@@ -241,7 +241,7 @@
                         <button
                           action="submit"
                           class="btn btn-md"
-                          formaction="/principalAdministrador"
+                          formaction="/registroUsuario"
                           style="
                             border-radius: 25px;
                             background-image: linear-gradient(
@@ -253,7 +253,7 @@
                             color: #fff;
                           "
                         >
-                          Inicio
+                          Volver
                         </button>
                       </div>
                     </form>
