@@ -4,14 +4,14 @@
     class usuarioController extends usuarioModelo{
         
         
-        public static function preAltaDeUsuario($cedula,$nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $tipoDeUsuario){
+        public static function preAltaDeUsuario($cedula,$nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia, $tipoDeUsuario, $email){
            if($_SESSION['tipoDeUsuario'] == 'Administrador'){
                $estado = "aprobado";
            } else {
                $estado = "pendiente";
            }
 
-            if($nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== "" && $cedula !== "" && $tipoDeUsuario !== "" && $estado !== "" ){  
+            if($nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== "" && $cedula !== "" && $tipoDeUsuario !== "" && $estado !== "" && $email != ""){  
                 try{
                     $u = new usuarioModelo();
                     $u -> cedula = $cedula;
@@ -22,11 +22,12 @@
                     $u -> contrasenia = $contrasenia;
                     $u -> tipoDeUsuario =  $tipoDeUsuario;
                     $u -> estado = $estado;
+                    $u -> email = strtolower($email);
                     $generarFormulario = $u -> guardarUsuario();
                     if ($generarFormulario == true){
                         return generarHtml('registro'. $tipoDeUsuario, ['exito' => true], "Su usuario fue registrado, ahora debe ser aprobado por el administrador");
                     } else if ($generarFormulario == false){
-                        return generarHtml('registro' . $tipoDeUsuario, ['exito' => false], "La cedula o el usuario ingresados ya existen en el sistema");
+                        return generarHtml('registro' . $tipoDeUsuario, ['exito' => false], "La cedula,  el usuario o el email ingresados ya existen en el sistema");
                     }
                 }
                 catch(Exception $e){
@@ -36,6 +37,8 @@
                     return "No se pudo guardar ";
                }
             }else{
+                
+
                 return generarHtml('registro' .$tipoDeUsuario , ['exito' => false], "Uno de los campos esta vacio");
             }
         }
@@ -86,13 +89,14 @@
             $_SESSION['grupo'] = $usuario -> grupo;
             $_SESSION['tipoDeUsuario'] = $usuario -> tipoDeUsuario;
             $_SESSION['estado'] = $usuario -> estado;
+            $_SESSION['email'] = $usuario -> email;
             $_SESSION['autenticado'] = true; 
         }
         //iniciar sesion
 
         //modificar datos de usuario
         public static function preModificarDatosDeUsuario($cedula, $nombre, $primerApellido, $segundoApellido, $usuario, $contrasenia){
-            if($cedula !== "" && $nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== ""){
+            if($cedula !== "" && $nombre !== "" && $primerApellido !== "" && $segundoApellido !== "" && $usuario !== "" && $contrasenia !== "" ){
                 try{
                     if($_SESSION['tipoDeUsuario'] == "Alumno" || $_SESSION['tipoDeUsuario'] == "Profesor"){
                         if($_SESSION['cedula'] == $cedula){
@@ -103,11 +107,12 @@
                             $u -> segundoApellido = $segundoApellido;
                             $u -> usuario = $usuario;
                             $u -> contrasenia = $contrasenia;
-                            $resultado = $u -> actualizarUsuario();
+                            $usuarioDeComparacion = $_SESSION['usuario'];
+                            $resultado = $u -> actualizarUsuario($usuarioDeComparacion);
                             if($resultado == true){
                                 self::cerrarSesion();
                             } else {
-                                return generarHtml("actualizarUsuario", ['exito' => false], "La cedula ingresada no existe en el sistema");
+                                return generarHtml("actualizarUsuario", ['exito' => false], "El usuario ya existe en el sistema");
                             }
                         } else {
                             return generarHtml("actualizarUsuario", ['exito' => false], "Su cedula no coincide con la ingresada en el sistema");
