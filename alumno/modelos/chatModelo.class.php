@@ -4,7 +4,7 @@ require '../utils/autoloader.php';
 
 class chatModelo extends modelo{
     public $cedulaCreador ;
-    public $idChatMensaje;  
+    public $idChat;  
     public $cedulaCreadorMensaje;
     public $mensajeEnviado;
     public $estadoDelChat;
@@ -108,15 +108,21 @@ class chatModelo extends modelo{
     }
 
     public function guardarMensaje(){
+        if($this -> checkearSiElChatEstaAbierto($this -> idChat) == false ){
         $this -> prepararGuardarMensaje();
         $this -> sentencia -> execute();
+        return true;
+        }else{
+            return false;
+        }
+        
     }
 
     private function prepararGuardarMensaje(){
         $sql = "INSERT INTO mensaje (idChatMensaje, cedulaCreadorMensaje, mensajeEnviado, usuarioCreadorMensaje) VALUES (?,?,?,?)";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("iiss",
-            $this -> idChatMensaje,
+            $this -> idChat,
             $this -> cedulaCreadorMensaje,
             $this -> mensajeEnviado,
             $this -> usuarioCreadorMensaje
@@ -124,10 +130,12 @@ class chatModelo extends modelo{
     }
 
     public function mostrarMensaje(){
-        $this -> prepararMensaje();
+              $this -> prepararMensaje();
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
         return $resultado;
+       
+        
     
     }
 
@@ -202,7 +210,7 @@ class chatModelo extends modelo{
     }
     
     public function cerrarElChat(){
-        if($this -> checkearSiEsElCreadorDelChat($this -> cedulaCreador) == true ){
+        if($this -> checkearSiEsElCreadorDelChat($this -> cedula, $this ->  idChat) == true ){
         $this ->  prepararCambioDeEstadoDeChat();
         $this -> sentencia -> execute();
         return true;
@@ -210,17 +218,17 @@ class chatModelo extends modelo{
             return false;
         }
     }   
-    private function checkearSiEsElCreadorDelChat($cedulaCreador){
-        
-        $sql="SELECT cedulaCreador from chat where cedulaCreador=? ";
+    private function checkearSiEsElCreadorDelChat($cedula,$idChat){ 
+        $sql="SELECT cedulaCreador from chat where idChat=? ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
-        $this -> sentencia -> bind_param("i", $cedulaCreador);
+        $this -> sentencia -> bind_param("s", $idChat);
         $this -> sentencia -> execute();
-        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
-        if(empty($resultado)){
-            return true; 
-        }else{
-            return false;
+        $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
+        
+        if($resultado['cedulaCreador'] != $cedula || $resultado['cedulaCreador'] == ""){
+            return false; 
+        }else if($resultado['cedulaCreador'] === $cedula){
+            return true;
         }
     
     }
@@ -231,6 +239,19 @@ class chatModelo extends modelo{
         $this -> sentencia -> bind_param("i", $this -> idChat);
 
     }
+   
 
-
+    private function checkearSiElChatEstaAbierto($idChat){
+        
+        $sql= "SELECT estadoDelChat FROM chat WHERE idChat=?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("i", $idChat);
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
+        if( $resultado['estadoDelChat'] == "abierto"){
+            return true;
+        }else if($resultado['estadoDelChat'] == "cerrado"){
+            return false;
+        }
+    }
 }

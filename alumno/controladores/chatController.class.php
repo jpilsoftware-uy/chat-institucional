@@ -60,7 +60,7 @@ class chatController extends chatModelo {
         if($mensajeEnviado != ""){
             try{
                 $m= new chatModelo();
-                $m -> idChatMensaje = $_SESSION['idChat'];
+                $m -> idChat = $_SESSION['idChat'];
                 $m -> cedulaCreadorMensaje = $_SESSION['cedula'];
                 $m -> mensajeEnviado = $mensajeEnviado;
                 $m -> fecha = $fecha;
@@ -68,7 +68,7 @@ class chatController extends chatModelo {
                 $m -> guardarMensaje();
                 return cargarVista('chat');
             }catch(Exception $e){
-                return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"No se pudo enviar el mensaje");
+                return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"el chat esta cerrado, por favor salga ");
                 error_log($e -> getMessage());
             } 
         }else{
@@ -81,15 +81,17 @@ class chatController extends chatModelo {
         $mensaje -> idChat = $_SESSION['idChat'];
         $mensajes = $mensaje -> mostrarMensaje();
         
-        foreach($mensajes as $mensaje){
-            echo"<div id='chat-data'>";
-            echo"<span>" .$mensaje['usuarioCreadorMensaje'] . ": </span>";
-            echo"<span>" .$mensaje['mensajeEnviado'] . "- </span>";
-            echo"<span>" .$mensaje['fecha'] ." </span>";
-            echo"</div>"; 
-        } 
+                foreach($mensajes as $mensaje){
+                    echo"<div id='chat-data'>";
+                    echo"<span>" .$mensaje['usuarioCreadorMensaje'] . ": </span>";
+                    echo"<span>" .$mensaje['mensajeEnviado'] . "- </span>";
+                    echo"<span>" .$mensaje['fecha'] ." </span>";
+                    echo"</div>"; 
+                }
+         
     }
-
+     
+    
 
 
  
@@ -129,7 +131,7 @@ class chatController extends chatModelo {
     public function cerrarChat(){
         try{
             $c = new chatModelo();
-            $c -> cedulaCreador = $_SESSION['cedula'];
+            $c -> cedula = $_SESSION['cedula'];
             $c -> idChat = $_SESSION['idChat'];
            if ($c -> cerrarElChat()== true){
             return generarHtml("preChat","exito" == true,"se cerro el chat");   
