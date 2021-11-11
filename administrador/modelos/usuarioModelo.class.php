@@ -184,17 +184,29 @@ class usuarioModelo extends modelo{
 
     //listar profesores
 
-    public function listarProfesoresAprobados(){
-        $this -> prepararListadoDeProfesoresAprobados();
+    public function listarProfesoresDelGrupo(){
+        
+        $this -> prepararListadoDeProfesoresDelGrupo();
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+
+        if(empty($resultado)){
+            echo " nashe";
+            return false;
+            
+        }else{
+            
+            return $resultado;    
+        }
         return $resultado;
     }
     
     
-    private function prepararListadoDeProfesoresAprobados(){
-        $sql = "SELECT cedula, nombre, primerApellido, segundoApellido, usuario FROM usuario WHERE estado = 'aprobado' AND tipoDeUsuario = 'Profesor' ";
+    private function prepararListadoDeProfesoresDelGrupo(){
+        $sql = "SELECT * FROM grupoDeUsuario WHERE idGrupoDeUsuario = ? AND tipoDeUsuario = 'Profesor' ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("s", $this -> idGrupoDeUsuario);
+        
     }
 
     //eliminar usuario

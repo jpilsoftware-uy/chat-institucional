@@ -145,10 +145,11 @@
 
         //listar profesores
 
-        public static function mostrarProfesoresAprobados(){
+        public static function mostrarProfesoresDelGrupo(){
             $p = new usuarioModelo();
-            $profesoresAprobados = $p -> listarProfesoresAprobados();
-            return $profesoresAprobados;
+            $p -> idGrupoDeUsuario = $_SESSION['idGrupoDeUsuario'];
+            $profesoresDelGrupo = $p -> listarProfesoresDelGrupo();
+            return $profesoresDelGrupo;
         }
 
         //eliminar usuario
