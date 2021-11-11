@@ -9,7 +9,7 @@
             break;
                     
         case '/insertarAlumno':
-            if($_SERVER['REQUEST_METHOD'] === 'POST') usuarioController::preAltaDeUsuario($_POST['cedula'],$_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'],$_POST['tipoDeUsuario']);
+            if($_SERVER['REQUEST_METHOD'] === 'POST') usuarioController::preAltaDeUsuario($_POST['cedula'],$_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'],$_POST['tipoDeUsuario'],$_POST['email']);
             if($_SERVER['REQUEST_METHOD'] === 'GET') cargarVista('registroAlumno');
             break;
 
@@ -121,7 +121,10 @@
             break;           
         case '/cerrarChat':
             chatController::cerrarChat();
-            break;    
+            break;  
+        case '/verificarEstado':
+            chatController::verificarEstadoDeChat();
+            break;      
             
         
 

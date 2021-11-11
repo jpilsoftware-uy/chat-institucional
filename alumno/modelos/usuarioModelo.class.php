@@ -11,12 +11,19 @@ class usuarioModelo extends modelo{
     public $cedula;
     public $estado;
     public $tipoDeUsuario;
+    public $email;
     
 
+
     public function guardarUsuario(){
-        if( ($this -> checkearUsuario($this -> usuario) || $this -> checkearCedula($this -> cedula)) == true){
+       
+
+        if( $this -> checkearUsuario($this -> usuario)  == true || $this -> checkearCedula($this -> cedula) == true || $this -> checkearEmail($this -> email) == true ){
+            
             return false;
-        } else if( ($this -> checkearUsuario($this -> usuario) || $this -> checkearCedula($this -> cedula)) == false ){
+           
+        } else if( $this -> checkearUsuario($this -> usuario) == false || $this -> checkearCedula($this -> cedula) == false || $this -> checkearEmail($this -> email) == false){
+            
             $this -> prepararInsercion();
             $this -> sentencia -> execute();
             return true;
@@ -28,10 +35,11 @@ class usuarioModelo extends modelo{
     }
 
     private function prepararInsercion(){
+            
             $this -> contrasenia = $this -> hashearContrasenia( $this -> contrasenia);
-            $sql = "INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado) VALUES (?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado, email)  VALUES (?,?,?,?,?,?,?,?,?)";
             $this -> sentencia = $this -> conexion -> prepare($sql);
-            $this -> sentencia -> bind_param("isssssss",
+            $this -> sentencia -> bind_param("issssssss",
                 $this -> cedula,
                 $this -> nombre,
                 $this -> primerApellido,
@@ -39,7 +47,8 @@ class usuarioModelo extends modelo{
                 $this -> usuario,
                 $this -> contrasenia,
                 $this -> tipoDeUsuario,
-                $this -> estado
+                $this -> estado,
+                $this -> email
             );
     }
 
@@ -49,7 +58,7 @@ class usuarioModelo extends modelo{
             $this -> sentencia -> bind_param("s", $usuario);
             $this -> sentencia -> execute();
             $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
-            if ($resultado['usuario'] == $usuario){
+            if ($resultado['usuario'] === $usuario){
                 return true;
             } else if ($resultado['usuario'] !== $usuario){
                 return false;
@@ -62,10 +71,24 @@ class usuarioModelo extends modelo{
        $this -> sentencia -> bind_param("i", $cedula);
        $this -> sentencia -> execute();
        $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
-       if($resultado['cedula'] == $cedula){
+       if($resultado['cedula'] === $cedula){
            return true;
        } else if ($resultado['cedula'] !== $cedula){
            return false;
+       }
+   }
+   private function checkearEmail($email){
+       
+       $sql ="SELECT email FROM usuario WHERE email=?";
+       $this -> sentencia = $this -> conexion -> prepare($sql);
+       $this -> sentencia -> bind_param("s", $email);
+       $this -> sentencia -> execute();
+       $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
+       if($resultado['email'] === $email){
+        return true;
+       }else if($resultado['email'] !== $email) {
+           return false;
+
        }
    }
     
@@ -100,7 +123,7 @@ class usuarioModelo extends modelo{
     }
     
     private function prepararAutenticacion(){
-        $sql= "SELECT cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado FROM usuario WHERE usuario= ? ";
+        $sql= "SELECT cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado, email FROM usuario WHERE usuario= ? ";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("s", $this -> usuario);
     }
@@ -114,19 +137,32 @@ class usuarioModelo extends modelo{
         $this -> contrasenia  = $resultado['contrasenia'];
         $this -> tipoDeUsuario= $resultado['tipoDeUsuario'];
         $this -> estado = $resultado['estado'];
+        $this -> email = $resultado['email'];
     }
     //iniciar sesion
     
     //modificar datos
 
-    public function actualizarUsuario(){
-        if(($this -> checkearCedula($this -> cedula)) == true){
-            $this -> prepararActualizacionDeUsuario();
-            $this -> sentencia -> execute();
-            return true;
-        } else {
-            return false;
+    public function actualizarUsuario($usuarioDeComparacion){
+        
+        
+        if($this -> usuario !== $usuarioDeComparacion){
+         
+            if( ($this -> checkearUsuario($this -> usuario)) == false){
+                $this -> prepararActualizacionDeUsuario();
+                $this -> sentencia -> execute();
+                return true;
+            } else {
+                return false;
+            }
+        }else{
+                $this -> prepararActualizacionDeUsuario();
+                $this -> sentencia -> execute();
+                return true;
+
+            
         }
+        
     }
 
     private function prepararActualizacionDeUsuario(){
@@ -140,6 +176,7 @@ class usuarioModelo extends modelo{
             $this -> usuario,
             $contrasenia,
             $this -> cedula
+            
         );
     }
     

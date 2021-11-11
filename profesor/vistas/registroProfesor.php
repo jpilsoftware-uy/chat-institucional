@@ -14,7 +14,8 @@
     />
     <title>Registrarse | Profesor</title>
 </head>
-<body>
+<body class="vh-100"
+      style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)">
     <section
       class="vh-100"
       style="background: linear-gradient(to bottom right, #009ffd, #2a2a72)"
@@ -159,6 +160,27 @@
                           maxlength="20"
                           id="usuario"
                           name="usuario"
+                        />
+                      </div>
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Email</span>
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="Ingrese su Email"
+                          class="form-control"
+                          maxlength="30"
+                          id="email"
+                          name="email"
                         />
                       </div>
 

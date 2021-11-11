@@ -141,6 +141,7 @@
                                             </div>
                                             <input type="password" placeholder="Ingrese su contraseña" class="form-control" maxlength="20" name="contrasenia" id="contrasenia"/>   
                                         </div>
+                                       
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <button type="button" data-toggle="modal" data-target="#modalModificar" class="btn btn-md mr-3 btn-block" style=" border-radius: 25px; background-image: linear-gradient(to right,#f53803, #f5d020); border: 0px; color: #fff;">
                                               Modificar Datos
