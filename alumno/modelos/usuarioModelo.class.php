@@ -71,9 +71,9 @@ class usuarioModelo extends modelo{
        $this -> sentencia -> bind_param("i", $cedula);
        $this -> sentencia -> execute();
        $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
-       if($resultado['cedula'] === $cedula){
+       if($resultado['cedula'] == $cedula){
            return true;
-       } else if ($resultado['cedula'] !== $cedula){
+       } else if ($resultado['cedula'] != $cedula){
            return false;
        }
    }
@@ -143,26 +143,54 @@ class usuarioModelo extends modelo{
     
     //modificar datos
 
-    public function actualizarUsuario($usuarioDeComparacion){
-        
-        
-        if($this -> usuario !== $usuarioDeComparacion){
-         
-            if( ($this -> checkearUsuario($this -> usuario)) == false){
+    public function actualizarUsuario($usuarioDeComparacion, $tipoDeUsuario){
+        if($tipoDeUsuario === 'Profesor' || $tipoDeUsuario === 'Alumno'){
+            if($this -> usuario !== $usuarioDeComparacion){
+                if($this -> checkearUsuario($this -> usuario) == false){
+                    $this -> prepararActualizacionDeUsuario();
+                    $this -> sentencia -> execute();
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
                 $this -> prepararActualizacionDeUsuario();
                 $this -> sentencia -> execute();
                 return true;
+            }
+        } else if ($tipoDeUsuario === 'Administrador'){
+            if($this -> checkearCedula($this -> cedula) == true){
+                $resultado = self::listarUsuario($this -> cedula);
+                if($resultado['usuario'] === $this -> usuario){
+                    $this -> prepararActualizacionDeUsuario();
+                    $this -> sentencia -> execute();
+                    return true;
+                } else {
+                    if($this -> checkearUsuario($this -> usuario) == false){
+                        $this -> prepararActualizacionDeUsuario();
+                        $this -> sentencia -> execute();
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } 
             } else {
                 return false;
             }
-        }else{
-                $this -> prepararActualizacionDeUsuario();
-                $this -> sentencia -> execute();
-                return true;
-
-            
         }
-        
+    }
+
+    public function listarUsuario($cedula){
+        $this -> prepararListadoDeUsuario($cedula);
+        $this -> sentencia -> execute();
+        $resultado = $this -> sentencia -> get_result() -> fetch_assoc();
+        return $resultado;
+    }
+
+    private function prepararListadoDeUsuario($cedula){
+        $sql = "SELECT * from usuario WHERE cedula = ?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this-> sentencia -> bind_param("i", $cedula);
     }
 
     private function prepararActualizacionDeUsuario(){
