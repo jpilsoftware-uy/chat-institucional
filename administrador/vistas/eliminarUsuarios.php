@@ -72,8 +72,10 @@
                       <?php
                           $usuario = new administradorController();
                           $usuarios = $usuario -> mostrarUsuariosAprobados();
+                          if($usuarios == false){
 
-                          foreach($usuarios as $usuario){
+                          } else {
+                            foreach($usuarios as $usuario){
                               echo "<tr>";
                               echo "<td> " . $usuario['cedula'] . "</td>";
                               echo "<td> " . $usuario['nombre'] . "</td>";
@@ -81,6 +83,8 @@
                               echo "<td> " . $usuario['tipoDeUsuario'] . "</td>";
                               echo "</tr>";
                           }
+                          }
+                          
                       ?>
                       </tbody>
                     </table>

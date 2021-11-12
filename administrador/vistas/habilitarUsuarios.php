@@ -53,20 +53,25 @@
 
                                                 $usuario = new administradorController();
                                                 $usuarios = $usuario -> mostrarUsuariosPendientes();
-
-                                                foreach($usuarios as $usuario){
-                                                    echo "<tr>";
-                                                    echo "<td> " . $usuario['cedula'] . "</td>";
-                                                    echo "<td> " . $usuario['nombre'] . "</td>";
-                                                    echo "<td> " . $usuario['primerApellido'] . "</td>";
-                                                    echo "<td> " . $usuario['tipoDeUsuario'] . "</td>";
-                                                    echo "<td> 
-                                                            <button name='cedula' formaction='/aprobar-usuarios' class='btn  btn-sm mb-1' style='border-radius: 25px; background-image: linear-gradient(to right,#5aff15, #00b712); border: 0px; color: #fff;' value='".$usuario['cedula']."'>Aprobar Usuario</button> <br>
-                                                            <button name='cedula' formaction='/borrar-usuarios' class='btn btn-sm ' style='border-radius: 25px; background-image: linear-gradient(to right,#ff0000, #990000); border: 0px; color: #fff;' value='".$usuario['cedula']."'>Eliminar Usuario</button> <br>
-                                                            
-                                                         </td>";
-                                                         
+                                                if($usuarios == false){
+                                                    
+                                                } else {
+                                                    foreach($usuarios as $usuario){
+                                                        echo "<tr>";
+                                                        echo "<td> " . $usuario['cedula'] . "</td>";
+                                                        echo "<td> " . $usuario['nombre'] . "</td>";
+                                                        echo "<td> " . $usuario['primerApellido'] . "</td>";
+                                                        echo "<td> " . $usuario['tipoDeUsuario'] . "</td>";
+                                                        echo "<td> 
+                                                                <button name='cedula' formaction='/aprobar-usuarios' class='btn  btn-sm mb-1' style='border-radius: 25px; background-image: linear-gradient(to right,#5aff15, #00b712); border: 0px; color: #fff;' value='".$usuario['cedula']."'>Aprobar Usuario</button> <br>
+                                                                <button name='cedula' formaction='/borrar-usuarios' class='btn btn-sm ' style='border-radius: 25px; background-image: linear-gradient(to right,#ff0000, #990000); border: 0px; color: #fff;' value='".$usuario['cedula']."'>Eliminar Usuario</button> <br>
+                                                                
+                                                             </td>";
+                                                             
+                                                    }
                                                 }
+
+                                                
                                                 ?>
                                             </tbody>
                                         </table>

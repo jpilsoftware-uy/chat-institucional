@@ -32,29 +32,40 @@ class consultaModelo extends modelo{
         $sql = "SELECT idConsulta, mensajeConsulta, mensajeRespuesta, cedulaAlumno, cedulaProfesor, estadoConsulta, usuarioAlumno FROM consulta WHERE cedulaProfesor= ? && estadoConsulta='enviado'" ;
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("i",  $this -> cedula);
-        $this -> sentencia -> execute();
     }
 
 
     public function listarConsultas(){
         $this -> prepararListadoDeConsultas();
         $this -> sentencia -> execute();
-        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);   
-        return $resultado;
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        if(empty($resultado)){
+            return false;
+        } else {
+            return $resultado;
+        }
     }
    
 
     public function guardarConsulta(){
         $this -> prepararInsercionDeConsulta(); 
-        $this -> sentencia -> execute();   
-         
+        $this -> sentencia -> execute();
+        if($this -> sentencia -> error){
+            return false;
+        } else {
+            return true;
+        }   
     }
 
     
     public function guardarRespuesta(){
         $this -> prepararInsercionDeRespuesta(); 
-        $this -> sentencia -> execute();   
-         
+        $this -> sentencia -> execute();
+        if($this -> sentencia -> error){
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
@@ -79,8 +90,12 @@ class consultaModelo extends modelo{
     public function listarRespuesta(){
         $this -> prepararListadoDeRespuesta();
         $this -> sentencia -> execute();
-        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);   
-        return $resultado;
+        $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        if(empty($resultado)){
+            return false;
+        } else {
+            return $resultado;
+        }   
     }
 
 
@@ -104,7 +119,11 @@ class consultaModelo extends modelo{
         $this -> prepararHistorialDeConsultasAlumno();
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
-        return $resultado;
+        if(empty($resultado)){
+            return false;
+        } else {
+            return $resultado;
+        }
     }
 
 
@@ -119,7 +138,11 @@ class consultaModelo extends modelo{
         $this -> prepararHistorialDeConsultasProfesor();
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
-        return $resultado;
+        if(empty($resultado)){
+            return false;
+        } else {
+            return $resultado;
+        }
     }
 
 
@@ -134,7 +157,11 @@ class consultaModelo extends modelo{
         $this -> prepararListarTodasLasConsultas();
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
-        return $resultado;
+        if(empty($resultado)){
+            return false;
+        } else {
+            return $resultado;
+        }
     }
 
     private function prepararListarTodasLasConsultas(){

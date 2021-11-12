@@ -15,8 +15,12 @@
                     $p -> cedulaProfesor = $cedulaProfesor;
                     $p -> estadoConsulta ="enviado";
                     $p -> usuarioAlumno = $_SESSION['usuario'];
-                    $p -> guardarConsulta();
-                    return generarHtml('consultaAlumno', ['exito' => true], "Consulta enviada exitosamente");
+                    $resultado = $p -> guardarConsulta();
+                    if($resultado == true){
+                        return generarHtml('consultaAlumno', ['exito' => true], "Consulta enviada exitosamente");
+                    } else {
+                        return generarHtml('consultaAlumno', ['exito' => false], "No se pudo guardar la consulta");
+                    }
                 }
                 catch(Exception $e){
                     error_log($e -> getMessage());
@@ -31,11 +35,15 @@
                 $a = new consultaModelo();
                 $a -> cedula = $_SESSION['cedula'];
                 $consultasEnviadas = $a -> listarConsultas();
-                return $consultasEnviadas;
+                if($consultasEnviadas == false){
+                    return "Error grave en el sistema";
+                } else if (!empty($consultasEnviadas)){
+                    return $consultasEnviadas;
+                }
             }
             catch(Exception $e){
                 error_log($e -> getMessage());
-                return "error";
+                return "Error grave en el sistema";
             }    
         }
 
@@ -48,8 +56,12 @@
                     $p -> idConsulta= $idConsulta;
                     $p -> mensajeRespuesta = $mensajeRespuesta;
                     $p -> usuarioProfesor = $_SESSION['usuario'];
-                    $p -> guardarRespuesta();
-                    return generarHtml('responderConsultas', ['exito' => true], "Respuesta enviada exitosamente");
+                    $resultado = $p -> guardarRespuesta();
+                    if($resultado){
+                        return generarHtml('responderConsultas', ['exito' => true], "Respuesta enviada exitosamente");
+                    } else {
+                        return generarHtml('responderConsultas', ['exito' => false], "Respuesta enviada exitosamente");
+                    }
                 }
                 catch(Exception $e){
                     error_log($e -> getMessage());
@@ -65,12 +77,11 @@
                 $a = new consultaModelo();
                 $a -> cedula = $_SESSION['cedula'];
                 $respuestasEnviadas = $a -> listarRespuesta();
-                if(empty($respuestasEnviadas)){
+                if($respuestasEnviadas == false){
                     return false;
                 } else {
                     return $respuestasEnviadas;
                 }
-                
             } 
             catch(Exception $e){
                 error_log($e -> getMessage());
@@ -91,12 +102,13 @@
             }
         }
 
+
         public static function preHistorialDeConsultasAlumno(){
             try{
                 $c = new consultaModelo();
                 $c -> cedulaAlumno = $_SESSION['cedula'];
                 $resultado = $c ->  historialDeConsultasAlumno();
-                if(empty($resultado)){
+                if($resultado == false){
                     return false;
                 } else {
                     return $resultado;
@@ -108,12 +120,13 @@
             }
         }
 
+
         public static function preHistorialDeConsultasProfesor(){
             try{
                 $c = new consultaModelo();
                 $c -> cedulaProfesor = $_SESSION['cedula'];
                 $resultado = $c -> historialDeConsultasProfesor();
-                if(empty($resultado)){
+                if($resultado == false){
                     return false;
                 } else {
                     return $resultado;
@@ -125,11 +138,12 @@
             }
         }
 
+
         public static function preListarTodasLasConsultas(){
             try{
                 $c = new consultaModelo();
                 $resultado = $c -> listarTodasLasConsultas();
-                if(empty($resultado)){
+                if($resultado == false){
                     return false;
                 } else {
                     return $resultado;
