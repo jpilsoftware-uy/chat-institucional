@@ -17,18 +17,32 @@ class administradorModelo extends modelo{
         $this -> prepararListadoDeUsuariosPendientes();
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        if(empty($resultado)){
+            return false;
+        } else {
+            return $resultado;
+        }
         
-        return $resultado;
     }
 
     public function guardarEstadoUsuarios(){
         $this -> prepararActualizacionDeEstadoUsuarios($this -> cedula );
         $this -> sentencia -> execute();
+        if($this -> sentencia -> error){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function eliminarUsuario(){
         $this -> prepararEliminacionDeUsuario($this -> cedula);
         $this-> sentencia -> execute();
+        if($this -> sentencia -> error){
+            return false;
+        } else {
+            return true;
+        }
     }
     
     private function prepararListadoDeUsuariosPendientes(){
@@ -60,9 +74,11 @@ class administradorModelo extends modelo{
         $this -> prepararListadoDeUsuariosAprobados();
         $this -> sentencia -> execute();
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
-        
-        return $resultado;
-
+        if(empty($resultado)){
+            return false;
+        } else {
+            return $resultado;
+        }
     }
    
     
