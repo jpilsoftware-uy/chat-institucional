@@ -108,7 +108,8 @@
                             $u -> usuario = $usuario;
                             $u -> contrasenia = $contrasenia;
                             $usuarioDeComparacion = $_SESSION['usuario'];
-                            $resultado = $u -> actualizarUsuario($usuarioDeComparacion);
+                            $tipoDeUsuario = $_SESSION['tipoDeUsuario'];
+                            $resultado = $u -> actualizarUsuario($usuarioDeComparacion, $tipoDeUsuario);
                             if($resultado == true){
                                 self::cerrarSesion();
                             } else {
@@ -125,8 +126,9 @@
                         $u -> segundoApellido = $segundoApellido;
                         $u -> usuario = $usuario;
                         $u -> contrasenia = $contrasenia;
-                        $u -> actualizarUsuario();
-                        if($u -> actualizarUsuario() == true){
+                        $tipoDeUsuario = $_SESSION['tipoDeUsuario'];
+                        $resultado = $u -> actualizarUsuario(null, $tipoDeUsuario);
+                        if($resultado == true){
                             return generarHtml("actualizarUsuario", ['exito' => true], "Usuario modificado exitosamente");
                         } else {
                             return generarHtml("actualizarUsuario", ['exito' => false], "La cedula ingresada no existe en el sistema");
