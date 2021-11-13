@@ -1,53 +1,40 @@
 <?php
-require '/home/administrador/chat-institucional/administrador/app/usuarioModelo.class.php';
+require '/home/administrador/chat-institucional/administrador/app/administradorModelo.class.php';
 
 class tests extends \PHPUnit\Framework\TestCase{
 
-    public function testGuardarUsuario(){
-        //registramos un alumno
+    public function testListarUsuariosPendientes(){
+        //listamos usuarios pendientes
         try{
-            $u = new usuarioModelo();
-            $u -> nombre = "ivan";
-            $u -> primerApellido = "braida";
-            $u -> segundoApellido = "fagundez";
-            $u -> usuario = "holabobi";
-            $u -> contrasenia = "holaA123";
-            $u -> cedula = "12345678";
-            $u -> estado = "pendiente";
-            $u -> tipoDeUsuario = "Alumno";
-            $u -> email = "pedro@gmail.com";
-            $resultado = $u -> guardarUsuario();
-            $this -> assertTrue($resultado);
+            $a = new administradorModelo();
+            $resultado = $a -> listarUsuariosPendientes();
+            $this -> assertIsArray($resultado);
         } catch (Exception $e){
-            $this -> assertTrue(false, "No se pudo registrar");
+            $this -> assertFalse($resultado);
         }
         
     }
 
-    public function testActualizarDatos(){
-        //actualizamos datos de alumno manteniendo su usuario
+    public function testListarUsuariosAprobados(){
         try{
-            $u = new usuarioModelo();
-            $u -> nombre = "ivan";
-            $u -> primerApellido = "braida";
-            $u -> segundoApellido = "fagundez";
-            $u -> usuario = "ivanbraida";
-            $u -> contrasenia = "holaA123";
-            $u -> cedula = "36792178";
-            $resultado = $u -> actualizarUsuario("ivanbraida", "Alumno");
+            $a = new administradorModelo();
+            $resultado = $a -> listarUsuariosAprobados();
+            $this -> assertIsArray($resultado); 
+        } catch (Exception $e) {
+            $this -> assertTrue(false);
+        }
+    }
+
+    public function testGuardarEstadoUsuarios(){
+        try{
+            $a = new administradorModelo();
+            $a -> cedula = "36792178";
+            $resultado = $a -> guardarEstadoUsuarios();
             $this -> assertTrue($resultado);
-        } catch(Exception $e){
+        } catch (Exception $e){
             $this -> assertTrue(false, "Hubo un error");
         }
     }
 
-    public function testEliminarUsuario(){
-        //eliminamos un alumno
-        $u = new usuarioModelo();
-        $u -> cedula = "12345678";
-        $resultado = $u -> eliminarUsuario();
-        $this -> assertTrue($resultado);
-    }
-
     
-}
+}   
