@@ -17,9 +17,9 @@ Instalar PHP
 
 create table chat (idChat int auto_increment primary key, cedulaCreador int(8), materia varchar(60), grupo varchar(10), estadoDelChat varchar (10) );
 
-create table participantesDeChat (id int auto_increment primary key, idChat int, cedulaParticipante int(8) ,materia varchar(60), grupo varchar(10),FOREIGN KEY (idChat) REFERENCES chat (idChat) );
+create table participantesDeChat (id int auto_increment primary key, idChat int, cedulaParticipante int(8) ,materia varchar(60), grupo varchar(10),FOREIGN KEY (idChat) REFERENCES chat (idChat) ON DELETE CASCADE );
 
-create table mensaje (idMensaje int auto_increment primary key, idChatMensaje int, cedulaCreadorMensaje int(8), mensajeEnviado varchar (500), usuarioCreadorMensaje varchar(20), fecha timestamp, FOREIGN KEY (idChatMensaje) REFERENCES chat (idChat));
+create table mensaje (idMensaje int auto_increment primary key, idChatMensaje int, cedulaCreadorMensaje int(8), mensajeEnviado varchar (500), usuarioCreadorMensaje varchar(20), fecha timestamp, FOREIGN KEY (idChatMensaje) REFERENCES chat (idChat) ON DELETE CASCADE);
 
 create table usuario( cedula int(8) primary key not null, nombre varchar (20) not null, primerApellido varchar (20) not null, segundoApellido varchar (20), usuario varchar(255) not null, contrasenia varchar(255) not null, tipoDeUsuario varchar(13) not null, estado varchar(10) not null, email varchar(30) not null );
 
@@ -29,9 +29,9 @@ create table orientaciones(tipoDeOrientacion varchar (60) primary key,materia1 v
 
 create table grupo (idGrupo varchar (10) primary key, tipoDeOrientacion varchar (60) , foreign key (tipoDeOrientacion) references orientaciones(tipoDeOrientacion) );
 
-create table grupoDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20), idGrupoDeUsuario varchar(10), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula), FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo));
+create table grupoDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20), idGrupoDeUsuario varchar(10), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula) ON DELETE CASCADE, FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo) ON DELETE CASCADE);
 
-create table materiaDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20), idGrupoDeUsuario varchar(10), materia varchar (60), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula), FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo));
+create table materiaDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20), idGrupoDeUsuario varchar(10), materia varchar (60), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula) ON DELETE CASCADE ,FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo) ON DELETE CASCADE );
 
 insert into orientaciones values ("1er anio - Bachillerato De Informatica","Programacion I","Sistemas Operativos I","Logica para informatica","Metodos discretos","Lab. de Soporte de Equipos Informaticos","Geometria","Lab. de Tecnologias Electricas Aplicadas","Matematica","Ingles","Ciencias Sociales - Historia","Biologia CTS","Analisis y produccion de Textos","Quimica");
 
