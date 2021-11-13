@@ -19,3 +19,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check syntax in all php files of repo
         run: for archivo in $(find . | grep php); do  php -l $archivo || exit 1; done
+
+  RunTesting:
+    runs-on: [self-hosted]
+    continue-on-error: false
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run testing for admin
+        run: cd /home/administrador/chat-institucional/administrador/app && ../vendor/bin/phpunit ../tests/tests.php --colors 
