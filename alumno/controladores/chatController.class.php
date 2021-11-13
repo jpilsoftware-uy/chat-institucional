@@ -65,8 +65,13 @@ class chatController extends chatModelo {
                 $m -> mensajeEnviado = $mensajeEnviado;
                 $m -> fecha = $fecha;
                 $m -> usuarioCreadorMensaje = $_SESSION['usuario'];
-                $m -> guardarMensaje();
-                return cargarVista('chat');
+                
+                if(($m -> guardarMensaje()) == false ){
+                    return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"el chat esta cerrado, por favor salga ");
+                }else{
+                    return cargarVista('chat');
+                }
+               
             }catch(Exception $e){
                 return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"el chat esta cerrado, por favor salga ");
                 error_log($e -> getMessage());

@@ -108,7 +108,7 @@ class chatModelo extends modelo{
     }
 
     public function guardarMensaje(){
-        if($this -> checkearSiElChatEstaAbierto($this -> idChat) == false ){
+        if(($this -> checkearSiElChatEstaAbierto($this -> idChat)) == true ){
         $this -> prepararGuardarMensaje();
         $this -> sentencia -> execute();
         return true;
@@ -211,8 +211,9 @@ class chatModelo extends modelo{
     
     public function cerrarElChat(){
         if($this -> checkearSiEsElCreadorDelChat($this -> cedula, $this ->  idChat) == true ){
-        $this ->  prepararCambioDeEstadoDeChat();
+        $this ->  prepararCambioDeEstadoDeChat(); 
         $this -> sentencia -> execute();
+        
         return true;
         }else{
             return false;
@@ -254,4 +255,8 @@ class chatModelo extends modelo{
             return false;
         }
     }
+
+    
+
+    
 }
