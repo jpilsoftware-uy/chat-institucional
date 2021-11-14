@@ -49,7 +49,7 @@
             break;
 
         case '/registrarAlumno':
-            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preAltaDeUsuario($_POST['cedula'],$_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'],$_POST['tipoDeUsuario']);
+            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preAltaDeUsuario($_POST['cedula'],$_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'],$_POST['tipoDeUsuario'], $_POST['email']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /registro-alumno");
             break;
         
@@ -71,7 +71,7 @@
             break;
 
         case '/registrarProfesor':
-            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preAltaDeUsuario($_POST['cedula'],$_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'],$_POST['tipoDeUsuario']);
+            if($_SERVER['REQUEST_METHOD'] === "POST") usuarioController::preAltaDeUsuario($_POST['cedula'],$_POST['nombre'], $_POST['primerApellido'], $_POST['segundoApellido'], $_POST['usuario'], $_POST['contrasenia'],$_POST['tipoDeUsuario'], $_POST['email']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /registro-profesor");
             break;
 
@@ -87,10 +87,21 @@
         case '/agenda-de-consultas':
             cargarVista('agendaConsultas');
             break;
+
         case '/registroUsuario':
             cargarVista('registrarUsuario');
-            break;   
+            break;
+
         case '/moduloUsuarios':
             cargarVista('moduloUsuarios');
-            break;     
+            break;
+            
+        case '/crear-orientacion':
+            cargarVista('crearOrientacion');
+            break;
+
+        case '/registrar-orientacion':
+            if($_SERVER['REQUEST_METHOD'] === "POST") orientacionesController::preCrearOrientacion($_POST['tipoDeOrientacion'], $_POST['materia1'], $_POST['materia2'], $_POST['materia3'], $_POST['materia4'], $_POST['materia5'], $_POST['materia6'], $_POST['materia7'], $_POST['materia8'], $_POST['materia9'], $_POST['materia10'], $_POST['materia11'], $_POST['materia12'], $_POST['materia13']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /crear-orientacion");
+            break;
     }

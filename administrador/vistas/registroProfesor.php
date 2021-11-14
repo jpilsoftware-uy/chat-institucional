@@ -180,6 +180,28 @@
                         "
                       >
                         <div class="input-group-prepend">
+                          <span class="input-group-text">Email</span>
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="Ingrese su email"
+                          class="form-control"
+                          maxlength="30"
+                          id="email"
+                          name="email"
+                        />
+                      </div>
+
+                      <div
+                        class="
+                          d-flex
+                          flex-row
+                          align-items-center
+                          mb-4
+                          input-group
+                        "
+                      >
+                        <div class="input-group-prepend">
                           <span class="input-group-text">Contraseña</span>
                         </div>
                         <input
