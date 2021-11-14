@@ -219,7 +219,7 @@ class usuarioModelo extends modelo{
         $resultado = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
 
         if(empty($resultado)){
-            echo " nashe";
+            
             return false;
             
         }else{

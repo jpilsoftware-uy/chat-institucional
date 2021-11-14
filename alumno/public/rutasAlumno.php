@@ -126,7 +126,7 @@
             chatController::verificarEstadoDeChat();
             break;  
         case '/mostrarProfesoresDelGrupo':
-            if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="hacer-consulta") && usuarioController::mostrarProfesoresDelGrupo();
+            if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="consultaAlumno") && usuarioController::mostrarProfesoresDelGrupo();
             
             break;    
             

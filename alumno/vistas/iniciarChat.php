@@ -115,11 +115,17 @@
                                             <?php
                                                $grupo = new grupoController();
                                                $grupos = $grupo -> mostrarGrupoDeUsuario();
-                                               echo "<select class='form-control' name='idGrupoDeUsuario'>";
-                                               echo "<option selected disabled hidden>Seleccione grupo</option>";
-                                               foreach($grupos as $grupo){
-                                                   echo "<option  value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
-                                               } 
+                                               if($grupos == false){
+                                                echo "<select class='form-control' name='idGrupoDeUsuario'>";
+                                                echo "<option selected disabled hidden>Usted no pertenece a ningun grupo</option>";
+                                               }else{
+                                                    echo "<select class='form-control' name='idGrupoDeUsuario'>";
+                                                    echo "<option selected disabled hidden>Seleccione grupo</option>";
+                                                    foreach($grupos as $grupo){
+                                                        echo "<option  value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
+                                                    } 
+                                               }
+                                              
                                                echo "</select>" ;   
                                                ?>
                                            
@@ -140,6 +146,7 @@
                                                     echo "<option selected disabled hidden>No tiene materias</option>";              
                                                 }else{
                                                     foreach($materias as $materia){
+                                                        
                                                     echo "<option selected disabled hidden>$materia[tipoDeOrientacion]</option>";
                                                     echo "<option value='$materia[materia1]'>" . $materia['materia1'] ."</option>";
                                                     echo "<option value='$materia[materia2]'>" . $materia['materia2'] ."</option>";
