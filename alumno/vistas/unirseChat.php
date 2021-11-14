@@ -115,11 +115,17 @@
                                             <?php
                                                $grupo = new grupoController();
                                                $grupos = $grupo -> mostrarGrupoDeUsuario();
-                                               echo "<select class='form-control' name='idGrupoDeUsuario'>";
-                                               echo "<option selected disabled hidden>Seleccione grupo</option>";
-                                               foreach($grupos as $grupo){
-                                                   echo "<option  value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
-                                               } 
+                                               if($grupos == false){
+                                                echo "<select class='form-control' name='idGrupoDeUsuario'>";
+                                                echo "<option selected disabled hidden>Usted no pertenece a ningun grupo</option>";
+                                               }else{
+                                                    echo "<select class='form-control' name='idGrupoDeUsuario'>";
+                                                    echo "<option selected disabled hidden>Seleccione grupo</option>";
+                                                    foreach($grupos as $grupo){
+                                                    echo "<option  value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
+                                                    }
+                                               }
+                                                
                                                echo "</select>" ;   
                                                ?>
                                            
@@ -134,13 +140,15 @@
                                                 $chat = new chatController();
                                                 $chats = $chat -> mostrarChats();
                                                 
-                                                    
-                                                echo "<select class='form-control' name='idChat'>";
-                                                echo "<option selected disabled hidden>Seleccione Chat</option>";
-                                                foreach($chats as $chat){
-                                                   echo "<option  value='$chat[idChat]'>"."Chat de ".$chat['grupo']." ".$chat['materia']."</option>";
+                                                
+                                                    echo "<select class='form-control' name='idChat'>";
+                                                    echo "<option selected disabled hidden>Seleccione Chat</option>";
+                                                    foreach($chats as $chat){
+                                                    echo "<option  value='$chat[idChat]'>"."Chat de ".$chat['grupo']." ".$chat['materia']."</option>";
                                                                   
-                                                } 
+                                                    } 
+                                                
+                                                
                                                     echo "</select>" ;  
                                                     
                                                     
