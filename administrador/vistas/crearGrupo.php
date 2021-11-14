@@ -43,18 +43,22 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Orientacion</span>
                                             </div>
-                                            <select class="form-control" name="tipoDeOrientacion">
-                                                <option selected disabled hidden>Seleccione una orientacion...</option>
-                                                <option value="3er Anio - Enfasis en Desarrollo Web">3er Año - Énfasis en Desarrollo Web</option>
-                                                <option value="3er Anio - Enfasis en Desarrollo y Soporte">3er Año - Énfasis en Desarrollo y Soporte</option>
-                                                <option value="3er Anio - Enfasis en Desarrollo de Videojuegos">3er Año - Énfasis en Desarrollo de Videojuegos</option>
-                                                <option value="2do Anio - Bachillerato De Informatica">2do año - Bachillerato De Informatica</option>
-                                                <option value="1er Anio - Bachillerato De Informatica">1er año - Bachillerato De Informatica</option>
-                                            </select>
+                                            <?php
+                                            $orientacion = new orientacionesController();
+                                            $orientaciones = $orientacion -> mostrarOrientaciones(); 
+                                            echo "<select class='form-control' name='tipoDeOrientacion'>";
+                                            foreach($orientaciones as $orientacion ){
+                                                echo "<option selected disabled hidden>Seleccione Orientacion</option>";
+                                                echo "<option value='$orientacion[tipoDeOrientacion]'>" . $orientacion['tipoDeOrientacion']. "</option>";
+                                             
+                                            }
+                                               
+                                            echo "</select>";
+                                            ?>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <button type="submit" formaction="/insertarGrupo" class="btn btn-md mr-3" style="border-radius: 25px; background-image: linear-gradient(to right,#5aff15, #00b712); border: 0px; color: #fff; font-weight: bold;">Crear Grupo</button>
-                                            <button type="submit" formaction="/principalAdministrador" class="btn btn-md mr-3" style="border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff; font-weight: bold;">Volver</button>
+                                            <button type="submit" formaction="/moduloGrupos" class="btn btn-md mr-3" style="border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff; font-weight: bold;">Volver</button>
                                         </div>
                                         
                                     </div>

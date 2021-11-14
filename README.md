@@ -15,7 +15,7 @@ Instalar PHP
 
 # crear tablas
 
-create table chat (idChat int auto_increment primary key, cedulaCreador int(8), materia varchar(60), grupo varchar(10), estadoDelChat varchar (10) );
+create table chat (idChat int auto_increment primary key, cedulaCreador int(8), materia varchar(60), grupo varchar(10), estadoDelChat varchar (10),FOREIGN KEY (grupo) REFERENCES grupo (idGrupo) ON DELETE CASCADE );
 
 create table participantesDeChat (id int auto_increment primary key, idChat int, cedulaParticipante int(8) ,materia varchar(60), grupo varchar(10),FOREIGN KEY (idChat) REFERENCES chat (idChat) ON DELETE CASCADE );
 
@@ -27,12 +27,13 @@ create table consulta (idConsulta int primary key auto_increment not null, mensa
 
 create table orientaciones(tipoDeOrientacion varchar (60) primary key,materia1 varchar (60) , materia2 varchar (60) , materia3 varchar (60), materia4 varchar (60) , materia5 varchar (60) , materia6 varchar (60) , materia7 varchar (60) , materia8 varchar (60) , materia9 varchar (60) , materia10 varchar (60) , materia11 varchar (60) , materia12 varchar (60) , materia13 varchar (60) );
 
-create table grupo (idGrupo varchar (10) primary key, tipoDeOrientacion varchar (60) , foreign key (tipoDeOrientacion) references orientaciones(tipoDeOrientacion) );
+create table grupo (idGrupo varchar (10) primary key, tipoDeOrientacion varchar (60) , foreign key (tipoDeOrientacion) references orientaciones(tipoDeOrientacion) ON DELETE CASCADE );
 
 create table grupoDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20), idGrupoDeUsuario varchar(10), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula) ON DELETE CASCADE, FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo) ON DELETE CASCADE);
 
 create table materiaDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20), idGrupoDeUsuario varchar(10), materia varchar (60), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula) ON DELETE CASCADE ,FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo) ON DELETE CASCADE );
 
+# Creacion de usuarios
 insert into orientaciones values ("1er anio - Bachillerato De Informatica","Programacion I","Sistemas Operativos I","Logica para informatica","Metodos discretos","Lab. de Soporte de Equipos Informaticos","Geometria","Lab. de Tecnologias Electricas Aplicadas","Matematica","Ingles","Ciencias Sociales - Historia","Biologia CTS","Analisis y produccion de Textos","Quimica");
 
 insert into orientaciones values ("2er anio - Bachillerato De Informatica","Programacion II","Sistemas Operativos II","Disenio Web","Sistemas de Bases de Datos I","Lab. de Redes de Área Local","Geometria","Electronica aplicada a la Informatica","Matematica","Ingles","Ciencias Sociales - Economia","Analisis y produccion de Textos","Fisica","");

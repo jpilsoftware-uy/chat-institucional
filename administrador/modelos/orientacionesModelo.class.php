@@ -17,7 +17,7 @@ class orientacionesModelo extends modelo{
     public $materia11;
     public $materia12;
     public $materia13;
-    
+
 
     public function traerOrientacion(){
         $this -> prepararOrientacion();
@@ -27,7 +27,7 @@ class orientacionesModelo extends modelo{
             return false;
         }else{           
            $materias = self::traerMateria($orientacion);           
-            return $materias;
+           return $materias;
         }
     }   
 
@@ -45,7 +45,7 @@ class orientacionesModelo extends modelo{
         $this -> sentencia -> bind_param("s", $tipoDeOrientacion);
     }
 
-
+  
     public function traerMateria($orientacion){
         $tipoDeOrientacion = $orientacion['tipoDeOrientacion'];
         $this -> prepararMateria($tipoDeOrientacion);
@@ -69,7 +69,6 @@ class orientacionesModelo extends modelo{
             return $materias;    
         }
     }
-
 
     private function prepararMateriaYgrupo(){
         $sql="SELECT materia FROM materiaDeUsuario WHERE idGrupoDeUsuario=?";
@@ -124,6 +123,20 @@ class orientacionesModelo extends modelo{
             $this -> materia12,
             $this -> materia13
         );
+    }
+
+  
+    public function listarOrientaciones(){
+        $this -> prepararOrientaciones();
+        $this -> sentencia -> execute();
+        $orientacion = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        return $orientacion;
+    }
+
+  
+    private function prepararOrientaciones(){
+        $sql="SELECT tipoDeOrientacion FROM orientaciones";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
     }
 
 }

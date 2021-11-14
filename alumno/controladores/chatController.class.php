@@ -67,13 +67,13 @@ class chatController extends chatModelo {
                 $m -> usuarioCreadorMensaje = $_SESSION['usuario'];
                 
                 if(($m -> guardarMensaje()) == false ){
-                    return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"el chat esta cerrado, por favor salga ");
+                    return generarHtml('preChat' . $tipoDeUsuario , ['exito' => false],"el creador cerro el chat");
                 }else{
                     return cargarVista('chat');
                 }
                
             }catch(Exception $e){
-                return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"el chat esta cerrado, por favor salga ");
+                return generarHtml('chat' . $tipoDeUsuario , ['exito' => false],"ocurrio un error");
                 error_log($e -> getMessage());
             } 
         }else{
