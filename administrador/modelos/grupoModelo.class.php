@@ -132,7 +132,15 @@ class grupoModelo extends modelo{
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
 
-
+    public function preBorrarGrupo($idGrupo){
+        $this -> borrarGrupo($idGrupo);
+        $this -> sentencia -> execute();
+    }
+    private function borrarGrupo($idGrupo){  
+        $sql ="DELETE FROM grupo WHERE idGrupo=?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("s",$idGrupo);
+    }
 
    
 

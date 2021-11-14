@@ -94,5 +94,20 @@ class grupoController extends grupoModelo{
             
     }
 
+    public function eliminarGrupos($idGrupo){
+        if($idGrupo !=""){
+            try{
+                $g = new grupoModelo();
+                $g -> preBorrarGrupo($idGrupo);
+                return generarHtml("eliminarGrupos",['exito' => true],"Se elimino el grupo con exito");
+            }catch(Exception $e){
+                return generarHtml("eliminarGrupos",['exito' => false],"Ocurrio un error, por favor intente denuevo");
+            }
+
+        }else{
+            return generarHtml("eliminarGrupos",['exito' => false],"Ocurrio un error, por favor intente denuevo");
+        }
+    }
+
    
 }

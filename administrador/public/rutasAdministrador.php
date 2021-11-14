@@ -92,5 +92,16 @@
             break;   
         case '/moduloUsuarios':
             cargarVista('moduloUsuarios');
+            break;  
+        case '/moduloGrupos':
+            cargarVista('moduloGrupos');
             break;     
+        case '/eliminarGrupos':
+            cargarVista('eliminarGrupos');
+            break;
+        case '/borrarGrupo':
+            if($_SERVER['REQUEST_METHOD'] === "POST") grupoController::eliminarGrupos($_POST['idGrupo']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /eliminarGrupos');
+            break;
+    
     }

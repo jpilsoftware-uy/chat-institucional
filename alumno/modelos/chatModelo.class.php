@@ -235,7 +235,7 @@ class chatModelo extends modelo{
     }
 
     private function prepararCambioDeEstadoDeChat(){
-        $sql ="UPDATE chat SET estadoDelChat='cerrado' WHERE estadoDelChat='abierto' && idChat= ?";
+        $sql ="DELETE FROM chat WHERE estadoDelChat='abierto' && idChat= ?";
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("i", $this -> idChat);
 
