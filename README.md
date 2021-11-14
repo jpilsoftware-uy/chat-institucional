@@ -36,7 +36,7 @@ create table grupoDeUsuario (id int auto_increment primary key,cedula int(8), no
 
 create table materiaDeUsuario (id int auto_increment primary key,cedula int(8), nombre varchar (20), primerApellido varchar (20), idGrupoDeUsuario varchar(10), materia varchar (60), tipoDeUsuario varchar(13) , FOREIGN KEY (cedula) REFERENCES usuario(cedula) ON DELETE CASCADE ,FOREIGN KEY (idGrupoDeUsuario) REFERENCES grupo (idGrupo) ON DELETE CASCADE );
 
-# Creacion de usuarios
+# Creacion de Orientaciones
 insert into orientaciones values ("1er anio - Bachillerato De Informatica","Programacion I","Sistemas Operativos I","Logica para informatica","Metodos discretos","Lab. de Soporte de Equipos Informaticos","Geometria","Lab. de Tecnologias Electricas Aplicadas","Matematica","Ingles","Ciencias Sociales - Historia","Biologia CTS","Analisis y produccion de Textos","Quimica");
 
 insert into orientaciones values ("2er anio - Bachillerato De Informatica","Programacion II","Sistemas Operativos II","Disenio Web","Sistemas de Bases de Datos I","Lab. de Redes de Área Local","Geometria","Electronica aplicada a la Informatica","Matematica","Ingles","Ciencias Sociales - Economia","Analisis y produccion de Textos","Fisica","");
@@ -44,3 +44,10 @@ insert into orientaciones values ("2er anio - Bachillerato De Informatica","Prog
 insert into orientaciones values ("3er Anio - Enfasis en Desarrollo y Soporte","Programacion III","Sistemas Operativos III","Gestion de Proyecto","Analisis y diseño de Aplicaciones","Redes de Datos y Seguridad","Sistemas de Bases de Datos II","Formacion Empresarial","Matematica","Ingles","Ciencias Sociales - Sociologia","Filosofia","","");
 
 insert into orientaciones values ("3er Anio - Enfasis en Desarrollo Web","Programacion Web","Sistemas Operativos III","Gestion de Proyectos Web","Analisis y diseño de Aplicaciones","Disenio Web","Sistemas de Bases de Datos II","Formacion Empresarial","Matematica","Ingles","Ciencias Sociales - Sociologia","Filosofia","","");
+
+# Creacion de Usuario
+INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado, email) VALUES (11111111, 'admin', 'admin', 'admin', 'admin', '$2y$10$3jAdYrk4ZMDlRRU1XUa8nucyWfMGBbdM64QhGqvu6khubKUgdu2Pq', 'Administrador', 'aprobado', 'jpilsoftware@gmail.com');
+
+INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado, email) VALUES (52399205, 'Pedro', 'Oyarzun', 'Fagundez', 'pedrooyarzun', '$2y$10$h2ZWXH.Av9OtEVO7FNpVVepR2hk2eOshFGDgJVnPvSLxvo6p1OpSC', 'Profesor', 'aprobado', 'ivan220103@hotmail.com');
+
+INSERT INTO usuario (cedula, nombre, primerApellido, segundoApellido, usuario, contrasenia, tipoDeUsuario, estado, email) VALUES (36792178, 'Ivan', 'Braida', 'Sanchez', 'ivanbraida', '$2y$10$w7z0eMrQuG3ryAHe349ZAeox314orLDfEesL8yz790VdzSJFDgDPe', 'Alumno', 'aprobado','ivanbraida12@gmail.com'); 
