@@ -126,9 +126,19 @@ class orientacionesController extends orientacionesModelo{
         $orientacion = $o -> listarOrientaciones();
         return $orientacion;
     }
-       
 
-
-    
-
+	public static function preEliminarOrientaciones($tipoDeOrientacion){
+		if(empty($tipoDeOrientacion)){
+			return generarHtml('eliminarOrientaciones', ['exito' => false], "Elija una orientacion para eliminar");
+		} else {
+			$o = new orientacionesModelo();
+			$o -> tipoDeOrientacion = $tipoDeOrientacion;
+			$resultado = $o -> eliminarOrientacion();
+			if($resultado){
+				return generarHtml('eliminarOrientaciones', ['exito' => true], "Orientacion eliminada con exito");
+			} else {
+				return generarHtml('eliminarOrientaciones', ['exito' => false], "La orientacion que se ingreso no existe");
+			}
+		}
+	}
 }

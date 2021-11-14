@@ -384,7 +384,7 @@
                                             <button
                                                 action="submit"
                                                 class="btn btn-md text-center"
-                                                formaction="/registroUsuario"
+                                                formaction="/modulo-orientaciones"
                                                 style="
                                                     border-radius: 25px;
                                                     background-image: linear-gradient(

@@ -117,5 +117,17 @@
         case '/borrarGrupo':
             if($_SERVER['REQUEST_METHOD'] === "POST") grupoController::eliminarGrupos($_POST['idGrupo']);
             if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /eliminarGrupos');
+
+        case '/modulo-orientaciones':
+            cargarVista('moduloOrientaciones');
+            break;
+
+        case '/eliminar-orientaciones':
+            cargarVista('eliminarOrientaciones');
+            break;
+
+        case '/eliminarOrientacion':
+            if($_SERVER['REQUEST_METHOD'] === "POST") orientacionesController::preEliminarOrientaciones($_POST['tipoDeOrientacion']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /eliminar-orientaciones');
             break;
     }
