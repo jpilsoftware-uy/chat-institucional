@@ -139,4 +139,21 @@ class orientacionesModelo extends modelo{
         $this -> sentencia = $this -> conexion -> prepare($sql);
     }
 
+
+    public function eliminarOrientacion(){
+        if($this -> checkearOrientaciones($this -> tipoDeOrientacion) ){
+            $this -> prepararEliminarOrientacion();
+            $this -> sentencia -> execute();
+            return true;    
+        } else {
+            return false;
+        }
+        
+    }
+
+    private function prepararEliminarOrientacion(){
+        $sql = "DELETE FROM orientaciones WHERE tipoDeOrientacion = ?";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
+        $this -> sentencia -> bind_param("s", $this -> tipoDeOrientacion);
+    }
 }

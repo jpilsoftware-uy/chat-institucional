@@ -41,6 +41,7 @@
 
         case '/enviarMensaje':
             if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearMensaje($_POST['mensajeEnviado']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /chat");
             break;             
             
         case '/crearChat':
@@ -114,14 +115,17 @@
 
         case '/mostrarMateria':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="elegirMateria") && orientacionesController::mostrarMaterias();
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /elegirMateria");
             break;
 
         case '/insertarMateria':
             if($_SERVER['REQUEST_METHOD']==="POST")materiaController::insertarMateria($_POST['materia']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /elegirMateria");
             break;
 
         case '/mostrarMateriaParaChatDeProfesor':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="iniciarChat") && orientacionesController::mostrarMateriasDeProfesor();
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /iniciarChat");
             break;        
             
         case '/pre-chat':
@@ -129,16 +133,16 @@
             break;    
 
         case '/mostrarChats':
-             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="unirseChat") && chatController::mostrarChats();
+            if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="unirseChat") && chatController::mostrarChats();
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /iniciarChat");
             break;
             
         case '/iniciar-chat':
             if($_SERVER['REQUEST_METHOD'] === "POST")chatController::unirseChat($_POST['idChat']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /iniciarChat");
+
             break;      
         case '/cerrarChat':
             chatController::cerrarChat();
             break;  
-                      
-          
-
     }

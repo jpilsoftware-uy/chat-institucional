@@ -49,6 +49,7 @@
 
         case '/enviarMensaje':
             if($_SERVER['REQUEST_METHOD'] ==="POST") chatController::crearMensaje($_POST['mensajeEnviado']);
+            if($_SERVER['REQUEST_METHOD'] === "GET") header("Location: /chat");
             break;             
         
         case '/crearChat':
@@ -110,21 +111,27 @@
 
         case '/mostrarMateriaParaChat':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="iniciarChat") && orientacionesController::mostrarMaterias();
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /unirseChat');
             break;
 
         case '/mostrarChats':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="unirseChat") && chatController::mostrarChats();
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /unirseChat');
             break;
 
         case '/iniciar-chat':
             if($_SERVER['REQUEST_METHOD'] === "POST")chatController::unirseChat($_POST['idChat']);
-            break;           
+            if($_SERVER['REQUEST_METHOD'] === "GET") header('Location: /iniciarChat');
+            break;
+
         case '/cerrarChat':
             chatController::cerrarChat();
-            break;  
+            break; 
+
         case '/verificarEstado':
             chatController::verificarEstadoDeChat();
-            break;  
+            break; 
+
         case '/mostrarProfesoresDelGrupo':
             if($_SERVER['REQUEST_METHOD'] === "POST")grupoController::asignarVariableDeSessionIdGrupo($_POST['idGrupoDeUsuario'],$vista="consultaAlumno") && usuarioController::mostrarProfesoresDelGrupo();
             

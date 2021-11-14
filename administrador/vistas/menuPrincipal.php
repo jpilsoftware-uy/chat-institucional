@@ -87,7 +87,7 @@
                                 <div class="card mt-4 mb-4 text-center">
                                     <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72);color: white;font-weight: bold;text-align: center;"> Modulo Usuario </div>
                                         <div class="card-body">
-                                            <p class="card-text"> En esta seccion puede trabajar con todo lo que tenga que ver con el usuario.</p>
+                                            <p class="card-text"> En esta seccion puede trabajar con todo lo relacionado a Usuarios.</p>
                                             <a href="/moduloUsuarios" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Modulo Usuario </a>
                                             <p class="card-text mt-1">
                                                 <small class="text-muted"> Ultima actualizacion: 11/13/2021 </small>
@@ -101,7 +101,7 @@
                                 <div class="card mt-4 mb-4 text-center">
                                     <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Modulo Grupos </div>
                                         <div class="card-body">
-                                            <p class="card-text"> En esta seccion puede trabajar con todo lo que tenga que ver con los grupos. </p>
+                                            <p class="card-text"> En esta seccion puede trabajar con todo lo relaciones a Grupos.</p>
                                             <a href="/moduloGrupos" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Modulo Grupos</a>
                                             <p class="card-text mt-1">
                                                 <small class="text-muted"> Ultima actualizacion: 11/13/2021 </small>
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                        
+                            <div class="card-deck">
                                 <div class="card mt-4 mb-4 text-center">
                                     <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Agenda de Consultas </div>
                                         <div class="card-body">
@@ -120,7 +120,21 @@
                                                 <small class="text-muted"> Ultima actualizacion: 11/5/2021 </small>
                                             </p>
                                         </div>
+                                
                                 </div>
+                                <div class="card mt-4 mb-4 text-center">
+                                    <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Modulo de Orientaciones </div>
+                                        <div class="card-body">
+                                            <p class="card-text"> En esta seccion puede trabajar con todo lo relacionado a Orientaciones.</p>
+                                            <a href="/modulo-orientaciones" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Modulo de Orientaciones</a>
+                                            <p class="card-text mt-1">
+                                                <small class="text-muted"> Ultima actualizacion: 11/5/2021 </small>
+                                            </p>
+                                        </div>
+                                
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
