@@ -72,7 +72,6 @@ class orientacionesModelo extends modelo{
     }
 
 
-
     public function traerMateriaYGrupo(){
         $this -> prepararMateriaYgrupo();
         $this -> sentencia -> execute();
@@ -92,6 +91,18 @@ class orientacionesModelo extends modelo{
         $this -> sentencia = $this -> conexion -> prepare($sql);
         $this -> sentencia -> bind_param("s", $this -> idGrupo);
 
+    }
+
+    public function listarOrientaciones(){
+        $this -> prepararOrientaciones();
+        $this -> sentencia -> execute();
+        $orientacion = $this -> sentencia -> get_result() -> fetch_all(MYSQLI_ASSOC);
+        return $orientacion;
+    }
+
+    private function prepararOrientaciones(){
+        $sql="SELECT tipoDeOrientacion FROM orientaciones";
+        $this -> sentencia = $this -> conexion -> prepare($sql);
     }
 
 }

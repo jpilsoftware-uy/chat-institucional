@@ -26,7 +26,7 @@
     />
     <link rel="stylesheet" href="css/menuDesplegable.css">
     <script src="https://kit.fontawesome.com/626834a84d.js" crossorigin="anonymous"></script>
-    <title>Menu Principal | Administrador</title>
+    <title>Modulo Grupo | Administrador </title>
     <style>
     
     
@@ -43,7 +43,7 @@
         </div>
         <div class="mensajeDeBienvenida">
         <?php 
-        echo "<h1 class='ml-4'>Bienvenido ". $_SESSION['nombre']. " !</h1>";
+        echo "<h1 class='ml-4'>Modulo Grupo </h1>";
          ?> 
         </div> 
        
@@ -81,14 +81,36 @@
             <div class="container py-4">
                 <div class="card" style="border-radius: 15px; background: #fafafa;">
                     <div class="card-body">
-                        <h1 class="card-title" style="text-align: center"> Menu principal </h1>
+                        
                         <div class="card-deck-wrapper">
                             <div class="card-deck">
+                                
                                 <div class="card mt-4 mb-4 text-center">
-                                    <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72);color: white;font-weight: bold;text-align: center;"> Modulo Usuario </div>
+                                    <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Crear Grupos </div>
                                         <div class="card-body">
-                                            <p class="card-text"> En esta seccion puede trabajar con todo lo que tenga que ver con el usuario.</p>
-                                            <a href="/moduloUsuarios" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Modulo Usuario </a>
+                                            <p class="card-text"> En esta seccion se pueden crear nuevos grupos en el sistema. </p>
+                                            <a href="/crearGrupos" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Crear Grupos</a>
+                                            <p class="card-text mt-1">
+                                                <small class="text-muted"> Ultima actualizacion: 11/5/2021 </small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                              
+                        </div>
+
+                        <div class="card-deck-wrapper">
+                            <div class="card-deck">
+
+                            
+
+                                <div class="card mt-4 mb-4 text-center">
+                                    <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Eliminar Grupos </div>
+                                        <div class="card-body">
+                                            <p class="card-text"> En esta seccion se puede eliminar a los grupos del sistema. </p>
+                                            <a href="/eliminarGrupos" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Eliminar Grupos</a>
                                             <p class="card-text mt-1">
                                                 <small class="text-muted"> Ultima actualizacion: 11/13/2021 </small>
                                             </p>
@@ -97,35 +119,17 @@
 
                                 
 
+                            </div>
+                            <button type="submit" formaction="/principalAdministrador" class="btn text-center " style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff; font-weight: bold;">Volver al Inicio</button>
 
-                                <div class="card mt-4 mb-4 text-center">
-                                    <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Modulo Grupos </div>
-                                        <div class="card-body">
-                                            <p class="card-text"> En esta seccion puede trabajar con todo lo que tenga que ver con los grupos. </p>
-                                            <a href="/moduloGrupos" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Modulo Grupos</a>
-                                            <p class="card-text mt-1">
-                                                <small class="text-muted"> Ultima actualizacion: 11/13/2021 </small>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                                <div class="card mt-4 mb-4 text-center">
-                                    <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Agenda de Consultas </div>
-                                        <div class="card-body">
-                                            <p class="card-text"> En esta seccion se puede ver toda la agenda de consultas del sistema. </p>
-                                            <a href="/agenda-de-consultas" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Ver Agenda</a>
-                                            <p class="card-text mt-1">
-                                                <small class="text-muted"> Ultima actualizacion: 11/5/2021 </small>
-                                            </p>
-                                        </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
+                     </div>
                 </div>
+                
+
             </div>
+
         </section>
     </form>
                                     

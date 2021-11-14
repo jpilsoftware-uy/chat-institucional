@@ -149,7 +149,7 @@
                                                                                              
                                         </div>
                                      
-                                </div>
+                                    </div>
                                 <button type="submit" formaction="/iniciar-chat" class="btn btn-md mr-3" style=" border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff;">
                                 Unirse Chat
                                 </button>
