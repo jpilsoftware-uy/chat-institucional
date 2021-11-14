@@ -103,7 +103,7 @@
                                         <div class="card-header" style="background: linear-gradient(to right, #009ffd, #2a2a72); color: white; font-weight: bold; text-align: center;"> Consultas </div>
                                             <div class="card-body">
                                                 <p class="card-text"> En esta seccion se puede hacer consultas al profesor que desee. </p>
-                                                <a href="/hacer-consulta" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Consultas</a>
+                                                <a href="/consultaAlumno" class="btn" style=" border-radius: 25px; background-image: linear-gradient(to right,#009ffd, #2a2a72); border: 0px; color: #fff; font-weight: bold;">Consultas</a>
                                                 <p class="card-text mt-1">
                                                     <small class="text-muted"> Ultima actualizacion: 10/20/2021 </small>
                                                 </p>

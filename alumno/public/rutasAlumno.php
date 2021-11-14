@@ -35,7 +35,7 @@
             if($_SERVER['REQUEST_METHOD'] === 'GET') cargarVista('consultaAlumno');
             break;
             
-        case '/hacer-consulta':
+        case '/consultaAlumno':
              cargarVista('consultaAlumno');
             break;
         
