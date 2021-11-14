@@ -121,11 +121,11 @@ class orientacionesController extends orientacionesModelo{
 		}
 	}
   
-  public static function mostrarOrientaciones(){
-      $o = new orientacionesModelo();
-      $orientacion = $o -> listarOrientaciones();
-      return $orientacion;
-  }
+    public static function mostrarOrientaciones(){
+        $o = new orientacionesModelo();
+        $orientacion = $o -> listarOrientaciones();
+        return $orientacion;
+    }
        
 
 

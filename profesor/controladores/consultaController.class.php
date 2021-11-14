@@ -36,7 +36,7 @@
                 $a -> cedula = $_SESSION['cedula'];
                 $consultasEnviadas = $a -> listarConsultas();
                 if($consultasEnviadas == false){
-                    return "Error grave en el sistema";
+                    return false;
                 } else if (!empty($consultasEnviadas)){
                     return $consultasEnviadas;
                 }
