@@ -27,15 +27,16 @@ class orientacionesController extends orientacionesModelo{
 		} 
 	}
 
+	
 	public static function preCrearOrientacion($tipoDeOrientacion, $materia1, $materia2, $materia3, $materia4, $materia5, $materia6, $materia7, $materia8, $materia9, $materia10, $materia11, $materia12, $materia13){
-		try{
-			$o = new orientacionesModelo();
-			if(empty($materia1 && $materia2 && $materia3 && $materia4 && $materia5 && $materia6 && $materia7 && $materia8 && $materia9 && $materia10 && $materia11 && $materia12 && $materia13)){
-				return generarHtml('crearOrientacion', ['exito' => false], "No se puede crear una orientacion con todas las materias vacias");
+		if ($materia1 == "" && $materia2 == "" && $materia3 == "" && $materia4 =="" && $materia5 == "" && $materia6 == "" && $materia7 == "" && $materia8 == "" && $materia9 == "" && $materia10 == "" && $materia11 == "" && $materia12 == "" && $materia13 == "") {
+			return generarHtml('crearOrientacion', ['exito' => false], "No se puede crear una orientacion con todas las materias vacias");
+		} else {
+			if($tipoDeOrientacion == ""){
+				return generarHtml('crearOrientacion', ['exito' => false], "El campo nombre de orientacion esta vacio");
 			} else {
-				if(empty($tipoDeOrientacion)){
-					return generarHtml('crearOrientacion', ['exito' => false], "El campo nombre de orientacion esta vacio");
-				} else {
+				try{
+					$o = new orientacionesModelo();
 					$o -> tipoDeOrientacion = $tipoDeOrientacion;
 					if(!empty($materia1)){
 						$o -> materia1 = $materia1;
@@ -113,11 +114,11 @@ class orientacionesController extends orientacionesModelo{
 					} else {
 						return generarHtml('crearOrientacion', ['exito' => false], "La orientacion que se intento crear ya existe");
 					}
+				} catch (Exception $e) {
+					echo "error, contacte a los desarrolladores";
+					return false;
 				}
 			}
-			
-		} catch (Exception $e){
-			echo "error, contacte a los desarrolladores";
 		}
 	}
   
