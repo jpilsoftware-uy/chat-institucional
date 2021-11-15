@@ -17,6 +17,7 @@ class orientacionesModelo extends modelo{
     public $materia11;
     public $materia12;
     public $materia13;
+    public $arrayDeMaterias;
 
 
     public function traerOrientacion(){

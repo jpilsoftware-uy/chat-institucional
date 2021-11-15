@@ -23,7 +23,7 @@
     />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <title>Crear Grupos | Administrador</title>
+    <title>Eliminar Orientaciones | Administrador</title>
 </head>
 <body>
     <section class="vh-100" style="background: linear-gradient(to bottom right, #009ffd, #2a2a72);">
@@ -63,7 +63,7 @@
                                             ?>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="button" data-toggle="modal" data-target="#modalEliminar" class="btn btn-md mr-3 btn-block" style=" border-radius: 25px; background-image: linear-gradient(to right,#ff0000, #990000); border: 0px; color: #fff; font-weight: bold;">Eliminar Usuario</button>
+                                        <button type="button" data-toggle="modal" data-target="#modalEliminar" class="btn btn-md mr-3 btn-block" style=" border-radius: 25px; background-image: linear-gradient(to right,#ff0000, #990000); border: 0px; color: #fff; font-weight: bold;">Eliminar Orientaciones</button>
                                             <button type="submit" formaction="/modulo-orientaciones" class="btn btn-md mr-3" style="border-radius: 25px; background-image: linear-gradient(to right,#09c6f9, #045de9); border: 0px; color: #fff; font-weight: bold;">Volver</button>
                                         </div>
                                         

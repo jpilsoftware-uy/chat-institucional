@@ -117,11 +117,9 @@
                                                     echo "<select class='form-control' name='idGrupoDeUsuario'>";
                                                     echo "<option selected disabled hidden>Seleccione grupo</option>";
                                                     foreach($grupos as $grupo){
-                                                    echo "<option  value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
-                                               }
-                                                 foreach($grupos as $grupo){
-                                                   echo "<option  value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
-                                               }
+                                                        echo "<option  value='$grupo[idGrupoDeUsuario]'>" . $grupo['idGrupoDeUsuario'] ."</option>";
+                                                    }
+                                                 
                                                }
                                                 
                                                echo "</select>" ;   

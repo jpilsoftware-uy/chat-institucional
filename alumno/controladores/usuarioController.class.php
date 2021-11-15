@@ -37,8 +37,6 @@
                     return "No se pudo guardar ";
                }
             }else{
-                
-
                 return generarHtml('registro' .$tipoDeUsuario , ['exito' => false], "Uno de los campos esta vacio");
             }
         }

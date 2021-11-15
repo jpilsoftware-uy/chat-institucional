@@ -77,23 +77,21 @@ class grupoController extends grupoModelo{
 
 
     public static function asignarVariableDeSessionIdGrupo($idGrupoDeUsuario,$vista){
-       
         if($idGrupoDeUsuario != ""){
-            
-            grupoController::prepararAsignacionDeIdGrupo($idGrupoDeUsuario);
-            
+            grupoController::prepararAsignacionDeIdGrupo($idGrupoDeUsuario); 
             return header('Location: /'.$vista);
         } else {
-            
             generarHtml($vista,['exito' => false ],"Seleccione un Grupo valido");
         }
     }
+
+
     private static function prepararAsignacionDeIdGrupo($idGrupoDeUsuario){
             ob_start();
-            $_SESSION['idGrupoDeUsuario'] = $idGrupoDeUsuario;
-            
+            $_SESSION['idGrupoDeUsuario'] = $idGrupoDeUsuario;   
     }
 
+    
     public function eliminarGrupos($idGrupo){
         if($idGrupo !=""){
             try{
